@@ -1,0 +1,4 @@
+genanki
+PyYAML
+Jinja2
+beautifulsoup4

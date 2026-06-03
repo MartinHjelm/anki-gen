@@ -1,0 +1,31 @@
+deck: "anki-gen Demo"
+description: "A small demo deck showcasing basic, reversed, and cloze note types."
+theme: default
+tags: [demo]
+note_type: basic
+
+sections:
+  - title: "Arithmetic"
+    cards:
+      - q: "What is 2 + 2?"
+        a: "4"
+      - q: "What is 10 / 2?"
+        a: "5"
+        extra: "Integer division."
+
+  - title: "Geography"
+    note_type: reversed
+    cards:
+      - term: "France"
+        front: "Capital of France?"
+        back: "Paris"
+      - term: "Japan"
+        front: "Capital of Japan?"
+        back: "Tokyo"
+
+  - title: "Fill in the blank"
+    note_type: cloze
+    cards:
+      - text: "Water boils at [[100]] degrees Celsius at sea level."
+      - text: "The mitochondria is the [[powerhouse]] of the {{c2::cell}}."
+        extra: "Classic biology mnemonic."

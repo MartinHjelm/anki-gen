@@ -6,8 +6,9 @@ and build both:
 - an Anki **`.apkg`** deck, and
 - a browsable **reference HTML page**,
 
-from a **single shared stylesheet** (`themes/default.css`) — so the cards and the
-page always look the same.
+from a **single shared stylesheet** (`themes/default.css`) — so the cards and the page always look the same.
+
+Good thing about apkg files is that you can iterate on a deck without destroying previous practice rounds when importing the changed deck.
 
 ## Install
 
@@ -89,9 +90,43 @@ tests/               # pytest suite (run: `pytest`)
 pytest --cov=anki_gen --cov-report=term-missing
 ```
 
-## Note on the original Baltic deck
+## How to prompt Claude or any other LLM to get decent results as told by Claude
+The ideal end state is a YAML file in your schema that I then build into .apkg + HTML — so the best prompts give me what I need to author good YAML.
 
-`make_anki_deck.py` and the `bal_*.html` files are the original, domain-specific
-generator that scraped hand-authored HTML. They still work standalone. To move
-that content onto anki-gen, transcribe it into a YAML file using the format
-above (a future `import-html` command could automate this).
+The ideal request includes 5 things
+
+  1. The source — a URL ("make a deck from https://en.wikipedia.org/wiki/Mitochondrion"), pasted text,
+  or a local file path. URLs/Wikipedia are great because I can fetch them directly.
+  2. Scope — what to cover and how deep. "Just the lead section" vs. "the whole article" vs. "only the
+  section on X." Also roughly how many cards (e.g. "20–30 cards") so I don't under- or over-produce.
+  3. Note type(s) — your schema supports three, and they suit different material:
+    - basic — plain Q→A facts
+    - reversed — when you need recall both directions (term↔definition, capital↔country)
+    - cloze — fill-in-the-blank for definitions, dates, sequences
+
+  You can say "use cloze for the definitions, basic for everything else" and I'll set note_type
+  per-section.
+  4. Angle / card style — "test me on dates and names," "conceptual understanding not trivia," "for an
+  exam on X." This shapes which facts become cards and how questions are framed.
+  5. Output prefs — deck name, tags, a one-line description, theme (you only have default right now),
+  and the output filenames.
+
+  A good prompt looks like
+
+  ```
+  "Build an Anki deck from https://en.wikipedia.org/wiki/Baltic_states — focus on geography and modern history, ~25 cards. Use reversed for country/capital pairs and basic for the rest. Deck name 'Baltic States', tags [geography, history]. Write it to baltic.yaml, then build baltic.apkg + baltic.html. In the README.md you will find all the instructions you need."
+  ```
+
+  That gives me everything to: fetch → draft YAML → run python -m anki_gen.cli build baltic.yaml -o 
+  baltic.apkg --html baltic.html → show you the result.
+
+  Tips for quality output
+
+  - Iterate on the YAML, not the deck. Ask me to draft the YAML first, review it, then build. Cards are
+  easy to tweak in YAML; rebuilding is cheap and updates existing notes (GUIDs are content-derived), so
+  editing later won't create duplicates.
+  - Atomic cards beat fat ones. If you want one-fact-per-card (better for SRS), say so — otherwise I'll
+  use reasonable judgment.
+  - For cloze, tell me what to blank ("blank the years and the key terms") — otherwise I'll pick the
+  load-bearing words.
+  - Paste text when the source is paywalled/dynamic — fetching JS-heavy pages can be unreliable.

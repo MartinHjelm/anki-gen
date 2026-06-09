@@ -1,0 +1,210 @@
+deck: "Precision_Recall"
+description: "Definitions and interpretation of precision, recall, ROC, AUC, prediction bias, and class imbalance — drawn from Wikipedia, Google's ML Crash Course, and Machine Learning Mastery."
+theme: default
+tags: [classification, precision, recall, roc]
+note_type: basic
+
+sections:
+  - title: "Confusion matrix"
+    note_type: reversed
+    cards:
+      - term: "Confusion matrix"
+        q: "What is a confusion matrix?"
+        a: "A 2×2 table for binary classification that cross-tabulates predictions against ground truth, giving the four outcome counts: true positives, false positives, false negatives, and true negatives."
+      - term: "True positive (TP)"
+        q: "What is a true positive (TP)?"
+        a: "A positive case that the model correctly predicts as positive."
+      - term: "False positive (FP)"
+        q: "What is a false positive (FP)?"
+        a: "A negative case that the model incorrectly predicts as positive (a false alarm / Type I error)."
+      - term: "False negative (FN)"
+        q: "What is a false negative (FN)?"
+        a: "A positive case that the model incorrectly predicts as negative (a miss / Type II error)."
+      - term: "True negative (TN)"
+        q: "What is a true negative (TN)?"
+        a: "A negative case that the model correctly predicts as negative."
+
+  - title: "Precision & recall"
+    note_type: reversed
+    cards:
+      - term: "Precision"
+        q: "What is precision?"
+        a: "The fraction of the model's positive predictions that are actually positive. Precision = TP / (TP + FP). Also called positive predictive value."
+      - term: "Recall"
+        q: "What is recall?"
+        a: "The fraction of actual positives that the model correctly identifies. Recall = TP / (TP + FN). Also called sensitivity or true positive rate."
+      - q: "In words, what question does precision answer?"
+        a: "\"When the model says positive, how often is it right?\" It measures the quality/trustworthiness of positive predictions."
+        note_type: basic
+      - q: "In words, what question does recall answer?"
+        a: "\"Of all the real positives, how many did the model catch?\" It measures coverage of the positive class."
+        note_type: basic
+      - q: "Which metric — precision or recall — is hurt by false positives, and which by false negatives?"
+        a: "False positives lower precision (they sit in its denominator). False negatives lower recall (they sit in its denominator)."
+        note_type: basic
+      - q: "Why are precision and recall reported together rather than alone?"
+        a: "Each ignores one error type, so either can be gamed in isolation. Predict everything positive → recall = 1 but precision collapses; predict only the single most confident case → precision may be 1 but recall is tiny. Together they cover both false positives and false negatives."
+        note_type: basic
+
+  - title: "Choosing precision vs. recall"
+    note_type: basic
+    cards:
+      - q: "When should you prioritize recall over precision?"
+        a: "When false negatives are more costly than false positives — e.g. disease screening or a smoke detector, where missing a true case is dangerous and extra false alarms are tolerable."
+      - q: "When should you prioritize precision over recall?"
+        a: "When false positives are more costly than false negatives — e.g. a criminal conviction or flagging spam, where wrongly acting on a negative case is the expensive error."
+      - q: "Why can precision be 'less meaningful' when actual positives are extremely rare?"
+        a: "Precision = TP / (TP + FP). The few real positives cap TP, while the huge negative class generates many false positives in absolute terms even at a low false-positive rate — so FP easily outnumbers TP and drags precision down. The estimate also rests on small positive counts, making it statistically noisy."
+
+  - title: "Related rates"
+    note_type: reversed
+    cards:
+      - term: "Specificity (TNR)"
+        q: "What is specificity (true negative rate)?"
+        a: "The fraction of actual negatives correctly identified as negative. Specificity = TN / (TN + FP)."
+      - term: "False positive rate (FPR / fall-out)"
+        q: "What is the false positive rate (fall-out)?"
+        a: "The fraction of actual negatives that are incorrectly predicted positive. FPR = FP / (FP + TN) = 1 − specificity."
+      - term: "Accuracy"
+        q: "What is accuracy?"
+        a: "The proportion of all predictions that are correct. Accuracy = (TP + TN) / (TP + TN + FP + FN)."
+      - q: "Why is accuracy misleading on imbalanced data?"
+        a: "When one class dominates, a trivial model that always predicts the majority class scores high accuracy. With 1% positives, predicting 'all negative' gives 99% accuracy while catching zero positives."
+        note_type: basic
+      - q: "How are recall, sensitivity, and true positive rate related?"
+        a: "They are three names for the same quantity: TP / (TP + FN)."
+        note_type: basic
+
+  - title: "F-measure"
+    note_type: reversed
+    cards:
+      - term: "F1 score"
+        q: "What is the F1 score?"
+        a: "The harmonic mean of precision and recall: F1 = 2 · (precision · recall) / (precision + recall). It is high only when both are high, and is preferred over accuracy on imbalanced data."
+      - q: "Why use the harmonic mean (not the arithmetic mean) for F1?"
+        a: "The harmonic mean is dominated by the smaller value, so F1 stays low if either precision or recall is poor. An arithmetic mean would let a high score on one metric mask a terrible score on the other."
+        note_type: basic
+      - note_type: cloze
+        text: "The general Fβ score weights recall β times as important as precision: Fβ = (1 + β²) · (P · R) / (β² · P + R). Using [[F2]] emphasizes recall, while [[F0.5]] emphasizes precision."
+        extra: "β > 1 weights recall more; β < 1 weights precision more; β = 1 gives the balanced F1."
+
+  - title: "Thresholds & the tradeoff"
+    cards:
+      - note_type: reversed
+        term: "Classification threshold"
+        q: "What is a classification threshold?"
+        a: "A cutoff applied to a model's raw probability output: scores above the threshold are labeled positive, scores below it negative. The default 0.5 is often not optimal."
+      - q: "What happens to predictions when you RAISE the classification threshold?"
+        a: "Fewer examples are called positive, so both true positives and false positives decrease (true negatives rise, false negatives rise). Precision tends to go up; recall tends to go down."
+      - q: "What happens to predictions when you LOWER the classification threshold?"
+        a: "More examples are called positive, so both true positives and false positives increase. Recall tends to go up; precision tends to go down."
+      - q: "What is the precision–recall tradeoff?"
+        a: "Precision and recall are typically inversely related: tuning the threshold to improve one usually worsens the other, because raising the bar for a positive prediction trades caught positives against false alarms."
+      - q: "Why is the default threshold of 0.5 often a poor choice?"
+        a: "It assumes balanced classes and equal misclassification costs. With class imbalance or asymmetric costs, a different threshold gives better precision/recall for the task."
+
+  - title: "ROC & AUC"
+    cards:
+      - note_type: reversed
+        term: "ROC curve"
+        q: "What is an ROC curve?"
+        a: "A plot of true positive rate (y-axis) against false positive rate (x-axis) as the classification threshold is swept across all values. It visualizes model performance at every threshold."
+      - q: "What do the axes of an ROC curve represent?"
+        a: "Y-axis = true positive rate (recall) = TP/(TP+FN); X-axis = false positive rate = FP/(FP+TN)."
+      - q: "Where does the ideal classifier sit on an ROC plot, and what is the no-skill line?"
+        a: "The ideal point is the top-left corner (0, 1): TPR = 1 with FPR = 0. A no-skill model lies on the diagonal from (0,0) to (1,1)."
+      - note_type: reversed
+        term: "AUC (area under the ROC curve)"
+        q: "What is AUC?"
+        a: "The area under the ROC curve — a single number from 0 to 1 summarizing performance across all thresholds, used to compare models."
+      - q: "What does AUC represent probabilistically?"
+        a: "The probability that the model ranks a randomly chosen positive example higher than a randomly chosen negative example. It is a measure of ranking/separation quality, independent of any single threshold."
+      - note_type: cloze
+        text: "An AUC of [[1.0]] is a perfect classifier, [[0.5]] is no better than random (the diagonal), and a value below 0.5 means the model ranks examples wrong more often than chance."
+      - q: "Why is AUC called 'threshold-independent'?"
+        a: "It integrates performance over every possible threshold rather than fixing one, so it reflects how well the model separates/ranks the classes regardless of where you set the cutoff."
+
+  - title: "Imbalance: ROC vs. PR curves"
+    cards:
+      - note_type: reversed
+        term: "Precision–recall (PR) curve"
+        q: "What is a precision–recall curve?"
+        a: "A plot of precision (y-axis) against recall (x-axis) as the threshold varies. Both metrics focus on the positive (minority) class and ignore true negatives."
+      - q: "Where is the ideal point on a PR curve, and what is its no-skill baseline?"
+        a: "The ideal point is (1, 1): perfect recall and perfect precision. The no-skill baseline is a horizontal line at precision = the proportion of positive examples in the dataset."
+      - q: "Why can ROC curves look overly optimistic on severely imbalanced data?"
+        a: "FPR uses true negatives in its denominator. With a huge negative class, even many false positives barely move the FPR, so the ROC curve and its AUC can look strong while the model performs poorly on the rare positive class."
+      - q: "Why are PR curves preferred for highly imbalanced problems?"
+        a: "Precision and recall both concentrate on the minority (positive) class and exclude true negatives, so the PR curve exposes performance on the rare class that an optimistic ROC curve can hide."
+      - q: "How can a model have high ROC AUC yet be nearly useless under severe imbalance?"
+        a: "AUC only measures ranking and is built on FPR, which barely moves when the negative class is enormous — so it stays high even when false positives vastly outnumber true positives. At any usable threshold, precision can still be dismal, so the model fails to flag the rare positives despite a strong-looking AUC."
+
+  - title: "Prediction bias"
+    cards:
+      - note_type: reversed
+        term: "Prediction bias"
+        q: "What is prediction bias?"
+        a: "The difference between the mean of a model's predictions and the mean of the ground-truth labels. Zero prediction bias means the average prediction matches the observed base rate."
+      - q: "How do you calculate prediction bias?"
+        a: "Subtract the average ground-truth label from the average predicted value over the data. Example: if 5% of emails are truly spam, a model averaging ~5% predicted spam has near-zero bias."
+      - q: "Name the common causes of prediction bias."
+        a: "Biased or noisy training data (e.g. skewed sampling), over-regularization, bugs in the training pipeline, and an insufficient/inadequate feature set."
+      - q: "How does prediction bias relate to calibration?"
+        a: "It is a coarse calibration check: a well-calibrated model has near-zero prediction bias, since its average prediction matches the actual rate. Note that zero bias is necessary but not sufficient — bias can cancel out across subgroups while individual predictions are still wrong."
+      - q: "If a model shows significant prediction bias, what does it signal?"
+        a: "Something systematic is off — the model is consistently over- or under-predicting the positive rate — pointing to data, regularization, feature, or pipeline problems rather than mere random error."
+
+  - title: "Regression metrics"
+    note_type: reversed
+    cards:
+      - term: "Mean Absolute Error (MAE)"
+        q: "What is Mean Absolute Error (MAE)?"
+        a: "The average magnitude of the residuals, ignoring sign: MAE = (1/n) Σ |ŷᵢ − yᵢ|. It is in the same units as the target and treats all errors proportionally."
+      - term: "Root Mean Squared Error (RMSE)"
+        q: "What is Root Mean Squared Error (RMSE)?"
+        a: "The square root of the mean squared residual: RMSE = √[(1/n) Σ (ŷᵢ − yᵢ)²]. It is in the same units as the target but penalizes large errors more heavily than MAE."
+      - term: "Mean Bias Error (bias)"
+        q: "What is bias (mean bias error) in regression?"
+        a: "The average signed residual: bias = (1/n) Σ (ŷᵢ − yᵢ). A positive value means the model systematically over-predicts, negative means it under-predicts; near zero means errors cancel on average."
+      - term: "R² (coefficient of determination)"
+        q: "What is R² (the coefficient of determination)?"
+        a: "The proportion of variance in the target explained by the model: R² = 1 − SS_res / SS_tot, where SS_res = Σ(yᵢ − ŷᵢ)² and SS_tot = Σ(yᵢ − ȳ)². A unitless score that is always ≤ 1 (= 1 only for a perfect fit) and can be negative when the model does worse than predicting the mean."
+      - q: "How do RMSE and MAE differ in how they treat large errors?"
+        a: "RMSE squares residuals before averaging, so a few large errors dominate it (outlier-sensitive). MAE weights every error by its absolute size, so it is more robust to outliers. RMSE ≥ MAE always, and the gap grows with error variance."
+        note_type: basic
+      - q: "Why can a model have low MAE/RMSE but still be biased?"
+        a: "MAE and RMSE measure error magnitude regardless of direction. Bias (mean signed error) can be near zero even with large magnitudes, or large even when over- and under-predictions partly cancel — so you check bias separately to detect systematic over/under-prediction."
+        note_type: basic
+      - q: "How do you interpret R² values of 1, 0, and negative?"
+        a: "R² = 1 means the model perfectly predicts every point; R² = 0 means it does no better than always predicting the mean ȳ; R² < 0 means it does worse than that mean baseline (possible on test data or a badly misspecified model)."
+        note_type: basic
+      - q: "Why report bias alongside MAE/RMSE rather than relying on error magnitude alone?"
+        a: "Magnitude metrics tell you how far off predictions are, but not in which direction. Bias reveals systematic over- or under-prediction that magnitude metrics hide — two models with identical RMSE can be unbiased or heavily skewed one way."
+        note_type: basic
+
+  - title: "Bias–variance tradeoff"
+    note_type: reversed
+    cards:
+      - term: "Bias (bias–variance sense)"
+        q: "What is bias in the bias–variance decomposition?"
+        a: "The error from a model's simplifying assumptions: how far its average prediction (over many training sets) is from the true value. High bias means the model is too simple to capture the real pattern — it underfits."
+      - term: "Variance (bias–variance sense)"
+        q: "What is variance in the bias–variance decomposition?"
+        a: "The error from sensitivity to the particular training set: how much the model's predictions wobble if you retrain on different samples. High variance means the model is too flexible and fits noise — it overfits."
+      - term: "Irreducible error"
+        q: "What is irreducible error?"
+        a: "The noise floor — error from inherent randomness in the data (and unmeasured factors) that no model can remove, regardless of how good it is."
+      - term: "Bias–variance tradeoff"
+        q: "What is the bias–variance tradeoff?"
+        a: "Reducing bias (more model complexity) tends to raise variance, and reducing variance (simpler/more regularized model) tends to raise bias. Expected generalization error is minimized by balancing the two, not by minimizing either alone."
+      - note_type: cloze
+        text: "Expected test error decomposes into three parts: [[bias]]² + [[variance]] + irreducible error."
+      - q: "How do bias and variance relate to underfitting and overfitting?"
+        a: "High bias → underfitting: the model is too simple, with high error on both training and test data. High variance → overfitting: the model fits the training data (low train error) but generalizes poorly (high test error)."
+        note_type: basic
+      - q: "How does model complexity move bias and variance?"
+        a: "As complexity increases, bias falls (the model can fit more patterns) but variance rises (it grows more sensitive to the training sample). Total error follows a U-shape — falling, then rising — with a sweet spot in between."
+        note_type: basic
+      - q: "What practical levers shift the bias–variance balance?"
+        a: "Toward less variance / more bias: stronger regularization, simpler models, fewer features, more training data. Toward less bias / more variance: more complex models, more features, less regularization. More data mainly reduces variance without adding bias."
+        note_type: basic

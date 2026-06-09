@@ -1,0 +1,182 @@
+/* anki-gen default theme — single source of truth for BOTH the Anki cards and
+ * the reference HTML page.
+ *
+ * Anki injects this whole file as each note model's CSS; the reference page
+ * links the same file. Card rules (.card and friends) drive Anki; page rules
+ * are scoped under `.anki-gen-page` so they never apply inside Anki webviews.
+ * Palette ported from bal_glossary.html. */
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #d8d5cc;
+  --border-light: #ece9e2;
+  --text-primary: #1a1916;
+  --text-secondary: #6b6860;
+  --text-muted: #9c9a94;
+  --accent-blue: #1a4a7a;   --accent-blue-bg: #e8f0f8;
+  --accent-green: #1a5c3a;  --accent-green-bg: #e6f2eb;
+  --accent-amber: #7a4a10;  --accent-amber-bg: #faf0e0;
+  --accent-purple: #4a2a7a; --accent-purple-bg: #f0ebfa;
+  --accent-gray: #4a4844;   --accent-gray-bg: #f0ede8;
+  --accent-teal: #0f5c58;   --accent-teal-bg: #e4f4f3;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --sans: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ── Anki card ───────────────────────────────────────────────────────────── */
+
+.card {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg);
+  padding: 1.5rem;
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.term {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: inline-block;
+  background: var(--surface);
+  padding: 2px 8px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.front { font-size: 16px; font-weight: 500; margin-bottom: 0.25rem; }
+.back  { font-size: 15px; }
+.desc  { font-size: 14px; }
+.extra {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Anki highlights the active cloze deletion with the .cloze class. */
+.cloze { font-weight: 700; color: var(--accent-blue); }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 0.9rem 0; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.9rem; }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 3px;
+  background: var(--accent-gray-bg);
+  color: var(--accent-gray);
+}
+.tag-term { background: var(--accent-blue-bg); color: var(--accent-blue); font-family: var(--mono); }
+.tag-tier { background: var(--accent-amber-bg); color: var(--accent-amber); }
+
+/* ── Reference HTML page (scoped) ────────────────────────────────────────── */
+
+.anki-gen-page * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.anki-gen-page {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+.anki-gen-page .page-wrapper { max-width: 1080px; margin: 0 auto; }
+
+.anki-gen-page header {
+  border-bottom: 1.5px solid var(--text-primary);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.anki-gen-page h1 {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.anki-gen-page h1 strong { font-weight: 500; }
+.anki-gen-page .deck-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 0.6rem;
+  max-width: 700px;
+}
+.anki-gen-page .deck-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.anki-gen-page .section { margin-bottom: 3rem; }
+.anki-gen-page .section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.anki-gen-page .section-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.anki-gen-page .section-count { font-size: 11px; color: var(--text-muted); }
+
+.anki-gen-page table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+}
+.anki-gen-page thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  text-align: left;
+  background: var(--bg);
+  border-bottom: 0.5px solid var(--border);
+  white-space: nowrap;
+}
+.anki-gen-page tbody tr { border-bottom: 0.5px solid var(--border-light); }
+.anki-gen-page tbody tr:last-child { border-bottom: none; }
+.anki-gen-page tbody tr:hover { background: #fafaf7; }
+.anki-gen-page td { padding: 12px 14px; vertical-align: top; line-height: 1.5; }
+.anki-gen-page .col-q { width: 40%; font-weight: 500; }
+/* Badge sits on its own line above the prompt (the prompt text follows it
+ * inline in the same cell, so force the badge to a block). */
+.anki-gen-page .col-q .term { display: block; width: fit-content; }
+
+.anki-gen-page footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+}

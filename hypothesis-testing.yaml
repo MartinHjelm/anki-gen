@@ -1,0 +1,115 @@
+deck: "Hypothesis Testing"
+description: "Core concepts for understanding statistical hypothesis testing, based on the UM Intro to Data Science notes (kshedden)."
+theme: default
+tags: [statistics, hypothesis-testing]
+note_type: basic
+
+sections:
+  - title: "Hypotheses"
+    cards:
+      - term: "Null hypothesis"
+        q: "What is the null hypothesis (H₀)?"
+        a: "The formal statement being tested, typically proposing no difference or no effect. It is the claim assumed true while we look for evidence against it."
+      - term: "Alternative hypothesis"
+        q: "What is the alternative hypothesis (H₁/Hₐ)?"
+        a: "Our proposed explanation for what is happening if the null hypothesis is wrong."
+      - q: "Why do we test against the null rather than directly proving the alternative?"
+        a: "The null is a single, precise claim (e.g. effect = 0) that fully specifies a sampling distribution, so we can calculate how probable our data are under it. The alternative is composite — 'effect ≠ 0' covers infinitely many values and specifies no single distribution — so there is nothing concrete to compute probabilities from. We can therefore only measure how improbable the data are under the precise null."
+      - q: "What does it mean to 'reject the null hypothesis'?"
+        a: "The test statistic fell in a region so unlikely under H₀ (p-value ≤ α) that we treat H₀ as implausible and act as if the alternative holds. It is a decision, not a proof: it does not establish the alternative is true and carries a Type I error risk of α."
+
+  - title: "Test statistics"
+    cards:
+      - term: "Test statistic"
+        q: "What is a test statistic?"
+        a: "A single number computed from the data that captures the information relevant for choosing between the competing hypotheses."
+      - q: "How does the magnitude of a test statistic relate to evidence against H₀?"
+        a: "Test statistics are scaled so that under H₀ they cluster near zero. A larger magnitude places the value farther into the tail of the null distribution, which corresponds to a smaller p-value — hence stronger evidence against H₀."
+      - note_type: cloze
+        text: "A Wald test statistic standardizes an estimate by dividing by its [[standard error]]: (estimate − hypothesized value) / standard error."
+        extra: "Standardizing puts the statistic on a known scale so its sampling distribution is predictable under H₀."
+      - q: "In a Wald test, what does the numerator (estimate − hypothesized value) represent?"
+        a: "The signed distance between the observed estimate and the value the null hypothesis predicts. Dividing by the standard error expresses that distance in units of sampling variability."
+
+  - title: "P-values"
+    cards:
+      - term: "P-value"
+        q: "What is a p-value?"
+        a: "Assuming H₀ is true, the probability of obtaining a test statistic at least as extreme as the one actually observed. A small value means the observed data would be surprising if the null were true."
+      - q: "Under H₀, what is the probability that the p-value falls below a threshold t?"
+        a: "Exactly t. If the null is true, P(p-value ≤ t) = t for any threshold t — i.e. the p-value is uniformly distributed on [0,1]."
+      - q: "Under H₀, why is the p-value uniformly distributed on [0,1]?"
+        a: "The p-value is, by construction, the test statistic's tail probability under H₀ — i.e. its CDF (or survival function) evaluated at the observed value. By the probability integral transform, feeding a continuous random variable into its own CDF yields a Uniform(0,1). Hence P(p-value ≤ t) = t. (This requires a continuous null distribution; with discrete data the p-value is only approximately uniform.)"
+      - q: "Does a small p-value mean the null hypothesis is false?"
+        a: "No. It means the observed data would be unusual *if* the null were true. A small p-value can still occur when the null is true — that is a false rejection."
+      - note_type: cloze
+        text: "A small p-value is computed [[assuming the null hypothesis is true]], so it tells us the data are improbable under H₀ — not that H₀ itself is improbable."
+
+  - title: "Significance & decisions"
+    cards:
+      - term: "Significance level"
+        q: "What is the significance level (α)?"
+        a: "A pre-specified probability threshold for the p-value, below which we reject H₀. It fixes the long-run Type I error rate — the fraction of true nulls we will falsely reject. The conventional value α = 0.05 is just that: a convention, with no objective justification."
+      - q: "What does 'statistically significant' at the 0.05 level mean?"
+        a: "The p-value is 0.05 or smaller, which by convention is treated as sufficiently strong evidence against the null — nothing more fundamental than a chosen cutoff."
+      - q: "Why must the significance level be chosen *before* seeing the result?"
+        a: "Pre-specifying α controls the false-rejection rate. Choosing the threshold after seeing the data lets you cherry-pick and inflates the true error rate."
+
+  - title: "Errors & power"
+    cards:
+      - term: "Type I error"
+        q: "What is a Type I error?"
+        a: "Rejecting the null hypothesis when it is actually true (a false positive). Its long-run rate equals the significance level α (e.g. 0.05)."
+      - term: "Type II error"
+        q: "What is a Type II error?"
+        a: "Failing to reject the null hypothesis when the alternative is actually true (a false negative)."
+      - note_type: reversed
+        term: "Type I error rate"
+        front: "Which quantity equals the significance level α?"
+        back: "The Type I error rate (probability of a false rejection)."
+      - term: "Power"
+        q: "What is the power of a test?"
+        a: "The probability of rejecting the null hypothesis when the alternative is true — i.e. the probability of detecting a real effect."
+      - q: "What happens when a study has low power?"
+        a: "It is unlikely to reject the null even when the alternative is true, so genuine effects often go undetected (a Type II error)."
+      - note_type: cloze
+        text: "Power is the probability of [[rejecting]] H₀ when the alternative is true; a [[Type II]] error is failing to reject H₀ when the alternative is true."
+
+  - title: "Worked examples (test construction)"
+    cards:
+      - q: "How is a two-sample proportion test statistic constructed (e.g. comparing COVID risk perception across age groups)?"
+        a: "Take the difference in sample proportions and divide it by the pooled standard error of that difference."
+      - q: "How is a comparison-of-means test statistic constructed (e.g. battery lifespans)?"
+        a: "Take the difference in sample means and divide it by the combined standard error of the difference."
+      - q: "How is a test statistic for a correlation constructed (e.g. between two biomarkers)?"
+        a: "Take the sample correlation coefficient and divide it by its standard error, approximately 1/√n."
+      - q: "What pattern do all these Wald-style examples share?"
+        a: "Each takes an estimate of an effect and divides by its standard error, producing a standardized statistic whose null distribution is known."
+
+  - title: "One-sided vs two-sided tests"
+    cards:
+      - term: "Two-sided test"
+        q: "What is a two-sided (two-tailed) test?"
+        a: "A test whose alternative hypothesis allows the parameter to deviate from the null value in *either* direction (≠). Evidence in either tail counts against H₀."
+      - term: "One-sided test"
+        q: "What is a one-sided (one-tailed) test?"
+        a: "A test whose alternative specifies a single direction of deviation (> or <). Only evidence in that one tail counts against H₀."
+      - q: "How is the p-value computed differently for one-sided vs two-sided tests?"
+        a: "A two-sided p-value sums the probability in both tails (often 2× the one-sided value for a symmetric null distribution); a one-sided p-value uses only the single tail matching the alternative's direction."
+      - q: "When is a one-sided test appropriate?"
+        a: "Only when a deviation in the opposite direction is implausible or irrelevant, and the direction is chosen *before* seeing the data — never picked afterward to make a result significant."
+      - q: "Why is a one-sided test more 'powerful' for detecting an effect in its chosen direction?"
+        a: "All of α is placed in one tail, so the rejection threshold is closer to the null value. The trade-off is zero ability to detect a true effect in the opposite direction."
+      - note_type: cloze
+        text: "A [[two-sided]] test rejects for deviations in either direction (Hₐ: θ ≠ θ₀), while a [[one-sided]] test rejects only for deviations in a single pre-specified direction (Hₐ: θ > θ₀ or θ < θ₀)."
+      - q: "What is the danger of switching to a one-sided test after seeing the data?"
+        a: "It is a form of p-hacking: choosing the direction post hoc roughly doubles the true Type I error rate, so the reported significance level no longer reflects the real false-positive risk."
+
+  - title: "Interpretation & history"
+    cards:
+      - q: "Who developed the formal hypothesis-testing framework, and roughly when?"
+        a: "Ronald Fisher, Jerzy Neyman, and Egon Pearson, between about 1925 and 1940."
+      - q: "What criticism of formal hypothesis testing do the notes mention?"
+        a: "Many prominent statisticians argue that less emphasis should be placed on formal hypothesis testing — e.g. over-reliance on the 0.05 cutoff and on binary significant/not-significant conclusions."
+      - q: "What is the key interpretive limitation of any hypothesis test?"
+        a: "It can provide evidence against the null but cannot confirm the alternative is true, and every rejection carries a controlled but nonzero chance of being a false positive."

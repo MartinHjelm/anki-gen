@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 185" width="360" height="185">
+  <style>
+    text { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; fill: #1a1916; }
+    .sub { font-size: 11px; fill: #6b6860; }
+    .axis { stroke: #6b6860; stroke-width: 1; }
+    .curve { fill: none; stroke: #1a4a7a; stroke-width: 2; }
+    .mark { stroke: #1a4a7a; stroke-width: 1.2; stroke-dasharray: 3 3; }
+  </style>
+  <defs>
+    <path id="b" d="M-70,130 C-30,130 -15,40 0,40 C15,40 30,130 70,130 Z"/>
+    <clipPath id="lt"><rect x="25" y="0" width="36" height="150"/></clipPath>
+    <clipPath id="rt"><rect x="129" y="0" width="36" height="150"/></clipPath>
+    <clipPath id="ot"><rect x="294" y="0" width="41" height="150"/></clipPath>
+  </defs>
+
+  <!-- Two-sided (left) -->
+  <g transform="translate(95,0)"><use href="#b" fill="#e8f0f8"/></g>
+  <g transform="translate(95,0)"><use href="#b" class="curve"/></g>
+  <use href="#b" transform="translate(95,0)" fill="#d2603f" fill-opacity="0.6" clip-path="url(#lt)"/>
+  <use href="#b" transform="translate(95,0)" fill="#d2603f" fill-opacity="0.6" clip-path="url(#rt)"/>
+  <line class="axis" x1="20" y1="130" x2="170" y2="130"/>
+  <line class="mark" x1="61" y1="130" x2="61" y2="95"/>
+  <line class="mark" x1="129" y1="130" x2="129" y2="95"/>
+  <text x="95" y="155" text-anchor="middle">Two-sided</text>
+  <text x="95" y="172" text-anchor="middle" class="sub">Hₐ: θ ≠ θ₀ — both tails</text>
+
+  <!-- One-sided (right) -->
+  <g transform="translate(265,0)"><use href="#b" fill="#e8f0f8"/></g>
+  <g transform="translate(265,0)"><use href="#b" class="curve"/></g>
+  <use href="#b" transform="translate(265,0)" fill="#d2603f" fill-opacity="0.6" clip-path="url(#ot)"/>
+  <line class="axis" x1="190" y1="130" x2="340" y2="130"/>
+  <line class="mark" x1="294" y1="130" x2="294" y2="95"/>
+  <text x="265" y="155" text-anchor="middle">One-sided</text>
+  <text x="265" y="172" text-anchor="middle" class="sub">Hₐ: θ &gt; θ₀ — one tail</text>
+</svg>

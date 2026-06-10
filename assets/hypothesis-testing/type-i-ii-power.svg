@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 205" width="340" height="205">
+  <style>
+    text { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; fill: #1a1916; }
+    .lbl { font-size: 11px; fill: #6b6860; }
+    .axis { stroke: #6b6860; stroke-width: 1; }
+    .c0 { fill: none; stroke: #1a4a7a; stroke-width: 2; }
+    .c1 { fill: none; stroke: #6a4a7a; stroke-width: 2; }
+    .mark { stroke: #1a1916; stroke-width: 1.2; stroke-dasharray: 3 3; }
+  </style>
+  <defs>
+    <path id="b" d="M-90,130 C-39,130 -19,30 0,30 C19,30 39,130 90,130 Z"/>
+    <clipPath id="alpha"><rect x="170" y="0" width="40" height="135"/></clipPath>
+    <clipPath id="beta"><rect x="115" y="0" width="55" height="135"/></clipPath>
+    <clipPath id="pow"><rect x="170" y="0" width="125" height="135"/></clipPath>
+  </defs>
+
+  <!-- light fills -->
+  <use href="#b" transform="translate(120,0)" fill="#eef2f7"/>
+  <use href="#b" transform="translate(205,0)" fill="#f1edf4"/>
+
+  <!-- shaded decision regions -->
+  <use href="#b" transform="translate(205,0)" fill="#9b978d" fill-opacity="0.55" clip-path="url(#beta)"/>
+  <use href="#b" transform="translate(205,0)" fill="#3f8f5a" fill-opacity="0.5" clip-path="url(#pow)"/>
+  <use href="#b" transform="translate(120,0)" fill="#d2603f" fill-opacity="0.6" clip-path="url(#alpha)"/>
+
+  <!-- outlines on top -->
+  <use href="#b" transform="translate(120,0)" class="c0"/>
+  <use href="#b" transform="translate(205,0)" class="c1"/>
+
+  <line class="axis" x1="20" y1="130" x2="320" y2="130"/>
+  <line class="mark" x1="170" y1="130" x2="170" y2="22"/>
+
+  <text x="120" y="22" text-anchor="middle">H₀</text>
+  <text x="205" y="22" text-anchor="middle">Hₐ</text>
+  <text x="170" y="148" text-anchor="middle" class="lbl">critical value</text>
+
+  <!-- legend -->
+  <rect x="28"  y="172" width="11" height="11" fill="#d2603f" fill-opacity="0.6"/>
+  <text x="44"  y="182">α — Type I</text>
+  <rect x="135" y="172" width="11" height="11" fill="#9b978d" fill-opacity="0.55"/>
+  <text x="151" y="182">β — Type II</text>
+  <rect x="242" y="172" width="11" height="11" fill="#3f8f5a" fill-opacity="0.5"/>
+  <text x="258" y="182">power</text>
+</svg>

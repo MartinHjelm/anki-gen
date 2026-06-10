@@ -72,6 +72,23 @@
 /* Anki highlights the active cloze deletion with the .cloze class. */
 .cloze { font-weight: 700; color: var(--accent-blue); }
 
+/* Card illustration. Images are normalized to <=1000px on build; max-width:100%
+ * makes them shrink responsively to the card/screen width (phone or desktop). */
+.media { margin: 0 0 0.75rem; }
+.media img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+}
+.media figcaption {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
 hr { border: none; border-top: 1px solid var(--border); margin: 0.9rem 0; }
 
 .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.9rem; }
@@ -172,6 +189,23 @@ hr { border: none; border-top: 1px solid var(--border); margin: 0.9rem 0; }
 /* Badge sits on its own line above the prompt (the prompt text follows it
  * inline in the same cell, so force the badge to a block). */
 .anki-gen-page .col-q .term { display: block; width: fit-content; }
+/* Image preview inside the reference table — bounded so a tall image doesn't
+ * dominate a row; max-width:100% keeps it responsive on narrow screens. */
+.anki-gen-page .media { margin: 0 0 0.5rem; }
+.anki-gen-page .media img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+}
+.anki-gen-page .media figcaption {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-style: italic;
+}
 
 .anki-gen-page footer {
   margin-top: 3rem;

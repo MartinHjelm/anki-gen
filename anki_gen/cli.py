@@ -11,11 +11,13 @@ from __future__ import annotations
 
 import argparse
 import sys
+import tempfile
 from pathlib import Path
 
 from .builder import write_deck
 from .htmlpage import write_page
 from .loader import load_deck
+from .media import MediaError, resolve_deck_media
 from .schema import ValidationError
 
 
@@ -27,16 +29,27 @@ def build_command(args: argparse.Namespace) -> int:
         return 1
 
     out = Path(args.output) if args.output else Path(args.input).with_suffix(".apkg")
-    stats = write_deck(deck, out)
 
-    print(f"Wrote {out}")
-    print(f"  notes: {stats.notes}  cards: {stats.cards}")
-    for note_type, count in sorted(stats.by_type.items()):
-        print(f"    {note_type}: {count} notes")
+    # Resolve images once into a staging dir shared by both outputs, so a URL is
+    # downloaded a single time and the staged files exist on disk while the .apkg
+    # is written. The directory lives until both writes complete.
+    with tempfile.TemporaryDirectory(prefix="anki-gen-media-") as staging:
+        try:
+            media = resolve_deck_media(deck, staging_dir=Path(staging))
+        except MediaError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
 
-    if args.html:
-        write_page(deck, args.html)
-        print(f"Wrote {args.html}")
+        stats = write_deck(deck, out, media)
+
+        print(f"Wrote {out}")
+        print(f"  notes: {stats.notes}  cards: {stats.cards}")
+        for note_type, count in sorted(stats.by_type.items()):
+            print(f"    {note_type}: {count} notes")
+
+        if args.html:
+            write_page(deck, args.html, media)
+            print(f"Wrote {args.html}")
 
     return 0
 

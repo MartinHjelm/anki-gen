@@ -25,6 +25,8 @@ sections:
         a: "A single number computed from the data that captures the information relevant for choosing between the competing hypotheses."
       - q: "How does the magnitude of a test statistic relate to evidence against H₀?"
         a: "Test statistics are scaled so that under H₀ they cluster near zero. A larger magnitude places the value farther into the tail of the null distribution, which corresponds to a smaller p-value — hence stronger evidence against H₀."
+        image: assets/hypothesis-testing/test-statistic-magnitude.svg
+        image_credit: "Diagram authored for this deck"
       - note_type: cloze
         text: "A Wald test statistic standardizes an estimate by dividing by its [[standard error]]: (estimate − hypothesized value) / standard error."
         extra: "Standardizing puts the statistic on a known scale so its sampling distribution is predictable under H₀."
@@ -36,6 +38,8 @@ sections:
       - term: "P-value"
         q: "What is a p-value?"
         a: "Assuming H₀ is true, the probability of obtaining a test statistic at least as extreme as the one actually observed. A small value means the observed data would be surprising if the null were true."
+        image: assets/hypothesis-testing/p-value.svg
+        image_credit: "Diagram authored for this deck"
       - q: "Under H₀, what is the probability that the p-value falls below a threshold t?"
         a: "Exactly t. If the null is true, P(p-value ≤ t) = t for any threshold t — i.e. the p-value is uniformly distributed on [0,1]."
       - q: "Under H₀, why is the p-value uniformly distributed on [0,1]?"
@@ -50,6 +54,8 @@ sections:
       - term: "Significance level"
         q: "What is the significance level (α)?"
         a: "A pre-specified probability threshold for the p-value, below which we reject H₀. It fixes the long-run Type I error rate — the fraction of true nulls we will falsely reject. The conventional value α = 0.05 is just that: a convention, with no objective justification."
+        image: assets/hypothesis-testing/rejection-region.svg
+        image_credit: "Diagram authored for this deck"
       - q: "What does 'statistically significant' at the 0.05 level mean?"
         a: "The p-value is 0.05 or smaller, which by convention is treated as sufficiently strong evidence against the null — nothing more fundamental than a chosen cutoff."
       - q: "Why must the significance level be chosen *before* seeing the result?"
@@ -70,6 +76,8 @@ sections:
       - term: "Power"
         q: "What is the power of a test?"
         a: "The probability of rejecting the null hypothesis when the alternative is true — i.e. the probability of detecting a real effect."
+        image: assets/hypothesis-testing/type-i-ii-power.svg
+        image_credit: "Diagram authored for this deck"
       - q: "What happens when a study has low power?"
         a: "It is unlikely to reject the null even when the alternative is true, so genuine effects often go undetected (a Type II error)."
       - note_type: cloze
@@ -96,6 +104,8 @@ sections:
         a: "A test whose alternative specifies a single direction of deviation (> or <). Only evidence in that one tail counts against H₀."
       - q: "How is the p-value computed differently for one-sided vs two-sided tests?"
         a: "A two-sided p-value sums the probability in both tails (often 2× the one-sided value for a symmetric null distribution); a one-sided p-value uses only the single tail matching the alternative's direction."
+        image: assets/hypothesis-testing/one-vs-two-sided.svg
+        image_credit: "Diagram authored for this deck"
       - q: "When is a one-sided test appropriate?"
         a: "Only when a deviation in the opposite direction is implausible or irrelevant, and the direction is chosen *before* seeing the data — never picked afterward to make a result significant."
       - q: "Why is a one-sided test more 'powerful' for detecting an effect in its chosen direction?"

@@ -16,6 +16,11 @@ from typing import Mapping
 NOTE_TYPES: tuple[str, ...] = ("basic", "reversed", "cloze")
 DEFAULT_NOTE_TYPE = "basic"
 
+# Where a card's image is shown: on the question side, the answer side, or both.
+# ``back`` keeps the image hidden until the answer is revealed.
+IMAGE_SIDES: tuple[str, ...] = ("both", "front", "back")
+DEFAULT_IMAGE_SIDE = "both"
+
 # Matches an explicit Anki cloze deletion, e.g. {{c1::Paris}} or {{c12::x::hint}}.
 _CLOZE_DELETION = re.compile(r"\{\{c(\d+)::")
 # Matches the friendly shorthand [[Paris]] (no nested brackets).
@@ -35,6 +40,13 @@ class Card:
       - cloze:            ``text`` (with cloze deletions) and optional ``extra``
 
     ``term`` and ``tier`` are optional styling chrome rendered only when present.
+
+    ``image`` is an optional reference to an illustration — either a local file
+    path (resolved to absolute by the loader) or an ``http(s)`` URL. The media is
+    resolved separately (see :mod:`anki_gen.media`); the card only holds the
+    reference. ``image_credit`` is an optional caption/attribution line.
+    ``image_side`` controls where the image appears (``both``/``front``/``back``);
+    ``back`` keeps it hidden until the answer is shown.
     """
 
     note_type: str
@@ -42,6 +54,9 @@ class Card:
     tags: tuple[str, ...] = ()
     term: str = ""
     tier: str = ""
+    image: str = ""
+    image_credit: str = ""
+    image_side: str = DEFAULT_IMAGE_SIDE
 
     def __post_init__(self) -> None:
         # Freeze the mapping so the "frozen" dataclass is genuinely immutable.
@@ -84,6 +99,15 @@ def convert_cloze_shorthand(text: str) -> str:
         return f"{{{{c{counter}::{match.group(1)}}}}}"
 
     return _CLOZE_SHORTHAND.sub(_replace, text)
+
+
+def validate_image_side(side: str) -> None:
+    """Validate an ``image_side`` value, raising :class:`ValidationError`."""
+    if side not in IMAGE_SIDES:
+        allowed = ", ".join(IMAGE_SIDES)
+        raise ValidationError(
+            f"unknown image_side {side!r} (expected one of: {allowed})"
+        )
 
 
 def validate_card_fields(note_type: str, fields: Mapping[str, str]) -> None:

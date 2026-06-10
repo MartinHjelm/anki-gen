@@ -1,8 +1,10 @@
 """Tests for the YAML loader and card parsing/validation."""
 
+from pathlib import Path
+
 import pytest
 
-from anki_gen.loader import parse_deck
+from anki_gen.loader import load_deck, parse_deck
 from anki_gen.schema import ValidationError, convert_cloze_shorthand
 
 
@@ -122,6 +124,112 @@ def test_cloze_card_without_deletion_raises():
 
     with pytest.raises(ValidationError, match="cloze.*deletion"):
         parse_deck(data)
+
+
+def test_image_and_credit_are_parsed():
+    data = {
+        "deck": "D",
+        "sections": [
+            {
+                "title": "S",
+                "cards": [
+                    {"q": "x", "a": "y", "image": "pics/cell.png",
+                     "image_credit": "Wikimedia, CC BY-SA 4.0"},
+                ],
+            }
+        ],
+    }
+
+    card = parse_deck(data, base_dir=Path("/decks")).sections[0].cards[0]
+
+    assert card.image == "/decks/pics/cell.png"  # resolved against base_dir
+    assert card.image_credit == "Wikimedia, CC BY-SA 4.0"
+
+
+def test_image_url_is_left_untouched():
+    data = {
+        "deck": "D",
+        "sections": [
+            {"title": "S", "cards": [{"q": "x", "a": "y",
+                                      "image": "https://example.org/a.png"}]}
+        ],
+    }
+
+    card = parse_deck(data, base_dir=Path("/decks")).sections[0].cards[0]
+
+    assert card.image == "https://example.org/a.png"
+
+
+def test_image_side_defaults_to_both():
+    data = {
+        "deck": "D",
+        "sections": [{"title": "S", "cards": [{"q": "x", "a": "y",
+                                               "image": "p.png"}]}],
+    }
+
+    card = parse_deck(data, base_dir=Path("/d")).sections[0].cards[0]
+
+    assert card.image_side == "both"
+
+
+def test_image_side_back_is_parsed():
+    data = {
+        "deck": "D",
+        "sections": [{"title": "S", "cards": [{"q": "x", "a": "y",
+                                               "image": "p.png",
+                                               "image_side": "back"}]}],
+    }
+
+    card = parse_deck(data, base_dir=Path("/d")).sections[0].cards[0]
+
+    assert card.image_side == "back"
+
+
+def test_invalid_image_side_raises_even_without_image():
+    data = {
+        "deck": "D",
+        "sections": [{"title": "S", "cards": [{"q": "x", "a": "y",
+                                               "image_side": "sideways"}]}],
+    }
+
+    with pytest.raises(ValidationError, match="image_side"):
+        parse_deck(data)
+
+
+def test_invalid_image_side_raises_with_location():
+    data = {
+        "deck": "D",
+        "sections": [{"title": "S", "cards": [{"q": "x", "a": "y",
+                                               "image": "p.png",
+                                               "image_side": "sideways"}]}],
+    }
+
+    with pytest.raises(ValidationError, match="section 1.*card 1.*image_side"):
+        parse_deck(data)
+
+
+def test_image_absent_defaults_to_empty():
+    card = parse_deck(
+        {"deck": "D", "sections": [{"title": "S", "cards": [{"q": "x", "a": "y"}]}]}
+    ).sections[0].cards[0]
+
+    assert card.image == ""
+    assert card.image_credit == ""
+
+
+def test_load_deck_resolves_image_relative_to_yaml_file(tmp_path):
+    yaml_file = tmp_path / "deck.yaml"
+    yaml_file.write_text(
+        "deck: D\n"
+        "sections:\n"
+        "  - title: S\n"
+        "    cards:\n"
+        "      - {q: x, a: y, image: img/cell.png}\n"
+    )
+
+    card = load_deck(yaml_file).sections[0].cards[0]
+
+    assert card.image == str(tmp_path / "img" / "cell.png")
 
 
 def test_term_and_tier_chrome_captured():

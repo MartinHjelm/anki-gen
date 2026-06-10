@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160">
+  <style>
+    text { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; fill: #1a1916; }
+    .phase { fill: #e8f0f8; stroke: #1a4a7a; stroke-width: 1.5; }
+    .arrow { stroke: #6b6860; stroke-width: 1.5; fill: none; marker-end: url(#a); }
+  </style>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/>
+    </marker>
+  </defs>
+  <circle class="phase" cx="40"  cy="80" r="22"/>
+  <circle class="phase" cx="100" cy="80" r="22"/>
+  <circle class="phase" cx="160" cy="80" r="22"/>
+  <circle class="phase" cx="210" cy="80" r="22"/>
+  <text x="40"  y="84" text-anchor="middle">G1</text>
+  <text x="100" y="84" text-anchor="middle">S</text>
+  <text x="160" y="84" text-anchor="middle">G2</text>
+  <text x="210" y="84" text-anchor="middle">M</text>
+  <path class="arrow" d="M64,80 L76,80"/>
+  <path class="arrow" d="M124,80 L136,80"/>
+  <path class="arrow" d="M184,80 L194,80"/>
+</svg>

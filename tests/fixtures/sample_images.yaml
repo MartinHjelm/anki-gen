@@ -1,0 +1,20 @@
+deck: "anki-gen Image Demo"
+description: "Demo deck showing images on cards — a downscaled raster and an SVG diagram."
+theme: default
+tags: [demo, images]
+note_type: basic
+
+sections:
+  - title: "Cell biology"
+    cards:
+      - q: "Which organelle is the cell's powerhouse?"
+        a: "Mitochondrion"
+        image: assets/mitochondrion.png      # 1600x1000 source -> normalized to <=1000px
+        image_credit: "Illustration: anki-gen demo asset"
+      - q: "Order the phases of the cell cycle."
+        a: "G1 → S → G2 → M"
+        image: assets/cell-cycle.svg          # vector SVG, passed through untouched
+      - q: "What does a Golgi apparatus look like?"
+        a: "A stack of flattened membrane sacs (cisternae)"
+        image: assets/golgi.png               # answer-only: hidden until you flip
+        image_side: back

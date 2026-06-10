@@ -9,12 +9,17 @@ and entities pass through unchanged.
 from __future__ import annotations
 
 import re
+from html import escape
 from pathlib import Path
+from typing import Mapping, Optional
 
 from jinja2 import Environment
 
-from .schema import Deck, Section
+from .media import ResolvedMedia, data_uri
+from .schema import Card, Deck, Section
 from .theme import load_theme_css
+
+MediaMap = Mapping[str, ResolvedMedia]
 
 # Reveal a cloze deletion {{cN::answer}} or {{cN::answer::hint}} as highlighted text.
 _CLOZE = re.compile(r"\{\{c\d+::(.*?)(?:::.*?)?\}\}", re.DOTALL)
@@ -52,8 +57,8 @@ _TEMPLATE = """<!DOCTYPE html>
       <tbody>
 {% for row in section.rows %}
         <tr>
-          <td class="col-q">{% if row.term %}<span class="term">{{ row.term }}</span> {% endif %}{{ row.q }}</td>
-          <td>{{ row.a }}</td>
+          <td class="col-q">{% if row.term %}<span class="term">{{ row.term }}</span> {% endif %}{{ row.image_front }}{{ row.q }}</td>
+          <td>{{ row.image_back }}{{ row.a }}</td>
         </tr>
 {% endfor %}
       </tbody>
@@ -72,32 +77,58 @@ def reveal_cloze(text: str) -> str:
     return _CLOZE.sub(r'<span class="cloze">\1</span>', text)
 
 
-def _section_rows(section: Section) -> list[dict[str, str]]:
+def _image_figure(card: Card, media: Optional[MediaMap]) -> str:
+    """Inline a card's image as a self-contained base64 ``<figure>``, or ``""``.
+
+    Uses a ``data:`` URI (not a filename) so the page stays a single file, mirroring
+    how the deck cards show the same image.
+    """
+    if not card.image or not media:
+        return ""
+    resolved = media.get(card.image)
+    if resolved is None:
+        return ""
+    alt = escape(card.term or card.image_credit, quote=True)
+    html = f'<figure class="media"><img src="{data_uri(resolved)}" alt="{alt}">'
+    if card.image_credit:
+        html += f"<figcaption>{escape(card.image_credit)}</figcaption>"
+    return html + "</figure>"
+
+
+def _section_rows(section: Section, media: Optional[MediaMap]) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for card in section.cards:
+        image = _image_figure(card, media)
+        # Mirror the card: a question-side image sits in the prompt column, an
+        # answer-side ("hidden until the answer") image in the answer column.
+        image_front = image if card.image_side in ("both", "front") else ""
+        image_back = image if card.image_side in ("both", "back") else ""
         if card.note_type == "cloze":
-            rows.append(
-                {"term": card.term, "q": reveal_cloze(card.fields.get("text", "")), "a": ""}
-            )
+            q = reveal_cloze(card.fields.get("text", ""))
+            a = ""
         else:
-            rows.append(
-                {
-                    "term": card.term,
-                    "q": card.fields.get("front", ""),
-                    "a": card.fields.get("back", ""),
-                }
-            )
+            q = card.fields.get("front", "")
+            a = card.fields.get("back", "")
+        rows.append(
+            {"term": card.term, "q": q, "a": a,
+             "image_front": image_front, "image_back": image_back}
+        )
     return rows
 
 
-def render_page(deck: Deck) -> str:
-    """Return the reference HTML page for ``deck`` as a string."""
+def render_page(deck: Deck, media: Optional[MediaMap] = None) -> str:
+    """Return the reference HTML page for ``deck`` as a string.
+
+    ``media`` maps image references to staged files; images are inlined as base64
+    ``data:`` URIs so the page is a single self-contained file. When omitted, cards
+    render without images.
+    """
     css = load_theme_css(deck.theme)
     env = Environment(autoescape=False, trim_blocks=True, lstrip_blocks=True)
     template = env.from_string(_TEMPLATE)
 
     sections = [
-        {"title": s.title, "rows": _section_rows(s)} for s in deck.sections
+        {"title": s.title, "rows": _section_rows(s, media)} for s in deck.sections
     ]
     note_count = sum(len(s["rows"]) for s in sections)
 
@@ -106,6 +137,6 @@ def render_page(deck: Deck) -> str:
     )
 
 
-def write_page(deck: Deck, out_path: str | Path) -> None:
+def write_page(deck: Deck, out_path: str | Path, media: Optional[MediaMap] = None) -> None:
     """Render ``deck`` and write the reference page to ``out_path``."""
-    Path(out_path).write_text(render_page(deck), encoding="utf-8")
+    Path(out_path).write_text(render_page(deck, media), encoding="utf-8")

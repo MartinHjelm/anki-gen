@@ -8,14 +8,19 @@ the behaviour of the original make_anki_deck.py).
 from __future__ import annotations
 
 import re
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Mapping, Optional
 
 import genanki
 
+from .media import ResolvedMedia, resolve_deck_media
 from .models import build_model, ordered_field_values, stable_id
 from .schema import Card, Deck, Section
 from .theme import load_theme_css
+
+MediaMap = Mapping[str, ResolvedMedia]
 
 _CLOZE_INDEX = re.compile(r"\{\{c(\d+)::")
 
@@ -62,11 +67,25 @@ def _note_tags(card: Card, section_title: str) -> list[str]:
 def _guid_seed(deck_name: str, card: Card) -> str:
     f = card.fields
     content = f.get("text") or f"{f.get('front', '')}|{f.get('back', '')}"
-    return f"{deck_name}|{card.note_type}|{content}"
+    seed = f"{deck_name}|{card.note_type}|{content}"
+    # Append image info ONLY when an image is present, so imageless notes keep the
+    # exact same GUID as before this feature existed — re-importing an upgraded
+    # deck must update notes in place, not duplicate them and lose review history.
+    if card.image:
+        seed += f"|{card.image}|{card.image_credit}|{card.image_side}"
+    return seed
 
 
-def build_package(deck: Deck) -> tuple[genanki.Package, BuildStats]:
-    """Build a genanki Package and collect statistics for ``deck``."""
+def build_package(
+    deck: Deck, media: Optional[MediaMap] = None
+) -> tuple[genanki.Package, BuildStats]:
+    """Build a genanki Package and collect statistics for ``deck``.
+
+    ``media`` maps image references to staged files (see
+    :func:`anki_gen.media.resolve_deck_media`); when omitted, the deck is built
+    without images. Resolved media files are bundled into the package.
+    """
+    media = media or {}
     css = load_theme_css(deck.theme)
     models = {nt: build_model(nt, css) for nt in {"basic", "reversed", "cloze"}}
 
@@ -74,9 +93,14 @@ def build_package(deck: Deck) -> tuple[genanki.Package, BuildStats]:
     stats = BuildStats()
 
     for section in deck.sections:
-        _add_section(g_deck, section, deck.name, models, stats)
+        _add_section(g_deck, section, deck.name, models, media, stats)
 
-    return genanki.Package(g_deck), stats
+    package = genanki.Package(g_deck)
+    # De-duplicate staged files while preserving order.
+    package.media_files = list(
+        dict.fromkeys(str(m.local_path) for m in media.values())
+    )
+    return package, stats
 
 
 def _add_section(
@@ -84,12 +108,13 @@ def _add_section(
     section: Section,
     deck_name: str,
     models: dict[str, genanki.Model],
+    media: MediaMap,
     stats: BuildStats,
 ) -> None:
     for card in section.cards:
         note = genanki.Note(
             model=models[card.note_type],
-            fields=ordered_field_values(card),
+            fields=ordered_field_values(card, media),
             tags=_note_tags(card, section.title),
             guid=genanki.guid_for(_guid_seed(deck_name, card)),
         )
@@ -100,8 +125,22 @@ def _add_section(
         stats.by_type[card.note_type] = stats.by_type.get(card.note_type, 0) + 1
 
 
-def write_deck(deck: Deck, out_path: str | Path) -> BuildStats:
-    """Build ``deck`` and write the ``.apkg`` to ``out_path``."""
-    package, stats = build_package(deck)
-    package.write_to_file(str(out_path))
+def write_deck(
+    deck: Deck, out_path: str | Path, media: Optional[MediaMap] = None
+) -> BuildStats:
+    """Build ``deck`` and write the ``.apkg`` to ``out_path``.
+
+    If ``media`` is not supplied, images are resolved into a temporary staging
+    directory that is kept alive until the package is written (genanki reads the
+    staged files at write time).
+    """
+    if media is not None:
+        package, stats = build_package(deck, media)
+        package.write_to_file(str(out_path))
+        return stats
+
+    with tempfile.TemporaryDirectory(prefix="anki-gen-media-") as staging:
+        resolved = resolve_deck_media(deck, staging_dir=Path(staging))
+        package, stats = build_package(deck, resolved)
+        package.write_to_file(str(out_path))
     return stats

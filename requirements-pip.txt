@@ -2,3 +2,4 @@ genanki
 PyYAML
 Jinja2
 beautifulsoup4
+Pillow

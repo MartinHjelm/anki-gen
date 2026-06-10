@@ -1,16 +1,22 @@
 """Tests for deck assembly and .apkg output."""
 
+import io
 import sqlite3
 import zipfile
 
+from PIL import Image
+
 from anki_gen.builder import (
     BuildStats,
+    _guid_seed,
     build_package,
     cloze_card_count,
     slugify,
     write_deck,
 )
 from anki_gen.loader import parse_deck
+from anki_gen.media import resolve_deck_media
+from anki_gen.schema import Card, Deck, Section
 
 SAMPLE = {
     "deck": "Sample Deck",
@@ -78,6 +84,82 @@ def test_reimport_guids_are_stable(tmp_path):
     guids1 = sorted(n.guid for n in pkg1.decks[0].notes)
     guids2 = sorted(n.guid for n in pkg2.decks[0].notes)
     assert guids1 == guids2
+
+
+def _png(path, size=(120, 90)):
+    Image.new("RGB", size, (1, 2, 3)).save(path)
+    return path
+
+
+def _image_deck(image_src, credit=""):
+    card = Card("basic", {"front": "q", "back": "a"},
+                image=str(image_src), image_credit=credit)
+    return Deck(name="Img Deck", sections=(Section(title="S", cards=(card,)),))
+
+
+def test_build_package_bundles_media_files(tmp_path):
+    img = _png(tmp_path / "cell.png")
+    staging = tmp_path / "stage"
+    staging.mkdir()
+    deck = _image_deck(img)
+    media = resolve_deck_media(deck, staging_dir=staging)
+
+    package, _ = build_package(deck, media)
+
+    assert len(package.media_files) == 1
+    assert package.media_files[0] == str(media[str(img)].local_path)
+
+
+def test_build_package_no_media_when_no_images():
+    package, _ = build_package(_deck())
+    assert package.media_files == []
+
+
+def test_guid_seed_for_imageless_card_matches_legacy_format():
+    # An imageless note must hash to the SAME seed as before image support, so
+    # upgrading and re-importing updates notes in place instead of duplicating.
+    basic = Card("basic", {"front": "q", "back": "a"})
+    cloze = Card("cloze", {"text": "{{c1::x}}"})
+
+    assert _guid_seed("Deck", basic) == "Deck|basic|q|a"
+    assert _guid_seed("Deck", cloze) == "Deck|cloze|{{c1::x}}"
+
+
+def test_guid_seed_includes_image_metadata_when_present():
+    card = Card("basic", {"front": "q", "back": "a"},
+                image="/abs/x.png", image_credit="CC", image_side="back")
+
+    seed = _guid_seed("Deck", card)
+
+    assert seed.startswith("Deck|basic|q|a|")
+    assert "/abs/x.png" in seed and "back" in seed
+
+
+def test_guid_changes_when_image_changes(tmp_path):
+    img1 = _png(tmp_path / "one.png")
+    img2 = _png(tmp_path / "two.png", size=(60, 60))
+    staging = tmp_path / "stage"
+    staging.mkdir()
+
+    d1 = _image_deck(img1)
+    d2 = _image_deck(img2)
+    p1, _ = build_package(d1, resolve_deck_media(d1, staging_dir=staging))
+    p2, _ = build_package(d2, resolve_deck_media(d2, staging_dir=staging))
+
+    assert p1.decks[0].notes[0].guid != p2.decks[0].notes[0].guid
+
+
+def test_write_deck_resolves_media_and_bundles_image(tmp_path):
+    img = _png(tmp_path / "diagram.png")
+    out = tmp_path / "deck.apkg"
+
+    write_deck(_image_deck(img), out)
+
+    with zipfile.ZipFile(out) as zf:
+        names = zf.namelist()
+    assert "media" in names  # genanki media manifest present
+    # at least one numbered media entry alongside the collection
+    assert any(n.isdigit() for n in names)
 
 
 def test_apkg_collection_contains_notes(tmp_path):

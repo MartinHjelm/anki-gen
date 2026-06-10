@@ -44,6 +44,8 @@ sections:
         a: "Answer"
         term: "Topic"      # optional badge shown on the card
         extra: "Footnote"  # optional, shown under the answer
+        image: pics/x.png  # optional — local path (relative to this YAML) or URL
+        image_credit: "Source, CC BY-SA 4.0"  # optional caption under the image
 ```
 
 `note_type` resolves with precedence: **card > section > deck** (default `basic`).
@@ -69,6 +71,62 @@ Write blanks with the friendly `[[...]]` shorthand, or Anki's native
 `[[...]]` deletions are numbered automatically, continuing past any explicit
 `{{cN::}}` so indices never collide. Each distinct `cN` index becomes one card.
 
+## Images
+
+Add `image:` to any card to illustrate it. The reference is either a **local
+path** (resolved relative to the YAML file) or an **`http(s)` URL** (downloaded at
+build time). An optional `image_credit:` renders as a caption beneath the image.
+
+```yaml
+- q: "Which organelle is the cell's powerhouse?"
+  a: "Mitochondrion"
+  image: pics/mitochondrion.png
+  image_credit: "Wikimedia Commons, CC BY-SA 4.0"
+- q: "Order the cell cycle phases"
+  a: "G1 → S → G2 → M"
+  image: diagrams/cell-cycle.svg          # SVG is kept as-is (vector)
+- q: "What does a Golgi apparatus look like?"
+  a: "A stack of flattened membrane sacs"
+  image: pics/golgi.png
+  image_side: back                        # hidden until you reveal the answer
+```
+
+### Where the image appears (`image_side`)
+
+| `image_side` | Shown on |
+|---|---|
+| `both` *(default)* | question **and** answer |
+| `front` | question only |
+| `back` | answer only — **hidden until you flip the card** |
+
+Use `back` when the image *is* the answer (or would give it away). On the
+reference page, a `back` image appears in the Answer column to mirror this.
+
+On build, each image is:
+
+- **normalized** — raster images are downscaled so the longest edge is ≤ 1000px
+  (crisp on phones, small files), re-encoded (photos → JPEG, transparency → PNG),
+  and stripped of metadata. **SVGs pass through untouched.**
+- **bundled** into the `.apkg` under a content-hashed filename, and **inlined** as a
+  base64 data-URI in the HTML page (so the page stays a single self-contained file).
+
+Re-running on an edited image updates the existing note rather than duplicating it.
+
+There's a runnable demo at `tests/fixtures/sample_images.yaml`.
+
+### Sourcing images (propose-and-review)
+
+When asking an LLM to build a deck, the accuracy-first order is:
+
+1. **Reuse the source page's own images** — if the deck comes from a URL (e.g. a
+   Wikipedia article), its images are already topical and correctly licensed.
+2. **Search Wikimedia Commons / Openverse** for the term when the source lacks one.
+3. **Author an SVG diagram** for schematic concepts (cycles, labeled structures).
+
+Avoid AI-generated images for factual cards — they are unreliable. Review the
+proposed `image:` references in the YAML before building, and record attribution in
+`image_credit:` if you plan to share the deck.
+
 ## Project layout
 
 ```
@@ -76,6 +134,7 @@ anki_gen/
   schema.py     # dataclasses + validation
   loader.py     # YAML -> Deck/Section/Card
   models.py     # genanki models for basic/reversed/cloze (share theme CSS)
+  media.py      # resolve/download + normalize/stage card images
   builder.py    # Deck -> .apkg (deterministic IDs, content GUIDs)
   htmlpage.py   # Deck -> reference.html (same theme CSS)
   theme.py      # locate/read themes/<name>.css
@@ -114,7 +173,7 @@ The ideal request includes 5 things
   A good prompt looks like
 
   ```
-  "Build an Anki deck from https://en.wikipedia.org/wiki/Baltic_states — focus on geography and modern history, ~25 cards. Use reversed for country/capital pairs and basic for the rest. Deck name 'Baltic States', tags [geography, history]. Write it to baltic.yaml, then build baltic.apkg + baltic.html. In the README.md you will find all the instructions you need."
+  "Build an Anki deck from https://en.wikipedia.org/wiki/Baltic_states — focus on geography and modern history, ~25 cards. Use reversed for country/capital pairs and basic for the rest. Deck name 'Baltic States', tags [geography, history]. Write it to baltic.yaml, then build baltic.apkg + baltic.html. Find and use images when it fits and helps the understanding of the question/answer. Images should always be above the text. In the README.md you will find all the instructions you need."
   ```
 
   That gives me everything to: fetch → draft YAML → run python -m anki_gen.cli build baltic.yaml -o 

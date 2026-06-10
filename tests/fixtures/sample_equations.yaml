@@ -1,0 +1,21 @@
+deck: "Equations Demo"
+description: "Shows LaTeX equations rendering in both the .apkg and the HTML page."
+tags: [demo, math]
+
+sections:
+  - title: "Inline equations"
+    cards:
+      - q: "State the mass–energy equivalence."
+        a: 'Energy equals \(E = mc^2\), where \(c\) is the speed of light.'
+      - q: 'Solve \(ax^2 + bx + c = 0\) for \(x\).'
+        a: 'The quadratic formula: \(x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}\).'
+
+  - title: "Display equations"
+    cards:
+      - q: "Write the Gaussian integral."
+        a: 'A classic result: \[ \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi} \]'
+
+  - title: "Cloze with math"
+    note_type: cloze
+    cards:
+      - text: 'Euler''s identity is \( e^{i\pi} + [[1]] = 0 \).'

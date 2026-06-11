@@ -29,9 +29,9 @@ sections:
         image_credit: "Diagram authored for this deck"
       - note_type: cloze
         text: "A Wald test statistic standardizes an estimate by dividing by its [[standard error]]: (estimate − hypothesized value) / standard error."
-        extra: "Standardizing puts the statistic on a known scale so its sampling distribution is predictable under H₀."
+        extra: 'Standardizing puts the statistic on a known scale so its sampling distribution is predictable under H₀.  \[ z = \frac{\hat{\theta} - \theta_0}{\widehat{\operatorname{SE}}(\hat{\theta})} \]'
       - q: "In a Wald test, what does the numerator (estimate − hypothesized value) represent?"
-        a: "The signed distance between the observed estimate and the value the null hypothesis predicts. Dividing by the standard error expresses that distance in units of sampling variability."
+        a: 'The numerator \(\hat{\theta} - \theta_0\) is the signed distance between the observed estimate and the value the null hypothesis predicts. Dividing by the standard error \(\widehat{\operatorname{SE}}(\hat{\theta})\) expresses that distance in units of sampling variability.'
 
   - title: "P-values"
     cards:
@@ -41,9 +41,9 @@ sections:
         image: assets/hypothesis-testing/p-value.svg
         image_credit: "Diagram authored for this deck"
       - q: "Under H₀, what is the probability that the p-value falls below a threshold t?"
-        a: "Exactly t. If the null is true, P(p-value ≤ t) = t for any threshold t — i.e. the p-value is uniformly distributed on [0,1]."
+        a: 'Exactly t. If the null is true, \(P(p \le t) = t\) for any threshold \(t\) — i.e. the p-value is uniformly distributed on \([0,1]\): \(p \sim \mathrm{Uniform}(0,1)\).'
       - q: "Under H₀, why is the p-value uniformly distributed on [0,1]?"
-        a: "The p-value is, by construction, the test statistic's tail probability under H₀ — i.e. its CDF (or survival function) evaluated at the observed value. By the probability integral transform, feeding a continuous random variable into its own CDF yields a Uniform(0,1). Hence P(p-value ≤ t) = t. (This requires a continuous null distribution; with discrete data the p-value is only approximately uniform.)"
+        a: 'The p-value is, by construction, the test statistic''s tail probability under H₀ — i.e. its CDF (or survival function) evaluated at the observed value. By the probability integral transform, feeding a continuous random variable into its own CDF yields a uniform: \(F(X) \sim \mathrm{Uniform}(0,1)\). Hence \(P(p \le t) = t\). (This requires a continuous null distribution; with discrete data the p-value is only approximately uniform.)'
       - q: "Does a small p-value mean the null hypothesis is false?"
         a: "No. It means the observed data would be unusual *if* the null were true. A small p-value can still occur when the null is true — that is a false rejection."
       - note_type: cloze
@@ -65,17 +65,17 @@ sections:
     cards:
       - term: "Type I error"
         q: "What is a Type I error?"
-        a: "Rejecting the null hypothesis when it is actually true (a false positive). Its long-run rate equals the significance level α (e.g. 0.05)."
+        a: 'Rejecting the null hypothesis when it is actually true (a false positive). Its long-run rate equals the significance level: \(\alpha = P(\text{reject } H_0 \mid H_0 \text{ true})\) (e.g. 0.05).'
       - term: "Type II error"
         q: "What is a Type II error?"
-        a: "Failing to reject the null hypothesis when the alternative is actually true (a false negative)."
+        a: 'Failing to reject the null hypothesis when the alternative is actually true (a false negative): \(\beta = P(\text{fail to reject } H_0 \mid H_a \text{ true})\).'
       - note_type: reversed
         term: "Type I error rate"
         front: "Which quantity equals the significance level α?"
         back: "The Type I error rate (probability of a false rejection)."
       - term: "Power"
         q: "What is the power of a test?"
-        a: "The probability of rejecting the null hypothesis when the alternative is true — i.e. the probability of detecting a real effect."
+        a: 'The probability of rejecting the null hypothesis when the alternative is true — i.e. detecting a real effect: \(\text{power} = 1 - \beta = P(\text{reject } H_0 \mid H_a \text{ true})\).'
         image: assets/hypothesis-testing/type-i-ii-power.svg
         image_credit: "Diagram authored for this deck"
       - q: "What happens when a study has low power?"
@@ -86,13 +86,13 @@ sections:
   - title: "Worked examples (test construction)"
     cards:
       - q: "How is a two-sample proportion test statistic constructed (e.g. comparing COVID risk perception across age groups)?"
-        a: "Take the difference in sample proportions and divide it by the pooled standard error of that difference."
+        a: 'Take the difference in sample proportions and divide it by the pooled standard error of that difference: \[ z = \frac{\hat{p}_1 - \hat{p}_2}{\operatorname{SE}_{\text{pool}}(\hat{p}_1 - \hat{p}_2)}. \]'
       - q: "How is a comparison-of-means test statistic constructed (e.g. battery lifespans)?"
-        a: "Take the difference in sample means and divide it by the combined standard error of the difference."
+        a: 'Take the difference in sample means and divide it by the combined standard error of the difference: \[ t = \frac{\bar{x}_1 - \bar{x}_2}{\operatorname{SE}(\bar{x}_1 - \bar{x}_2)}. \]'
       - q: "How is a test statistic for a correlation constructed (e.g. between two biomarkers)?"
-        a: "Take the sample correlation coefficient and divide it by its standard error, approximately 1/√n."
+        a: 'Take the sample correlation coefficient and divide it by its standard error \(\approx 1/\sqrt{n}\): \[ z = \frac{r}{1/\sqrt{n}} = r\sqrt{n}. \]'
       - q: "What pattern do all these Wald-style examples share?"
-        a: "Each takes an estimate of an effect and divides by its standard error, producing a standardized statistic whose null distribution is known."
+        a: 'Each takes an estimate of an effect and divides by its standard error, producing a standardized statistic whose null distribution is known: \[ \text{statistic} = \frac{\hat{\theta} - \theta_0}{\widehat{\operatorname{SE}}(\hat{\theta})}. \]'
 
   - title: "One-sided vs two-sided tests"
     cards:
@@ -103,7 +103,7 @@ sections:
         q: "What is a one-sided (one-tailed) test?"
         a: "A test whose alternative specifies a single direction of deviation (> or <). Only evidence in that one tail counts against H₀."
       - q: "How is the p-value computed differently for one-sided vs two-sided tests?"
-        a: "A two-sided p-value sums the probability in both tails (often 2× the one-sided value for a symmetric null distribution); a one-sided p-value uses only the single tail matching the alternative's direction."
+        a: 'A two-sided p-value sums the probability in both tails — for a symmetric null distribution often \(p_{\text{two}} = 2\,p_{\text{one}}\); a one-sided p-value uses only the single tail matching the alternative''s direction.'
         image: assets/hypothesis-testing/one-vs-two-sided.svg
         image_credit: "Diagram authored for this deck"
       - q: "When is a one-sided test appropriate?"

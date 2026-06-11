@@ -15,6 +15,7 @@ from typing import Mapping, Optional
 
 from jinja2 import Environment
 
+from .mathjax import deck_has_math, mathjax_head_html
 from .media import ResolvedMedia, data_uri
 from .schema import Card, Deck, Section
 from .theme import load_theme_css
@@ -34,6 +35,9 @@ _TEMPLATE = """<!DOCTYPE html>
 <style>
 {{ css }}
 </style>
+{% if mathjax %}
+{{ mathjax }}
+{% endif %}
 </head>
 <body class="anki-gen-page">
 <div class="page-wrapper">
@@ -132,8 +136,12 @@ def render_page(deck: Deck, media: Optional[MediaMap] = None) -> str:
     ]
     note_count = sum(len(s["rows"]) for s in sections)
 
+    # Inline MathJax only when the deck contains LaTeX, so math-free pages stay
+    # lean. The deck's authored fields render identically to the Anki cards.
+    mathjax = mathjax_head_html() if deck_has_math(deck) else ""
+
     return template.render(
-        deck=deck, css=css, sections=sections, note_count=note_count
+        deck=deck, css=css, sections=sections, note_count=note_count, mathjax=mathjax
     )
 
 

@@ -127,6 +127,35 @@ Avoid AI-generated images for factual cards — they are unreliable. Review the
 proposed `image:` references in the YAML before building, and record attribution in
 `image_credit:` if you plan to share the deck.
 
+## Equations (LaTeX)
+
+Write LaTeX inline with `\(...\)` and as a centered display block with `\[...\]` —
+the same delimiters Anki uses. No new YAML fields: just put the math in any
+`q`/`a`/`text`/`extra` content.
+
+```yaml
+- q: "State the mass–energy equivalence."
+  a: 'Energy equals \(E = mc^2\).'
+- q: "Write the Gaussian integral."
+  a: 'A classic result: \[ \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi} \]'
+- note_type: cloze
+  text: 'Euler''s identity is \( e^{i\pi} + [[1]] = 0 \).'
+```
+
+**Quoting:** LaTeX is full of backslashes, so wrap such values in **single quotes**
+in YAML (double quotes treat `\` as an escape). A literal `'` inside a single-quoted
+scalar is written `''` (see the cloze example).
+
+Both outputs render the same source:
+
+- **Anki deck** — uses Anki's **built-in MathJax**; nothing to install in the app.
+- **Reference HTML page** — a vendored MathJax build (`vendor/mathjax/`, SVG output,
+  Apache-2.0) is **inlined into the page**, so equations render **offline** and the
+  page stays a single self-contained file. It is included **only when a deck
+  actually contains math**, so math-free pages aren't bloated.
+
+There's a runnable demo at `tests/fixtures/sample_equations.yaml`.
+
 ## Project layout
 
 ```
@@ -137,9 +166,11 @@ anki_gen/
   media.py      # resolve/download + normalize/stage card images
   builder.py    # Deck -> .apkg (deterministic IDs, content GUIDs)
   htmlpage.py   # Deck -> reference.html (same theme CSS)
+  mathjax.py    # detect LaTeX + inline vendored MathJax into the HTML page
   theme.py      # locate/read themes/<name>.css
   cli.py        # `build` command
-themes/default.css   # single styling source
+themes/default.css           # single styling source
+vendor/mathjax/tex-svg-full.js  # inlined for offline equation rendering
 tests/               # pytest suite (run: `pytest`)
 ```
 

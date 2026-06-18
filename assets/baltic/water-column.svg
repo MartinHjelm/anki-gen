@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs>
+    <linearGradient id="wc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe2f2"/><stop offset="1" stop-color="#1a4a7a"/></linearGradient>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/></marker>
+  </defs>
+  <rect x="110" y="34" width="90" height="140" fill="url(#wc)" stroke="#1a4a7a"/>
+  <line x1="100" y1="34" x2="210" y2="34" stroke="#1a4a7a" stroke-width="1.5"/>
+  <text x="155" y="26" text-anchor="middle">sea surface</text>
+  <rect x="110" y="174" width="90" height="10" fill="#7a4a10" fill-opacity="0.3"/>
+  <text x="155" y="196" text-anchor="middle" class="lbl">seafloor</text>
+  <line class="axis" x1="92" y1="34" x2="92" y2="178" stroke="#6b6860" marker-end="url(#ar)"/>
+  <text x="86" y="108" text-anchor="middle" class="lbl" transform="rotate(-90 86 108)">depth</text>
+  <text x="216" y="52">light</text>
+  <text x="216" y="92">temperature</text>
+  <text x="216" y="128">salinity</text>
+  <text x="216" y="162">plankton</text>
+</svg>

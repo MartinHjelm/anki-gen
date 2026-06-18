@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baltic Sea CMEMS — Glossary Q&A Drill</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* anki-gen default theme — single source of truth for BOTH the Anki cards and
+ * the reference HTML page.
+ *
+ * Anki injects this whole file as each note model's CSS; the reference page
+ * links the same file. Card rules (.card and friends) drive Anki; page rules
+ * are scoped under `.anki-gen-page` so they never apply inside Anki webviews.
+ * Palette ported from bal_glossary.html. */
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --border: #d8d5cc;
+  --border-light: #ece9e2;
+  --text-primary: #1a1916;
+  --text-secondary: #6b6860;
+  --text-muted: #9c9a94;
+  --accent-blue: #1a4a7a;   --accent-blue-bg: #e8f0f8;
+  --accent-green: #1a5c3a;  --accent-green-bg: #e6f2eb;
+  --accent-amber: #7a4a10;  --accent-amber-bg: #faf0e0;
+  --accent-purple: #4a2a7a; --accent-purple-bg: #f0ebfa;
+  --accent-gray: #4a4844;   --accent-gray-bg: #f0ede8;
+  --accent-teal: #0f5c58;   --accent-teal-bg: #e4f4f3;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --sans: 'IBM Plex Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+/* ── Anki card ───────────────────────────────────────────────────────────── */
+
+.card {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg);
+  padding: 1.5rem;
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.term {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: inline-block;
+  background: var(--surface);
+  padding: 2px 8px;
+  border: 0.5px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.front { font-size: 16px; font-weight: 500; margin-bottom: 0.25rem; }
+.back  { font-size: 15px; }
+.desc  { font-size: 14px; }
+.extra {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Anki highlights the active cloze deletion with the .cloze class. */
+.cloze { font-weight: 700; color: var(--accent-blue); }
+
+/* Card illustration. Images are normalized to <=1000px on build; max-width:100%
+ * makes them shrink responsively to the card/screen width (phone or desktop). */
+.media { margin: 0 0 0.75rem; }
+.media img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+}
+.media figcaption {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+hr { border: none; border-top: 1px solid var(--border); margin: 0.9rem 0; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.9rem; }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 3px;
+  background: var(--accent-gray-bg);
+  color: var(--accent-gray);
+}
+.tag-term { background: var(--accent-blue-bg); color: var(--accent-blue); font-family: var(--mono); }
+.tag-tier { background: var(--accent-amber-bg); color: var(--accent-amber); }
+
+/* ── Reference HTML page (scoped) ────────────────────────────────────────── */
+
+.anki-gen-page * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.anki-gen-page {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+.anki-gen-page .page-wrapper { max-width: 1080px; margin: 0 auto; }
+
+.anki-gen-page header {
+  border-bottom: 1.5px solid var(--text-primary);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.anki-gen-page h1 {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.anki-gen-page h1 strong { font-weight: 500; }
+.anki-gen-page .deck-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 0.6rem;
+  max-width: 700px;
+}
+.anki-gen-page .deck-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.anki-gen-page .section { margin-bottom: 3rem; }
+.anki-gen-page .section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.anki-gen-page .section-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.anki-gen-page .section-count { font-size: 11px; color: var(--text-muted); }
+
+.anki-gen-page table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+}
+.anki-gen-page thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  text-align: left;
+  background: var(--bg);
+  border-bottom: 0.5px solid var(--border);
+  white-space: nowrap;
+}
+.anki-gen-page tbody tr { border-bottom: 0.5px solid var(--border-light); }
+.anki-gen-page tbody tr:last-child { border-bottom: none; }
+.anki-gen-page tbody tr:hover { background: #fafaf7; }
+.anki-gen-page td { padding: 12px 14px; vertical-align: top; line-height: 1.5; }
+.anki-gen-page .col-q { width: 40%; font-weight: 500; }
+/* Badge sits on its own line above the prompt (the prompt text follows it
+ * inline in the same cell, so force the badge to a block). */
+.anki-gen-page .col-q .term { display: block; width: fit-content; }
+/* Image preview inside the reference table — bounded so a tall image doesn't
+ * dominate a row; max-width:100% keeps it responsive on narrow screens. */
+.anki-gen-page .media { margin: 0 0 0.5rem; }
+.anki-gen-page .media img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+}
+.anki-gen-page .media figcaption {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-style: italic;
+}
+
+.anki-gen-page footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+</style>
+</head>
+<body class="anki-gen-page">
+<div class="page-wrapper">
+  <header>
+    <h1>Baltic Sea CMEMS — Glossary Q&A Drill</h1>
+    <p class="deck-description">Atomic question-answer pairs on Baltic Sea oceanography, optics, biogeochemistry, plankton ecology, and satellite ocean-colour (CMEMS). Sections progress from foundational recall to integrative synthesis.</p> <p class="deck-description" style="font-size: 10px">(Cloze cards are one concept with the 'missing concept' hidden not a Q&A, here it is in color and no answer.)</p>
+    <div class="deck-meta">259 notes · 4 sections · generated by anki-gen</div>
+  </header>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Tier 1 — Foundational Recall</span>
+      <span class="section-count">102 cards</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="col-q">Prompt</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-q"><span class="term">Water column</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0id2MiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjZmUyZjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYTRhN2EiLz48L2xpbmVhckdyYWRpZW50PgogICAgPG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8cmVjdCB4PSIxMTAiIHk9IjM0IiB3aWR0aD0iOTAiIGhlaWdodD0iMTQwIiBmaWxsPSJ1cmwoI3djKSIgc3Ryb2tlPSIjMWE0YTdhIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjM0IiB4Mj0iMjEwIiB5Mj0iMzQiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxNTUiIHk9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zZWEgc3VyZmFjZTwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjE3NCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjN2E0YTEwIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgogIDx0ZXh0IHg9IjE1NSIgeT0iMTk2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5zZWFmbG9vcjwvdGV4dD4KICA8bGluZSBjbGFzcz0iYXhpcyIgeDE9IjkyIiB5MT0iMzQiIHgyPSI5MiIgeTI9IjE3OCIgc3Ryb2tlPSIjNmI2ODYwIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9Ijg2IiB5PSIxMDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiIHRyYW5zZm9ybT0icm90YXRlKC05MCA4NiAxMDgpIj5kZXB0aDwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjUyIj5saWdodDwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjkyIj50ZW1wZXJhdHVyZTwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjEyOCI+c2FsaW5pdHk8L3RleHQ+CiAgPHRleHQgeD0iMjE2IiB5PSIxNjIiPnBsYW5rdG9uPC90ZXh0Pgo8L3N2Zz4K" alt="Water column"><figcaption>Diagram authored for this deck</figcaption></figure>What is the water column?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0id2MiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjZmUyZjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYTRhN2EiLz48L2xpbmVhckdyYWRpZW50PgogICAgPG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8cmVjdCB4PSIxMTAiIHk9IjM0IiB3aWR0aD0iOTAiIGhlaWdodD0iMTQwIiBmaWxsPSJ1cmwoI3djKSIgc3Ryb2tlPSIjMWE0YTdhIi8+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjM0IiB4Mj0iMjEwIiB5Mj0iMzQiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxNTUiIHk9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zZWEgc3VyZmFjZTwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjE3NCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjN2E0YTEwIiBmaWxsLW9wYWNpdHk9IjAuMyIvPgogIDx0ZXh0IHg9IjE1NSIgeT0iMTk2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5zZWFmbG9vcjwvdGV4dD4KICA8bGluZSBjbGFzcz0iYXhpcyIgeDE9IjkyIiB5MT0iMzQiIHgyPSI5MiIgeTI9IjE3OCIgc3Ryb2tlPSIjNmI2ODYwIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9Ijg2IiB5PSIxMDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiIHRyYW5zZm9ybT0icm90YXRlKC05MCA4NiAxMDgpIj5kZXB0aDwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjUyIj5saWdodDwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjkyIj50ZW1wZXJhdHVyZTwvdGV4dD4KICA8dGV4dCB4PSIyMTYiIHk9IjEyOCI+c2FsaW5pdHk8L3RleHQ+CiAgPHRleHQgeD0iMjE2IiB5PSIxNjIiPnBsYW5rdG9uPC90ZXh0Pgo8L3N2Zz4K" alt="Water column"><figcaption>Diagram authored for this deck</figcaption></figure>The vertical extent of water from the sea surface down to the seafloor, treated as a one-dimensional frame for depth-varying properties.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Water column</span> What properties vary along the water column?</td>
+          <td>Temperature, salinity, light, and plankton concentration.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Practical Salinity Unit (PSU)</span> What is a Practical Salinity Unit (PSU)?</td>
+          <td>A dimensionless salinity scale defined from the electrical conductivity of seawater relative to a standard KCl solution at 15 °C.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Practical Salinity Unit (PSU)</span> What is the typical salinity of standard open-ocean seawater?</td>
+          <td>About 35 PSU.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Brackish water</span> What is brackish water?</td>
+          <td>Water with salinity between freshwater (0 PSU) and full ocean water (~35 PSU), typically 0.5–30 PSU.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Adiabatic process</span> What is an adiabatic process?</td>
+          <td>A thermodynamic change in which a parcel exchanges no heat with its surroundings; temperature change comes only from work done against pressure.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Potential temperature</span> What is potential temperature?</td>
+          <td>The temperature a water parcel would have if moved adiabatically (without exchanging heat) to the surface pressure level.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Potential temperature</span> What is the ocean-model variable name for potential temperature?</td>
+          <td>thetao.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wind stress</span> What is wind stress?</td>
+          <td>The horizontal force per unit area (N m⁻²) that the atmosphere exerts on the sea surface through friction.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Convective cooling</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFhIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHJlY3QgeD0iMjAiIHk9IjMwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjM0IiBmaWxsPSIjZWNlYWUzIi8+CiAgPHRleHQgeD0iMTYwIiB5PSI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+Y29sZCBhdG1vc3BoZXJlPC90ZXh0PgogIDxyZWN0IHg9IjIwIiB5PSI2NCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDYiIGZpbGw9IiNjZmUyZjIiLz4KICA8bGluZSB4MT0iMjAiIHkxPSI2NCIgeDI9IjMwMCIgeTI9IjY0IiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMS4yIi8+CiAgPGxpbmUgeDE9IjcwIiB5MT0iNjAiIHgyPSI3MCIgeTI9IjM0IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FhKSIvPgogIDxsaW5lIHgxPSIxMjAiIHkxPSI2MCIgeDI9IjEyMCIgeTI9IjM0IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FhKSIvPgogIDx0ZXh0IHg9Ijk1IiB5PSIyNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzdhNGExMCI+aGVhdCBsb3NzPC90ZXh0PgogIDxsaW5lIHgxPSIyMDAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjE1MCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8bGluZSB4MT0iMjQwIiB5MT0iNzAiIHgyPSIyNDAiIHkyPSIxMzUiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjgiIG1hcmtlci1lbmQ9InVybCgjYWIpIi8+CiAgPHRleHQgeD0iMjI4IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYTRhN2EiPmRlbnNlIHN1cmZhY2Ugd2F0ZXIgc2lua3M8L3RleHQ+Cjwvc3ZnPgo=" alt="Convective cooling"><figcaption>Diagram authored for this deck</figcaption></figure>What is convective cooling?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFhIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHJlY3QgeD0iMjAiIHk9IjMwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjM0IiBmaWxsPSIjZWNlYWUzIi8+CiAgPHRleHQgeD0iMTYwIiB5PSI1MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+Y29sZCBhdG1vc3BoZXJlPC90ZXh0PgogIDxyZWN0IHg9IjIwIiB5PSI2NCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIxMDYiIGZpbGw9IiNjZmUyZjIiLz4KICA8bGluZSB4MT0iMjAiIHkxPSI2NCIgeDI9IjMwMCIgeTI9IjY0IiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMS4yIi8+CiAgPGxpbmUgeDE9IjcwIiB5MT0iNjAiIHgyPSI3MCIgeTI9IjM0IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FhKSIvPgogIDxsaW5lIHgxPSIxMjAiIHkxPSI2MCIgeDI9IjEyMCIgeTI9IjM0IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FhKSIvPgogIDx0ZXh0IHg9Ijk1IiB5PSIyNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzdhNGExMCI+aGVhdCBsb3NzPC90ZXh0PgogIDxsaW5lIHgxPSIyMDAiIHkxPSI3MCIgeDI9IjIwMCIgeTI9IjE1MCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8bGluZSB4MT0iMjQwIiB5MT0iNzAiIHgyPSIyNDAiIHkyPSIxMzUiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjgiIG1hcmtlci1lbmQ9InVybCgjYWIpIi8+CiAgPHRleHQgeD0iMjI4IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYTRhN2EiPmRlbnNlIHN1cmZhY2Ugd2F0ZXIgc2lua3M8L3RleHQ+Cjwvc3ZnPgo=" alt="Convective cooling"><figcaption>Diagram authored for this deck</figcaption></figure>Loss of heat from the surface ocean to a colder atmosphere, making surface water denser so it sinks.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Mixed layer</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5ZGI4ZDAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYTRhN2EiLz48L2xpbmVhckdyYWRpZW50PgogICAgPG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8bGluZSB4MT0iNjAiIHkxPSIzMCIgeDI9IjE1MCIgeTI9IjMwIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4yIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjE1OCIgeT0iMzMiIGNsYXNzPSJsYmwiPndpbmQ8L3RleHQ+CiAgPHJlY3QgeD0iNjAiIHk9IjQ2IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjQ2IiBmaWxsPSIjY2ZlMmYyIiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5taXhlZCBsYXllciAodW5pZm9ybSBULCBkZW5zaXR5KTwvdGV4dD4KICA8bGluZSB4MT0iNjAiIHkxPSI5MiIgeDI9IjI0MCIgeTI9IjkyIiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI0IDMiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjEwNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+bWl4ZWQtbGF5ZXIgZGVwdGggKG1sb3RzdCk8L3RleHQ+CiAgPHJlY3QgeD0iNjAiIHk9IjExMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI2MCIgZmlsbD0idXJsKCNzaSkiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIj5zdHJhdGlmaWVkIGludGVyaW9yPC90ZXh0Pgo8L3N2Zz4K" alt="Mixed layer"><figcaption>Diagram authored for this deck</figcaption></figure>What is the mixed layer?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2kiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5ZGI4ZDAiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYTRhN2EiLz48L2xpbmVhckdyYWRpZW50PgogICAgPG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8bGluZSB4MT0iNjAiIHkxPSIzMCIgeDI9IjE1MCIgeTI9IjMwIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4yIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjE1OCIgeT0iMzMiIGNsYXNzPSJsYmwiPndpbmQ8L3RleHQ+CiAgPHJlY3QgeD0iNjAiIHk9IjQ2IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjQ2IiBmaWxsPSIjY2ZlMmYyIiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5taXhlZCBsYXllciAodW5pZm9ybSBULCBkZW5zaXR5KTwvdGV4dD4KICA8bGluZSB4MT0iNjAiIHkxPSI5MiIgeDI9IjI0MCIgeTI9IjkyIiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtZGFzaGFycmF5PSI0IDMiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjEwNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+bWl4ZWQtbGF5ZXIgZGVwdGggKG1sb3RzdCk8L3RleHQ+CiAgPHJlY3QgeD0iNjAiIHk9IjExMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI2MCIgZmlsbD0idXJsKCNzaSkiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIj5zdHJhdGlmaWVkIGludGVyaW9yPC90ZXh0Pgo8L3N2Zz4K" alt="Mixed layer"><figcaption>Diagram authored for this deck</figcaption></figure>The near-surface ocean layer actively stirred by wind and convection, with nearly uniform temperature and density.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Mixed layer</span> What is the NEMO variable name for mixed-layer depth?</td>
+          <td>mlotst.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Stratification</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlN0cmF0aWZpY2F0aW9uIOKAlCBzdGFibGUgZGVuc2l0eSBsYXllcnM8L3RleHQ+CiAgPHJlY3QgeD0iODAiIHk9IjM2IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjM0IiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiNkOGQ1Y2MiLz4KICA8cmVjdCB4PSI4MCIgeT0iNzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMzAiIGZpbGw9IiM5ZGI4ZDAiIHN0cm9rZT0iI2Q4ZDVjYyIvPgogIDxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iNDgiIGZpbGw9IiMxYTRhN2EiIHN0cm9rZT0iI2Q4ZDVjYyIvPgogIDx0ZXh0IHg9IjE1NSIgeT0iNTciIHRleHQtYW5jaG9yPSJtaWRkbGUiPndhcm0gLyBmcmVzaCDigJQgbGlnaHRlcjwvdGV4dD4KICA8dGV4dCB4PSIxNTUiIHk9Ijg5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5weWNub2NsaW5lPC90ZXh0PgogIDx0ZXh0IHg9IjE1NSIgeT0iMTI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIj5jb2xkIC8gc2FsaW5lIOKAlCBkZW5zZXI8L3RleHQ+CiAgPGxpbmUgeDE9IjI1MCIgeTE9IjQwIiB4Mj0iMjUwIiB5Mj0iMTQ0IiBzdHJva2U9IiM2YjY4NjAiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPHRleHQgeD0iMjYyIiB5PSI5NiIgY2xhc3M9ImxibCI+ZGVuc2l0eTwvdGV4dD4KPC9zdmc+Cg==" alt="Stratification"><figcaption>Diagram authored for this deck</figcaption></figure>What is stratification?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlN0cmF0aWZpY2F0aW9uIOKAlCBzdGFibGUgZGVuc2l0eSBsYXllcnM8L3RleHQ+CiAgPHJlY3QgeD0iODAiIHk9IjM2IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjM0IiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiNkOGQ1Y2MiLz4KICA8cmVjdCB4PSI4MCIgeT0iNzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMzAiIGZpbGw9IiM5ZGI4ZDAiIHN0cm9rZT0iI2Q4ZDVjYyIvPgogIDxyZWN0IHg9IjgwIiB5PSIxMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iNDgiIGZpbGw9IiMxYTRhN2EiIHN0cm9rZT0iI2Q4ZDVjYyIvPgogIDx0ZXh0IHg9IjE1NSIgeT0iNTciIHRleHQtYW5jaG9yPSJtaWRkbGUiPndhcm0gLyBmcmVzaCDigJQgbGlnaHRlcjwvdGV4dD4KICA8dGV4dCB4PSIxNTUiIHk9Ijg5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5weWNub2NsaW5lPC90ZXh0PgogIDx0ZXh0IHg9IjE1NSIgeT0iMTI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIj5jb2xkIC8gc2FsaW5lIOKAlCBkZW5zZXI8L3RleHQ+CiAgPGxpbmUgeDE9IjI1MCIgeTE9IjQwIiB4Mj0iMjUwIiB5Mj0iMTQ0IiBzdHJva2U9IiM2YjY4NjAiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPHRleHQgeD0iMjYyIiB5PSI5NiIgY2xhc3M9ImxibCI+ZGVuc2l0eTwvdGV4dD4KPC9zdmc+Cg==" alt="Stratification"><figcaption>Diagram authored for this deck</figcaption></figure>Stable vertical layering of the water column into distinct density layers, with lighter water floating on denser water.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Upwelling</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFnIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMjMwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2RjZWJmNiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjUwLDUwIDMwMCw1MCAzMDAsMTcwIDI1MCwxNzAiIGZpbGw9IiNlNmRjYzgiIHN0cm9rZT0iIzdhNGExMCIgc3Ryb2tlLW9wYWNpdHk9IjAuNCIvPgogIDx0ZXh0IHg9IjI3NSIgeT0iMTE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5jb2FzdDwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSI1MCIgeDI9IjI1MCIgeTI9IjUwIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMS4yIi8+CiAgPHRleHQgeD0iMjE1IiB5PSI0NCIgdGV4dC1hbmNob3I9ImVuZCIgY2xhc3M9ImxibCI+d2luZCAoYWxvbmdzaG9yZSk8L3RleHQ+CiAgPGxpbmUgeDE9IjIxMCIgeTE9IjY0IiB4Mj0iNjAiIHkyPSI2NCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8dGV4dCB4PSIxMzAiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj5zdXJmYWNlIHdhdGVyIHB1c2hlZCBvZmZzaG9yZTwvdGV4dD4KICA8cGF0aCBkPSJNMjM0LDE2MiBDMjM0LDEyMCAyMzQsOTIgMjM0LDcyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTVjM2EiIHN0cm9rZS13aWR0aD0iMS44IiBtYXJrZXItZW5kPSJ1cmwoI2FnKSIvPgogIDx0ZXh0IHg9IjE3MCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5jb29sLCBudXRyaWVudC1yaWNoPC90ZXh0PgogIDx0ZXh0IHg9IjE3MCIgeT0iMTYzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5kZWVwIHdhdGVyIHJpc2VzPC90ZXh0Pgo8L3N2Zz4K" alt="Upwelling"><figcaption>Diagram authored for this deck</figcaption></figure>What is upwelling?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFnIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHJlY3QgeD0iMjAiIHk9IjUwIiB3aWR0aD0iMjMwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2RjZWJmNiIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjUwLDUwIDMwMCw1MCAzMDAsMTcwIDI1MCwxNzAiIGZpbGw9IiNlNmRjYzgiIHN0cm9rZT0iIzdhNGExMCIgc3Ryb2tlLW9wYWNpdHk9IjAuNCIvPgogIDx0ZXh0IHg9IjI3NSIgeT0iMTE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5jb2FzdDwvdGV4dD4KICA8bGluZSB4MT0iMjAiIHkxPSI1MCIgeDI9IjI1MCIgeTI9IjUwIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMS4yIi8+CiAgPHRleHQgeD0iMjE1IiB5PSI0NCIgdGV4dC1hbmNob3I9ImVuZCIgY2xhc3M9ImxibCI+d2luZCAoYWxvbmdzaG9yZSk8L3RleHQ+CiAgPGxpbmUgeDE9IjIxMCIgeTE9IjY0IiB4Mj0iNjAiIHkyPSI2NCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8dGV4dCB4PSIxMzAiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj5zdXJmYWNlIHdhdGVyIHB1c2hlZCBvZmZzaG9yZTwvdGV4dD4KICA8cGF0aCBkPSJNMjM0LDE2MiBDMjM0LDEyMCAyMzQsOTIgMjM0LDcyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTVjM2EiIHN0cm9rZS13aWR0aD0iMS44IiBtYXJrZXItZW5kPSJ1cmwoI2FnKSIvPgogIDx0ZXh0IHg9IjE3MCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5jb29sLCBudXRyaWVudC1yaWNoPC90ZXh0PgogIDx0ZXh0IHg9IjE3MCIgeT0iMTYzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5kZWVwIHdhdGVyIHJpc2VzPC90ZXh0Pgo8L3N2Zz4K" alt="Upwelling"><figcaption>Diagram authored for this deck</figcaption></figure>The vertical transport of cool, nutrient-rich deeper water to the ocean surface.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Sea-ice concentration</span> What is sea-ice concentration?</td>
+          <td>The fraction of the sea surface covered by ice at a given location, from 0 (ice-free) to 1 (fully covered).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anoxia & Hypoxia</span> What is hypoxia?</td>
+          <td>Dissolved oxygen below ~2 mg/L — too low to support most marine life.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anoxia & Hypoxia</span> What is anoxia?</td>
+          <td>Complete absence of dissolved oxygen.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Baltic Inflow (Major Baltic Inflow)</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFkIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM0YTJhN2EiLz48L21hcmtlcj48L2RlZnM+CiAgPHJlY3QgeD0iMTAiIHk9IjM2IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEzMCIgZmlsbD0iI2RjZWJmNiIvPgogIDxsaW5lIHgxPSIxMCIgeTE9IjM2IiB4Mj0iMzEwIiB5Mj0iMzYiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8cGF0aCBkPSJNMTAsMTIwIEwxMTAsMTIwIEwxNTAsOTYgTDIwMCwxNjggTDMxMCwxNjggTDMxMCwxODIgTDEwLDE4MiBaIiBmaWxsPSIjZTZkY2M4IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS1vcGFjaXR5PSIwLjQiLz4KICA8cGF0aCBkPSJNMTQsMTE2IEwxMTAsMTE2IEwxNTAsOTIgTDIwMCwxNjIgTDMwMCwxNjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhMmE3YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2Utb3BhY2l0eT0iMC41NSIgbWFya2VyLWVuZD0idXJsKCNhZCkiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vcnRoIFNlYSB3YXRlcjwvdGV4dD4KICA8dGV4dCB4PSI2MCIgeT0iNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmRlbnNlLCBzYWxpbmU8L3RleHQ+CiAgPHRleHQgeD0iMTUwIiB5PSI4NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+RGFuaXNoIFN0cmFpdHMgc2lsbDwvdGV4dD4KICA8dGV4dCB4PSIyNTYiIHk9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ZGVlcCBCYWx0aWMgYmFzaW48L3RleHQ+CiAgPHRleHQgeD0iMTcyIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0YTJhN2EiPmZsb3dzIGFsb25nIHNlYWZsb29yPC90ZXh0Pgo8L3N2Zz4K" alt="Baltic Inflow (Major Baltic Inflow)"><figcaption>Diagram authored for this deck</figcaption></figure>What is a Major Baltic Inflow?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFkIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM0YTJhN2EiLz48L21hcmtlcj48L2RlZnM+CiAgPHJlY3QgeD0iMTAiIHk9IjM2IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEzMCIgZmlsbD0iI2RjZWJmNiIvPgogIDxsaW5lIHgxPSIxMCIgeTE9IjM2IiB4Mj0iMzEwIiB5Mj0iMzYiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8cGF0aCBkPSJNMTAsMTIwIEwxMTAsMTIwIEwxNTAsOTYgTDIwMCwxNjggTDMxMCwxNjggTDMxMCwxODIgTDEwLDE4MiBaIiBmaWxsPSIjZTZkY2M4IiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS1vcGFjaXR5PSIwLjQiLz4KICA8cGF0aCBkPSJNMTQsMTE2IEwxMTAsMTE2IEwxNTAsOTIgTDIwMCwxNjIgTDMwMCwxNjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRhMmE3YSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2Utb3BhY2l0eT0iMC41NSIgbWFya2VyLWVuZD0idXJsKCNhZCkiLz4KICA8dGV4dCB4PSI2MCIgeT0iNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vcnRoIFNlYSB3YXRlcjwvdGV4dD4KICA8dGV4dCB4PSI2MCIgeT0iNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmRlbnNlLCBzYWxpbmU8L3RleHQ+CiAgPHRleHQgeD0iMTUwIiB5PSI4NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+RGFuaXNoIFN0cmFpdHMgc2lsbDwvdGV4dD4KICA8dGV4dCB4PSIyNTYiIHk9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ZGVlcCBCYWx0aWMgYmFzaW48L3RleHQ+CiAgPHRleHQgeD0iMTcyIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0YTJhN2EiPmZsb3dzIGFsb25nIHNlYWZsb29yPC90ZXh0Pgo8L3N2Zz4K" alt="Baltic Inflow (Major Baltic Inflow)"><figcaption>Diagram authored for this deck</figcaption></figure>A periodic inflow of dense, saline North Sea water through the Danish Straits along the seafloor into the deep Baltic basins.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anthropogenic</span> What does "anthropogenic" mean?</td>
+          <td>Caused or substantially modified by human activity, as opposed to occurring naturally.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anthropogenic</span> What is the primary cause of present-day Baltic eutrophication?</td>
+          <td>Anthropogenic nutrient inputs from agriculture, wastewater, and atmospheric deposition.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Catchment (drainage basin)</span> What is a catchment?</td>
+          <td>The total land area whose surface and subsurface water all drain into a single river, lake, or sea.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrate (NO₃⁻)</span> What is the primary inorganic nitrogen form available to phytoplankton?</td>
+          <td>Nitrate (NO₃⁻).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phosphate (PO₄³⁻)</span> What is the primary inorganic phosphorus form available to phytoplankton?</td>
+          <td>Phosphate (PO₄³⁻).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Silicate (Si(OH)₄)</span> What is silicate, and which organisms need it?</td>
+          <td>Dissolved silica required by diatoms to build their glass-like cell walls (frustules).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Hydrogen sulfide (H₂S)</span> What is hydrogen sulfide and where is it produced?</td>
+          <td>A toxic gas produced by sulfate-reducing bacteria in fully anoxic water and sediments.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Hydrogen sulfide (H₂S)</span> Which Baltic biogeochemical model tracks H₂S as a state variable?</td>
+          <td>ERGOM.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Liebig's Law of the Minimum</span> What does Liebig's Law of the Minimum state?</td>
+          <td>Biological growth is constrained by the single scarcest essential resource, not by the total amount of resources available.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Limiting nutrient</span> What is a limiting nutrient?</td>
+          <td>The single nutrient whose supply restricts phytoplankton growth below its maximum possible rate.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Internal loading</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTk1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW50ZXJuYWwgbG9hZGluZzwvdGV4dD4KICA8cmVjdCB4PSI5MCIgeT0iMzQiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIGZpbGw9IiNjZmUyZjIiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDxyZWN0IHg9IjkwIiB5PSIxMTQiIHdpZHRoPSIxNDAiIGhlaWdodD0iMzQiIGZpbGw9IiMzYTM1NTAiLz4KICA8cmVjdCB4PSI5MCIgeT0iMTQ4IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjN2E0YTEwIiBmaWxsLW9wYWNpdHk9IjAuNDUiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjU2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj53YXRlciBjb2x1bW48L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPmFub3hpYyBib3R0b20gd2F0ZXIgKE8yID0gMCk8L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSIxNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnNlZGltZW50IOKAlCBGZS1ib3VuZCBQIGRpc3NvbHZlczwvdGV4dD4KICA8bGluZSB4MT0iMTIwIiB5MT0iMTQ2IiB4Mj0iMTIwIiB5Mj0iNjIiIHN0cm9rZT0iIzdhNGExMCIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGxpbmUgeDE9IjE2MCIgeTE9IjE0NiIgeDI9IjE2MCIgeTI9IjYyIiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS42IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIyMDAiIHkxPSIxNDYiIHgyPSIyMDAiIHkyPSI2MiIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSIyMDgiIHk9IjkyIj5QTzQ8L3RleHQ+Cjwvc3ZnPgo=" alt="Internal loading"><figcaption>Diagram authored for this deck</figcaption></figure>What is internal loading?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTk1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW50ZXJuYWwgbG9hZGluZzwvdGV4dD4KICA8cmVjdCB4PSI5MCIgeT0iMzQiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIGZpbGw9IiNjZmUyZjIiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDxyZWN0IHg9IjkwIiB5PSIxMTQiIHdpZHRoPSIxNDAiIGhlaWdodD0iMzQiIGZpbGw9IiMzYTM1NTAiLz4KICA8cmVjdCB4PSI5MCIgeT0iMTQ4IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjN2E0YTEwIiBmaWxsLW9wYWNpdHk9IjAuNDUiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjU2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj53YXRlciBjb2x1bW48L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPmFub3hpYyBib3R0b20gd2F0ZXIgKE8yID0gMCk8L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSIxNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnNlZGltZW50IOKAlCBGZS1ib3VuZCBQIGRpc3NvbHZlczwvdGV4dD4KICA8bGluZSB4MT0iMTIwIiB5MT0iMTQ2IiB4Mj0iMTIwIiB5Mj0iNjIiIHN0cm9rZT0iIzdhNGExMCIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGxpbmUgeDE9IjE2MCIgeTE9IjE0NiIgeDI9IjE2MCIgeTI9IjYyIiBzdHJva2U9IiM3YTRhMTAiIHN0cm9rZS13aWR0aD0iMS42IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIyMDAiIHkxPSIxNDYiIHgyPSIyMDAiIHkyPSI2MiIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSIyMDgiIHk9IjkyIj5QTzQ8L3RleHQ+Cjwvc3ZnPgo=" alt="Internal loading"><figcaption>Diagram authored for this deck</figcaption></figure>The release of phosphorus stored in bottom sediments back into the water column, driven by anoxia rather than river inputs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Eutrophication</span> What is eutrophication?</td>
+          <td>The process by which a water body becomes enriched with nutrients, causing excessive algal growth, oxygen depletion, and reduced biodiversity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Photosynthesis</span> What is photosynthesis?</td>
+          <td>A light-driven process that converts CO₂ and water into sugars and O₂, powered by pigments such as chlorophyll-a.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Pigment</span> What is a pigment?</td>
+          <td>A molecule that selectively absorbs particular wavelengths of light and reflects or transmits the rest.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Pigment</span> What is the dominant pigment in phytoplankton?</td>
+          <td>Chlorophyll-a.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Biomass</span> What is biomass in plankton ecology?</td>
+          <td>The total mass of living material in a defined volume or area — the standard currency for quantifying a plankton population.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Biomass</span> What units are typically used to quantify phytoplankton biomass?</td>
+          <td>Milligrams of chlorophyll, milligrams of carbon, or cell counts per cubic metre.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Taxonomy</span> What is taxonomy?</td>
+          <td>The formal hierarchical classification of organisms into ranks such as kingdom, phylum, class, order, family, genus, and species.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Prokaryote</span> What is a prokaryote?</td>
+          <td>A single-celled organism whose DNA is not enclosed in a membrane-bound nucleus.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Prokaryote</span> Name three groups of prokaryotes.</td>
+          <td>Bacteria, archaea, and photosynthetic cyanobacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Prokaryote</span> What CMEMS variable tracks Baltic prokaryotic plankton?</td>
+          <td>PROKAR.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Protists</span> What are protists?</td>
+          <td>Single-celled eukaryotic microorganisms — microbes with a true membrane-bound nucleus, in contrast to prokaryotes.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagella (flagellum)</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTcwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE3MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFtIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmxhZ2VsbGEg4oCUIHdoaXAtbGlrZSBhcHBlbmRhZ2VzIGZvciBsb2NvbW90aW9uPC90ZXh0PgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSI5MiIgcng9IjM0IiByeT0iMjYiIGZpbGw9IiNlNGY0ZjMiIHN0cm9rZT0iIzBmNWM1OCIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iOTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmNlbGw8L3RleHQ+CiAgPHBhdGggZD0iTTE1NCw5MiBDMTc1LDcwIDE5MCwxMTQgMjEwLDkyIEMyMzAsNzAgMjQ1LDExNCAyNjUsOTIgQzI3OCw4MCAyODYsODggMjk0LDkyIiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjVjNTgiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjIzMiIgeT0iMTI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5mbGFnZWxsdW08L3RleHQ+CiAgPHRleHQgeD0iMjMyIiB5PSIxMzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmJlYXRzIHRvIHByb3BlbCB0aGUgY2VsbDwvdGV4dD4KICA8bGluZSB4MT0iODQiIHkxPSI5MiIgeDI9IjQ0IiB5Mj0iOTIiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjgiIG1hcmtlci1lbmQ9InVybCgjYW0pIi8+CiAgPHRleHQgeD0iNjQiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj5zd2ltczwvdGV4dD4KPC9zdmc+Cg==" alt="Flagella (flagellum)"><figcaption>Diagram authored for this deck</figcaption></figure>What are flagella?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTcwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE3MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFtIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmxhZ2VsbGEg4oCUIHdoaXAtbGlrZSBhcHBlbmRhZ2VzIGZvciBsb2NvbW90aW9uPC90ZXh0PgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSI5MiIgcng9IjM0IiByeT0iMjYiIGZpbGw9IiNlNGY0ZjMiIHN0cm9rZT0iIzBmNWM1OCIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iOTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmNlbGw8L3RleHQ+CiAgPHBhdGggZD0iTTE1NCw5MiBDMTc1LDcwIDE5MCwxMTQgMjEwLDkyIEMyMzAsNzAgMjQ1LDExNCAyNjUsOTIgQzI3OCw4MCAyODYsODggMjk0LDkyIiBmaWxsPSJub25lIiBzdHJva2U9IiMwZjVjNTgiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjIzMiIgeT0iMTI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5mbGFnZWxsdW08L3RleHQ+CiAgPHRleHQgeD0iMjMyIiB5PSIxMzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmJlYXRzIHRvIHByb3BlbCB0aGUgY2VsbDwvdGV4dD4KICA8bGluZSB4MT0iODQiIHkxPSI5MiIgeDI9IjQ0IiB5Mj0iOTIiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjgiIG1hcmtlci1lbmQ9InVybCgjYW0pIi8+CiAgPHRleHQgeD0iNjQiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj5zd2ltczwvdGV4dD4KPC9zdmc+Cg==" alt="Flagella (flagellum)"><figcaption>Diagram authored for this deck</figcaption></figure>Long whip- or thread-like cellular appendages used for locomotion in many microorganisms.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagella (flagellum)</span> What is the difference between a flagellum and flagella?</td>
+          <td>Flagellum is the singular form; flagella is the plural.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Frustule</span> What is a frustule?</td>
+          <td>The two-piece silica (glass) cell wall of a diatom.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phytoplankton</span> What are phytoplankton?</td>
+          <td>Microscopic photosynthetic organisms that drift in the water column, forming the base of marine food webs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Chlorophyll-a</span> What is chlorophyll-a?</td>
+          <td>The primary green pigment used by all phytoplankton for photosynthesis.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phycocyanin</span> What is phycocyanin?</td>
+          <td>A blue pigment unique to cyanobacteria, distinct from the chlorophyll-a present in all phytoplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phycocyanin</span> Which OLCI band targets phycocyanin?</td>
+          <td>RRS620.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phytoplankton functional types (PFTs)</span> What are phytoplankton functional types (PFTs)?</td>
+          <td>A classification of phytoplankton into groups by ecological role and optical signature rather than strict taxonomy.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Picoplankton</span> What is picoplankton?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDx0ZXh0IHg9IjE2MCIgeT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBoeXRvcGxhbmt0b24gc2l6ZSBjbGFzc2VzPC90ZXh0PgogIDxjaXJjbGUgY3g9IjcwIiBjeT0iNzQiIHI9IjYiIGZpbGw9IiMxYTVjM2EiLz4KICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSI3NCIgcj0iMTMiIGZpbGw9IiMxYTRhN2EiLz4KICA8Y2lyY2xlIGN4PSIyNTUiIGN5PSI3NCIgcj0iMjQiIGZpbGw9IiM0YTJhN2EiLz4KICA8dGV4dCB4PSI3MCIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5waWNvPC90ZXh0PgogIDx0ZXh0IHg9IjcwIiB5PSIxMzEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPiZsdDsyIHVtPC90ZXh0PgogIDx0ZXh0IHg9IjE2MCIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5uYW5vPC90ZXh0PgogIDx0ZXh0IHg9IjE2MCIgeT0iMTMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj4yLTIwIHVtPC90ZXh0PgogIDx0ZXh0IHg9IjI1NSIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5taWNybzwvdGV4dD4KICA8dGV4dCB4PSIyNTUiIHk9IjEzMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+Jmd0OzIwIHVtPC90ZXh0PgogIDx0ZXh0IHg9IjcwIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiIGZvbnQtc2l6ZT0iOSI+Y3lhbm9iYWN0ZXJpYTwvdGV4dD4KICA8dGV4dCB4PSIxNjAiIHk9IjE1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCIgZm9udC1zaXplPSI5Ij5jcnlwdG9waHl0ZXM8L3RleHQ+CiAgPHRleHQgeD0iMjU1IiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiIGZvbnQtc2l6ZT0iOSI+ZGlhdG9tcywgZGluby48L3RleHQ+Cjwvc3ZnPgo=" alt="Picoplankton"><figcaption>Diagram authored for this deck</figcaption></figure>The smallest phytoplankton size class, typically less than 2 µm in diameter, including tiny prokaryotic cyanobacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nanophytoplankton</span> What is nanophytoplankton?</td>
+          <td>Mid-sized phytoplankton cells in the 2–20 µm range, including cryptophytes and green algae.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nanophytoplankton</span> What CMEMS variable represents nanophytoplankton?</td>
+          <td>NANO (CRYPTO + half of GREEN).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Microphytoplankton</span> What are microphytoplankton?</td>
+          <td>The largest phytoplankton cells (>20 µm), composed primarily of diatoms and dinoflagellates.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Microphytoplankton</span> What CMEMS variable represents microphytoplankton?</td>
+          <td>MICRO (DIATO + DINO).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diatoms</span> What are diatoms?</td>
+          <td>Single-celled algae encased in an intricate glass-like silica shell called a frustule.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanobacteria</span> What are cyanobacteria?</td>
+          <td>Photosynthetic bacteria — not true algae — capable of fixing atmospheric nitrogen gas.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Dinoflagellates</span> What are dinoflagellates?</td>
+          <td>Flagellated single-celled protists characterised by two perpendicular flagella.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cryptophytes</span> What are cryptophytes?</td>
+          <td>Small flagellated algae common in brackish coastal water and near river outflows, tolerant of low salinity and turbidity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cryptophytes</span> Which CMEMS variable tracks cryptophyte chlorophyll?</td>
+          <td>CRYPTO.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagellates</span> What are flagellates?</td>
+          <td>Organisms that propel themselves using one or more whip-like appendages called flagella.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrogen fixation</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTYwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE2MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjkiIG1hcmtlckhlaWdodD0iOSIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5pdHJvZ2VuIGZpeGF0aW9uPC90ZXh0PgogIDxjaXJjbGUgY3g9IjQ1IiBjeT0iNzgiIHI9IjE2IiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSI0NSIgeT0iODIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk4yPC90ZXh0PgogIDx0ZXh0IHg9IjQ1IiB5PSIxMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmluZXJ0IGdhczwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjM2IiByeD0iNCIgZmlsbD0iI2U2ZjJlYiIgc3Ryb2tlPSIjMWE1YzNhIi8+CiAgPHRleHQgeD0iMTYwIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bml0cm9nZW5hc2U8L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSI4OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+KGN5YW5vYmFjdGVyaWEpPC90ZXh0PgogIDxjaXJjbGUgY3g9IjI3NSIgY3k9Ijc4IiByPSIxNiIgZmlsbD0iI2ZhZjBlMCIgc3Ryb2tlPSIjN2E0YTEwIi8+CiAgPHRleHQgeD0iMjc1IiB5PSI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkgzPC90ZXh0PgogIDx0ZXh0IHg9IjI3NSIgeT0iMTEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5iaW9hdmFpbGFibGU8L3RleHQ+CiAgPGxpbmUgeDE9IjYzIiB5MT0iNzgiIHgyPSIxMDgiIHkyPSI3OCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEuNCIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8bGluZSB4MT0iMjEyIiB5MT0iNzgiIHgyPSIyNTciIHkyPSI3OCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEuNCIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KPC9zdmc+Cg==" alt="Nitrogen fixation"><figcaption>Diagram authored for this deck</figcaption></figure>What is nitrogen fixation?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTYwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE2MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjkiIG1hcmtlckhlaWdodD0iOSIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5pdHJvZ2VuIGZpeGF0aW9uPC90ZXh0PgogIDxjaXJjbGUgY3g9IjQ1IiBjeT0iNzgiIHI9IjE2IiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSI0NSIgeT0iODIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk4yPC90ZXh0PgogIDx0ZXh0IHg9IjQ1IiB5PSIxMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmluZXJ0IGdhczwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjM2IiByeD0iNCIgZmlsbD0iI2U2ZjJlYiIgc3Ryb2tlPSIjMWE1YzNhIi8+CiAgPHRleHQgeD0iMTYwIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bml0cm9nZW5hc2U8L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSI4OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+KGN5YW5vYmFjdGVyaWEpPC90ZXh0PgogIDxjaXJjbGUgY3g9IjI3NSIgY3k9Ijc4IiByPSIxNiIgZmlsbD0iI2ZhZjBlMCIgc3Ryb2tlPSIjN2E0YTEwIi8+CiAgPHRleHQgeD0iMjc1IiB5PSI4MiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkgzPC90ZXh0PgogIDx0ZXh0IHg9IjI3NSIgeT0iMTEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5iaW9hdmFpbGFibGU8L3RleHQ+CiAgPGxpbmUgeDE9IjYzIiB5MT0iNzgiIHgyPSIxMDgiIHkyPSI3OCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEuNCIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8bGluZSB4MT0iMjEyIiB5MT0iNzgiIHgyPSIyNTciIHkyPSI3OCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEuNCIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KPC9zdmc+Cg==" alt="Nitrogen fixation"><figcaption>Diagram authored for this deck</figcaption></figure>The biological conversion of inert dissolved N₂ gas into bioavailable ammonia.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanotoxins</span> What are cyanotoxins?</td>
+          <td>Bioactive toxins produced by certain cyanobacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Crustaceans</span> What are crustaceans?</td>
+          <td>Arthropods with a hard chitinous exoskeleton and multiple pairs of jointed limbs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Crustaceans</span> Give examples of crustaceans.</td>
+          <td>Copepods, krill, amphipods, crabs, and barnacles.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Zooplankton</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTUwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE1MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiPlBsYW5rdG9uIGZvb2Qgd2ViPC90ZXh0PgogIDxyZWN0IHg9IjE0IiB5PSI1NiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjQwIiByeD0iMyIgZmlsbD0iI2U2ZjJlYiIgc3Ryb2tlPSIjMWE1YzNhIi8+CiAgPHRleHQgeD0iNDUiIHk9IjczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5waHl0by08L3RleHQ+CiAgPHRleHQgeD0iNDUiIHk9Ijg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5wbGFua3RvbjwvdGV4dD4KICA8cmVjdCB4PSI5MiIgeT0iNTYiIHdpZHRoPSI2MiIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNlOGYwZjgiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjEyMyIgeT0iNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNpbGlhdGVzPC90ZXh0PgogIDx0ZXh0IHg9IjEyMyIgeT0iODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPihtaWNyby16b28pPC90ZXh0PgogIDxyZWN0IHg9IjE3MCIgeT0iNTYiIHdpZHRoPSI2MiIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNmMGViZmEiIHN0cm9rZT0iIzRhMmE3YSIvPgogIDx0ZXh0IHg9IjIwMSIgeT0iNzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvcGVwb2RzPC90ZXh0PgogIDxyZWN0IHg9IjI0OCIgeT0iNTYiIHdpZHRoPSI1OCIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNmYWYwZTAiIHN0cm9rZT0iIzdhNGExMCIvPgogIDx0ZXh0IHg9IjI3NyIgeT0iNzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmZpc2g8L3RleHQ+CiAgPGxpbmUgeDE9Ijc2IiB5MT0iNzYiIHgyPSI5MCIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIxNTQiIHkxPSI3NiIgeDI9IjE2OCIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIyMzIiIHkxPSI3NiIgeDI9IjI0NiIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iMTIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5hcnJvd3MgPSBlYXRlbiBieSAoZW5lcmd5IGZsb3dzIHVwIHRoZSB3ZWIpPC90ZXh0Pgo8L3N2Zz4K" alt="Zooplankton"><figcaption>Diagram authored for this deck</figcaption></figure>What is zooplankton?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTUwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE1MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE2MCIgeT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiPlBsYW5rdG9uIGZvb2Qgd2ViPC90ZXh0PgogIDxyZWN0IHg9IjE0IiB5PSI1NiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjQwIiByeD0iMyIgZmlsbD0iI2U2ZjJlYiIgc3Ryb2tlPSIjMWE1YzNhIi8+CiAgPHRleHQgeD0iNDUiIHk9IjczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5waHl0by08L3RleHQ+CiAgPHRleHQgeD0iNDUiIHk9Ijg1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5wbGFua3RvbjwvdGV4dD4KICA8cmVjdCB4PSI5MiIgeT0iNTYiIHdpZHRoPSI2MiIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNlOGYwZjgiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjEyMyIgeT0iNzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNpbGlhdGVzPC90ZXh0PgogIDx0ZXh0IHg9IjEyMyIgeT0iODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPihtaWNyby16b28pPC90ZXh0PgogIDxyZWN0IHg9IjE3MCIgeT0iNTYiIHdpZHRoPSI2MiIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNmMGViZmEiIHN0cm9rZT0iIzRhMmE3YSIvPgogIDx0ZXh0IHg9IjIwMSIgeT0iNzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvcGVwb2RzPC90ZXh0PgogIDxyZWN0IHg9IjI0OCIgeT0iNTYiIHdpZHRoPSI1OCIgaGVpZ2h0PSI0MCIgcng9IjMiIGZpbGw9IiNmYWYwZTAiIHN0cm9rZT0iIzdhNGExMCIvPgogIDx0ZXh0IHg9IjI3NyIgeT0iNzkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmZpc2g8L3RleHQ+CiAgPGxpbmUgeDE9Ijc2IiB5MT0iNzYiIHgyPSI5MCIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIxNTQiIHkxPSI3NiIgeDI9IjE2OCIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIyMzIiIHkxPSI3NiIgeDI9IjI0NiIgeTI9Ijc2IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS4zIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iMTIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5hcnJvd3MgPSBlYXRlbiBieSAoZW5lcmd5IGZsb3dzIHVwIHRoZSB3ZWIpPC90ZXh0Pgo8L3N2Zz4K" alt="Zooplankton"><figcaption>Diagram authored for this deck</figcaption></figure>Animal-like plankton ranging from single-celled protists to small crustaceans that graze on phytoplankton and bacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Copepods</span> What are copepods?</td>
+          <td>Small crustaceans and the most abundant multicellular animals in the sea.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primary production</span> What is primary production?</td>
+          <td>The synthesis of organic carbon (biomass) from inorganic CO₂ by photosynthetic organisms.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primary production</span> What units quantify net primary production?</td>
+          <td>mg C m⁻³ day⁻¹.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Trophic state</span> What is trophic state?</td>
+          <td>A classification of water bodies by their nutrient richness and associated biological productivity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Oligotrophic</span> What does oligotrophic mean?</td>
+          <td>Low in dissolved nutrients, low in phytoplankton biomass, and consequently very clear and transparent water.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Algal bloom</span> What is an algal bloom?</td>
+          <td>A rapid, large increase in phytoplankton abundance.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Spring bloom</span> What is the spring bloom?</td>
+          <td>The first major phytoplankton growth event of the year, triggered by increasing solar irradiance after winter.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Summer bloom (cyanobacteria bloom)</span> Which organisms dominate the Baltic summer bloom?</td>
+          <td>Filamentous cyanobacteria such as Nodularia spumigena, Aphanizomenon flos-aquae, and Dolichospermum spp.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Grazing</span> What is grazing in plankton ecology?</td>
+          <td>Consumption of phytoplankton and bacteria by zooplankton such as copepods, ciliates, and heterotrophic flagellates.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Ciliates</span> What are ciliates?</td>
+          <td>Single-celled protists covered in hundreds to thousands of short hair-like cilia used for locomotion and feeding.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wavelength (nanometre, nm)</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idmlzIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdhM2E5YSIvPjxzdG9wIG9mZnNldD0iMC4yIiBzdG9wLWNvbG9yPSIjMzAzMGMwIi8+PHN0b3Agb2Zmc2V0PSIwLjQiIHN0b3AtY29sb3I9IiMxNWEwYTAiLz48c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMzYWE4M2EiLz48c3RvcCBvZmZzZXQ9IjAuNyIgc3RvcC1jb2xvcj0iI2Q4YzAyMCIvPjxzdG9wIG9mZnNldD0iMC44NSIgc3RvcC1jb2xvcj0iI2Q4N2EyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2MwMjAyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxtYXJrZXIgaWQ9ImExIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImEyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSIyIiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik02LDAgTDAsMyBMNiw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMwLDYwIEM1MCwzMCA3MCwzMCA5MCw2MCBDMTEwLDkwIDEzMCw5MCAxNTAsNjAgQzE3MCwzMCAxOTAsMzAgMjEwLDYwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxsaW5lIHgxPSI2MCIgeTE9IjQ0IiB4Mj0iMTgwIiB5Mj0iNDQiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItc3RhcnQ9InVybCgjYTIpIiBtYXJrZXItZW5kPSJ1cmwoI2ExKSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPndhdmVsZW5ndGggKG9uZSBjeWNsZSk8L3RleHQ+CiAgPHJlY3QgeD0iMzAiIHk9IjExMCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIyNCIgZmlsbD0idXJsKCN2aXMpIiBzdHJva2U9IiNkOGQ1Y2MiLz4KICA8dGV4dCB4PSIzMCIgeT0iMTUwIiBjbGFzcz0ibGJsIj40MDAgbm0gKHZpb2xldCk8L3RleHQ+CiAgPHRleHQgeD0iMjkwIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPjcwMCBubSAocmVkKTwvdGV4dD4KICA8dGV4dCB4PSIxNjAiIHk9IjEwNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+dmlzaWJsZSBsaWdodDwvdGV4dD4KPC9zdmc+Cg==" alt="Wavelength (nanometre, nm)"><figcaption>Diagram authored for this deck</figcaption></figure>What is wavelength?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idmlzIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdhM2E5YSIvPjxzdG9wIG9mZnNldD0iMC4yIiBzdG9wLWNvbG9yPSIjMzAzMGMwIi8+PHN0b3Agb2Zmc2V0PSIwLjQiIHN0b3AtY29sb3I9IiMxNWEwYTAiLz48c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMzYWE4M2EiLz48c3RvcCBvZmZzZXQ9IjAuNyIgc3RvcC1jb2xvcj0iI2Q4YzAyMCIvPjxzdG9wIG9mZnNldD0iMC44NSIgc3RvcC1jb2xvcj0iI2Q4N2EyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2MwMjAyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxtYXJrZXIgaWQ9ImExIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImEyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSIyIiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik02LDAgTDAsMyBMNiw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHBhdGggZD0iTTMwLDYwIEM1MCwzMCA3MCwzMCA5MCw2MCBDMTEwLDkwIDEzMCw5MCAxNTAsNjAgQzE3MCwzMCAxOTAsMzAgMjEwLDYwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxsaW5lIHgxPSI2MCIgeTE9IjQ0IiB4Mj0iMTgwIiB5Mj0iNDQiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItc3RhcnQ9InVybCgjYTIpIiBtYXJrZXItZW5kPSJ1cmwoI2ExKSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPndhdmVsZW5ndGggKG9uZSBjeWNsZSk8L3RleHQ+CiAgPHJlY3QgeD0iMzAiIHk9IjExMCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIyNCIgZmlsbD0idXJsKCN2aXMpIiBzdHJva2U9IiNkOGQ1Y2MiLz4KICA8dGV4dCB4PSIzMCIgeT0iMTUwIiBjbGFzcz0ibGJsIj40MDAgbm0gKHZpb2xldCk8L3RleHQ+CiAgPHRleHQgeD0iMjkwIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPjcwMCBubSAocmVkKTwvdGV4dD4KICA8dGV4dCB4PSIxNjAiIHk9IjEwNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+dmlzaWJsZSBsaWdodDwvdGV4dD4KPC9zdmc+Cg==" alt="Wavelength (nanometre, nm)"><figcaption>Diagram authored for this deck</figcaption></figure>The distance between successive crests of an electromagnetic wave; it determines the colour of light.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wavelength (nanometre, nm)</span> What is the visible-light wavelength range in nm?</td>
+          <td>Approximately 400 nm (violet) to 700 nm (red).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Radiance & Irradiance</span> What is radiance?</td>
+          <td>The intensity of light arriving from or leaving in a single specified direction (W m⁻² sr⁻¹).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Radiance & Irradiance</span> What is irradiance?</td>
+          <td>The total light flux per unit area summed over all directions (W m⁻²).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Remote-sensing reflectance (Rrs)</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFkIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImF1IiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMTMiIGZpbGw9IiNmMGMwNDAiIHN0cm9rZT0iIzdhNGExMCIvPgogIDx0ZXh0IHg9IjUwIiB5PSI2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+c3VuPC90ZXh0PgogIDxyZWN0IHg9IjI0NCIgeT0iMzAiIHdpZHRoPSIzNCIgaGVpZ2h0PSIxOCIgZmlsbD0iI2Q4ZDVjYyIgc3Ryb2tlPSIjNmI2ODYwIi8+CiAgPHRleHQgeD0iMjYxIiB5PSI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+c2F0ZWxsaXRlPC90ZXh0PgogIDxyZWN0IHg9IjIwIiB5PSIxMTAiIHdpZHRoPSIyODAiIGhlaWdodD0iNjAiIGZpbGw9IiNjZmUyZjIiLz4KICA8bGluZSB4MT0iMjAiIHkxPSIxMTAiIHgyPSIzMDAiIHkyPSIxMTAiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8bGluZSB4MT0iNjIiIHkxPSI1MiIgeDI9IjEyMCIgeTI9IjEwOCIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhZCkiLz4KICA8dGV4dCB4PSI3NCIgeT0iOTIiIGNsYXNzPSJsYmwiPkVkIChkb3duKTwvdGV4dD4KICA8bGluZSB4MT0iMTkwIiB5MT0iMTA4IiB4Mj0iMjQ2IiB5Mj0iNTAiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXUpIi8+CiAgPHRleHQgeD0iMjA2IiB5PSI5NiIgZmlsbD0iIzFhNWMzYSI+THcgKHVwKTwvdGV4dD4KICA8dGV4dCB4PSIxNjAiIHk9IjE1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UnJzID0gTHcgLyBFZDwvdGV4dD4KPC9zdmc+Cg==" alt="Remote-sensing reflectance (Rrs)"><figcaption>Diagram authored for this deck</figcaption></figure>What is remote-sensing reflectance (Rrs)?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFkIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImF1IiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMTMiIGZpbGw9IiNmMGMwNDAiIHN0cm9rZT0iIzdhNGExMCIvPgogIDx0ZXh0IHg9IjUwIiB5PSI2OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+c3VuPC90ZXh0PgogIDxyZWN0IHg9IjI0NCIgeT0iMzAiIHdpZHRoPSIzNCIgaGVpZ2h0PSIxOCIgZmlsbD0iI2Q4ZDVjYyIgc3Ryb2tlPSIjNmI2ODYwIi8+CiAgPHRleHQgeD0iMjYxIiB5PSI2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+c2F0ZWxsaXRlPC90ZXh0PgogIDxyZWN0IHg9IjIwIiB5PSIxMTAiIHdpZHRoPSIyODAiIGhlaWdodD0iNjAiIGZpbGw9IiNjZmUyZjIiLz4KICA8bGluZSB4MT0iMjAiIHkxPSIxMTAiIHgyPSIzMDAiIHkyPSIxMTAiIHN0cm9rZT0iIzFhNGE3YSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8bGluZSB4MT0iNjIiIHkxPSI1MiIgeDI9IjEyMCIgeTI9IjEwOCIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuNiIgbWFya2VyLWVuZD0idXJsKCNhZCkiLz4KICA8dGV4dCB4PSI3NCIgeT0iOTIiIGNsYXNzPSJsYmwiPkVkIChkb3duKTwvdGV4dD4KICA8bGluZSB4MT0iMTkwIiB5MT0iMTA4IiB4Mj0iMjQ2IiB5Mj0iNTAiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG1hcmtlci1lbmQ9InVybCgjYXUpIi8+CiAgPHRleHQgeD0iMjA2IiB5PSI5NiIgZmlsbD0iIzFhNWMzYSI+THcgKHVwKTwvdGV4dD4KICA8dGV4dCB4PSIxNjAiIHk9IjE1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UnJzID0gTHcgLyBFZDwvdGV4dD4KPC9zdmc+Cg==" alt="Remote-sensing reflectance (Rrs)"><figcaption>Diagram authored for this deck</figcaption></figure>The ratio of upwelling radiance leaving the ocean surface to downwelling solar irradiance, measured in sr⁻¹.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Inherent Optical Properties (IOPs)</span> What are inherent optical properties (IOPs)?</td>
+          <td>Optical properties of water that depend only on the dissolved and particulate substances present, independent of the ambient light field.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Backscattering</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFpIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFrIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFmIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM5YzlhOTQiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTcwIiBjeT0iOTUiIHI9IjEyIiBmaWxsPSIjOWRiOGQwIiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSIxNzAiIHk9IjEyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+cGFydGljbGU8L3RleHQ+CiAgPGxpbmUgeDE9IjQwIiB5MT0iNDAiIHgyPSIxNjAiIHkyPSI4OCIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhaSkiLz4KICA8dGV4dCB4PSI3MiIgeT0iNDgiIGZpbGw9IiM3YTRhMTAiPmluY2lkZW50IGxpZ2h0PC90ZXh0PgogIDxsaW5lIHgxPSIxODAiIHkxPSIxMDIiIHgyPSIyOTAiIHkyPSIxNDAiIHN0cm9rZT0iIzljOWE5NCIgc3Ryb2tlLXdpZHRoPSIxLjQiIG1hcmtlci1lbmQ9InVybCgjYWYpIi8+CiAgPHRleHQgeD0iMjUyIiB5PSIxMzQiIGNsYXNzPSJsYmwiPmZvcndhcmQ8L3RleHQ+CiAgPGxpbmUgeDE9IjE2MCIgeTE9IjkwIiB4Mj0iNjAiIHkyPSI2MCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhaykiLz4KICA8dGV4dCB4PSI5NiIgeT0iODAiIGZpbGw9IiMxYTRhN2EiPmJhY2tzY2F0dGVyZWQ8L3RleHQ+Cjwvc3ZnPgo=" alt="Backscattering"><figcaption>Diagram authored for this deck</figcaption></figure>What is backscattering?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFpIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM3YTRhMTAiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFrIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFmIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM5YzlhOTQiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTcwIiBjeT0iOTUiIHI9IjEyIiBmaWxsPSIjOWRiOGQwIiBzdHJva2U9IiMxYTRhN2EiLz4KICA8dGV4dCB4PSIxNzAiIHk9IjEyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+cGFydGljbGU8L3RleHQ+CiAgPGxpbmUgeDE9IjQwIiB5MT0iNDAiIHgyPSIxNjAiIHkyPSI4OCIgc3Ryb2tlPSIjN2E0YTEwIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhaSkiLz4KICA8dGV4dCB4PSI3MiIgeT0iNDgiIGZpbGw9IiM3YTRhMTAiPmluY2lkZW50IGxpZ2h0PC90ZXh0PgogIDxsaW5lIHgxPSIxODAiIHkxPSIxMDIiIHgyPSIyOTAiIHkyPSIxNDAiIHN0cm9rZT0iIzljOWE5NCIgc3Ryb2tlLXdpZHRoPSIxLjQiIG1hcmtlci1lbmQ9InVybCgjYWYpIi8+CiAgPHRleHQgeD0iMjUyIiB5PSIxMzQiIGNsYXNzPSJsYmwiPmZvcndhcmQ8L3RleHQ+CiAgPGxpbmUgeDE9IjE2MCIgeTE9IjkwIiB4Mj0iNjAiIHkyPSI2MCIgc3Ryb2tlPSIjMWE0YTdhIiBzdHJva2Utd2lkdGg9IjEuOCIgbWFya2VyLWVuZD0idXJsKCNhaykiLz4KICA8dGV4dCB4PSI5NiIgeT0iODAiIGZpbGw9IiMxYTRhN2EiPmJhY2tzY2F0dGVyZWQ8L3RleHQ+Cjwvc3ZnPgo=" alt="Backscattering"><figcaption>Diagram authored for this deck</figcaption></figure>The fraction of incident light scattered back toward the light source by particles suspended in the water.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">CDOM (Coloured Dissolved Organic Matter)</span> What is CDOM?</td>
+          <td>Yellow-brown dissolved organic material leached from soils and vegetation, carried to the sea by rivers — sometimes called "yellow substance" or Gelbstoff.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diffuse attenuation coefficient (Kd)</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE3MiIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxpZ2h0IGRlY2F5cyB3aXRoIGRlcHRoPC90ZXh0PgogIDxsaW5lIHgxPSI0NSIgeTE9IjM0IiB4Mj0iNDUiIHkyPSIxNjAiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI0NSIgeTE9IjM0IiB4Mj0iMjk4IiB5Mj0iMzQiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzAiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmxpZ2h0IGludGVuc2l0eTwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5kZXB0aDwvdGV4dD4KICA8cGF0aCBkPSJNMjgwLDM0IEMxNTAsNDQgNzAsODAgNTAsMTU4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTIwIiBmaWxsPSIjMWE0YTdhIj5JKHopID0gSTAgZV4oLUtkIHopPC90ZXh0Pgo8L3N2Zz4K" alt="Diffuse attenuation coefficient (Kd)"><figcaption>Diagram authored for this deck</figcaption></figure>What does the diffuse attenuation coefficient Kd measure?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz48bWFya2VyIGlkPSJhciIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNiIgcmVmWT0iMyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCwwIEw2LDMgTDAsNiBaIiBmaWxsPSIjNmI2ODYwIi8+PC9tYXJrZXI+PC9kZWZzPgogIDx0ZXh0IHg9IjE3MiIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxpZ2h0IGRlY2F5cyB3aXRoIGRlcHRoPC90ZXh0PgogIDxsaW5lIHgxPSI0NSIgeTE9IjM0IiB4Mj0iNDUiIHkyPSIxNjAiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI0NSIgeTE9IjM0IiB4Mj0iMjk4IiB5Mj0iMzQiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzAiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmxpZ2h0IGludGVuc2l0eTwvdGV4dD4KICA8dGV4dCB4PSI0MCIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5kZXB0aDwvdGV4dD4KICA8cGF0aCBkPSJNMjgwLDM0IEMxNTAsNDQgNzAsODAgNTAsMTU4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMTIwIiBmaWxsPSIjMWE0YTdhIj5JKHopID0gSTAgZV4oLUtkIHopPC90ZXh0Pgo8L3N2Zz4K" alt="Diffuse attenuation coefficient (Kd)"><figcaption>Diagram authored for this deck</figcaption></figure>How rapidly downwelling light intensity decreases with depth, in units of m⁻¹.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diffuse attenuation coefficient (Kd)</span> What does KD490 specifically measure?</td>
+          <td>Light attenuation at 490 nm (blue-green light).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Secchi depth</span> What is Secchi depth?</td>
+          <td>The depth at which a white disk lowered into the water becomes invisible to an observer on the surface — a simple measure of water transparency.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Band-ratio algorithm</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTcyIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmFuZC1yYXRpbyBjaGxvcm9waHlsbCBhbGdvcml0aG08L3RleHQ+CiAgPGxpbmUgeDE9IjUyIiB5MT0iMzQiIHgyPSI1MiIgeTI9IjE1MCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGxpbmUgeDE9IjUyIiB5MT0iMTUwIiB4Mj0iMzAwIiB5Mj0iMTUwIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMSIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSI0OCIgeT0iNDQiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmJsdWUvZ3JlZW48L3RleHQ+CiAgPHRleHQgeD0iNDgiIHk9IjU2IiB0ZXh0LWFuY2hvcj0iZW5kIiBjbGFzcz0ibGJsIj5ScnMgcmF0aW88L3RleHQ+CiAgPHRleHQgeD0iMjk4IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmNobG9yb3BoeWxsLWE8L3RleHQ+CiAgPHBhdGggZD0iTTU4LDQ2IEMxMTIsNTIgMTUyLDEyMCAyOTYsMTQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTVjM2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE4NSIgeT0iODIiIGZpbGw9IiMxYTVjM2EiIGZvbnQtc2l6ZT0iOSI+bW9yZSBjaGwgLSZndDsgbG93ZXIgcmF0aW88L3RleHQ+Cjwvc3ZnPgo=" alt="Band-ratio algorithm"><figcaption>Diagram authored for this deck</figcaption></figure>What is a band-ratio algorithm?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTcyIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmFuZC1yYXRpbyBjaGxvcm9waHlsbCBhbGdvcml0aG08L3RleHQ+CiAgPGxpbmUgeDE9IjUyIiB5MT0iMzQiIHgyPSI1MiIgeTI9IjE1MCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPGxpbmUgeDE9IjUyIiB5MT0iMTUwIiB4Mj0iMzAwIiB5Mj0iMTUwIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMSIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSI0OCIgeT0iNDQiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmJsdWUvZ3JlZW48L3RleHQ+CiAgPHRleHQgeD0iNDgiIHk9IjU2IiB0ZXh0LWFuY2hvcj0iZW5kIiBjbGFzcz0ibGJsIj5ScnMgcmF0aW88L3RleHQ+CiAgPHRleHQgeD0iMjk4IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJlbmQiIGNsYXNzPSJsYmwiPmNobG9yb3BoeWxsLWE8L3RleHQ+CiAgPHBhdGggZD0iTTU4LDQ2IEMxMTIsNTIgMTUyLDEyMCAyOTYsMTQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTVjM2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE4NSIgeT0iODIiIGZpbGw9IiMxYTVjM2EiIGZvbnQtc2l6ZT0iOSI+bW9yZSBjaGwgLSZndDsgbG93ZXIgcmF0aW88L3RleHQ+Cjwvc3ZnPgo=" alt="Band-ratio algorithm"><figcaption>Diagram authored for this deck</figcaption></figure>An empirical satellite ocean-colour algorithm that estimates chlorophyll-a from the ratio of remote-sensing reflectance at two wavelengths.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">QAA (Quasi-Analytical Algorithm)</span> What is the Quasi-Analytical Algorithm (QAA)?</td>
+          <td>A semi-analytical inversion that derives inherent optical properties from Rrs by inverting the physics of underwater light propagation.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Fluorescence line height</span> What is fluorescence line height?</td>
+          <td>A measure of chlorophyll fluorescence emitted by phytoplankton in a narrow band around 683–685 nm when illuminated by sunlight.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Fluorescence line height</span> Which OLCI band is the fluorescence band?</td>
+          <td>RRS681_25.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">In-situ measurement</span> What is an in-situ measurement?</td>
+          <td>A direct measurement made at the location of interest by an instrument physically present there, in contrast to remote sensing.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Swath</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxyZWN0IHg9IjQwIiB5PSIyNiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjZDhkNWNjIiBzdHJva2U9IiM2YjY4NjAiLz4KICA8dGV4dCB4PSI1NSIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnNhdGVsbGl0ZTwvdGV4dD4KICA8cG9seWdvbiBwb2ludHM9IjU1LDQyIDk1LDE1MCAxOTUsMTUwIiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS1vcGFjaXR5PSIwLjUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjY2ZlMmYyIi8+CiAgPHJlY3QgeD0iOTUiIHk9IjE1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzFhNGE3YSIgZmlsbC1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iMTQ1IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnN3YXRoPC90ZXh0PgogIDx0ZXh0IHg9IjI1MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5vbmUgc2F0ZWxsaXRlIHBhc3M8L3RleHQ+Cjwvc3ZnPgo=" alt="Swath"><figcaption>Diagram authored for this deck</figcaption></figure>What is a satellite swath?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTkwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxyZWN0IHg9IjQwIiB5PSIyNiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjZDhkNWNjIiBzdHJva2U9IiM2YjY4NjAiLz4KICA8dGV4dCB4PSI1NSIgeT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnNhdGVsbGl0ZTwvdGV4dD4KICA8cG9seWdvbiBwb2ludHM9IjU1LDQyIDk1LDE1MCAxOTUsMTUwIiBmaWxsPSIjZThmMGY4IiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS1vcGFjaXR5PSIwLjUiLz4KICA8cmVjdCB4PSIyMCIgeT0iMTUwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI0IiBmaWxsPSIjY2ZlMmYyIi8+CiAgPHJlY3QgeD0iOTUiIHk9IjE1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyNCIgZmlsbD0iIzFhNGE3YSIgZmlsbC1vcGFjaXR5PSIwLjM1Ii8+CiAgPHRleHQgeD0iMTQ1IiB5PSIxNjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnN3YXRoPC90ZXh0PgogIDx0ZXh0IHg9IjI1MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5vbmUgc2F0ZWxsaXRlIHBhc3M8L3RleHQ+Cjwvc3ZnPgo=" alt="Swath"><figcaption>Diagram authored for this deck</figcaption></figure>The strip of the Earth's surface imaged in a single satellite pass, set by the sensor's field of view and orbital geometry.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">MERIS</span> What is MERIS?</td>
+          <td>A 15-band ocean-colour spectrometer aboard ESA's Envisat satellite, the direct predecessor of OLCI.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">OLCI</span> What is OLCI?</td>
+          <td>A passive optical sensor aboard the European Sentinel-3A and -3B satellites, measuring reflected sunlight in 21 spectral bands from 400 to 1020 nm.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">OLCI</span> At what spatial resolution does OLCI image the ocean?</td>
+          <td>300 m.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">L3 product</span> What is an L3 satellite product?</td>
+          <td>A satellite data level where individual swath measurements (L2) are re-projected onto a regular geographic grid and composited.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Neural network (ocean colour)</span> What is a neural network in ocean-colour retrieval?</td>
+          <td>A machine-learning algorithm trained on coincident in-situ chlorophyll measurements and satellite reflectance to retrieve chlorophyll-a and other variables.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primitive equations</span> What are the "primitive equations"?</td>
+          <td>The set of partial differential equations that ocean general-circulation models like NEMO solve to evolve the three-dimensional state of the ocean.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">NEMO</span> What is NEMO?</td>
+          <td>An open-source ocean modelling framework that solves the primitive equations of ocean dynamics on a 3D structured grid.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">ERGOM</span> What is ERGOM?</td>
+          <td>A biogeochemical model originally developed at the Leibniz Institute for Baltic Sea Research (IOW) in Rostock and extended at BSH.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">ERGOM</span> Which CMEMS product uses ERGOM?</td>
+          <td>BALTICSEA_ANALYSISFORECAST_BGC_003_007.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">HYPE</span> What is HYPE?</td>
+          <td>A semi-distributed hydrological model developed by SMHI for simulating river discharge and nutrient loads from terrestrial catchments.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">De Boyer Montégut method</span> What does the De Boyer Montégut method compute?</td>
+          <td>Mixed-layer depth (MLD) from a vertical profile of temperature or density.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Tier 2 — Mechanism & Process</span>
+      <span class="section-count">65 cards</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="col-q">Prompt</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-q"><span class="term">Practical Salinity Unit (PSU)</span> How is PSU defined physically?</td>
+          <td>From the electrical conductivity of seawater relative to a standard KCl solution at 15 °C and atmospheric pressure.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Adiabatic process</span> What happens when a water parcel is lifted adiabatically toward the surface?</td>
+          <td>It expands slightly and cools, with no heat exchanged with its surroundings.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Adiabatic process</span> What is the conceptual purpose of the adiabatic correction in oceanography?</td>
+          <td>To remove the pressure effect on temperature, converting in-situ temperature to potential temperature.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Potential temperature</span> Why is potential temperature the standard thermodynamic variable in ocean models?</td>
+          <td>For thermodynamic consistency when comparing temperatures across different pressure levels.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wind stress</span> How does wind stress drive ocean motion?</td>
+          <td>It transfers momentum from air to water, generating surface currents and turbulent mixing in the mixed layer.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wind stress</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFnIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFtIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RWttYW4gdHJhbnNwb3J0IChOLiBIZW1pc3BoZXJlKTwvdGV4dD4KICA8bGluZSB4MT0iNzAiIHkxPSI2MCIgeDI9IjIwMCIgeTI9IjYwIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj53aW5kIHN0cmVzczwvdGV4dD4KICA8cGF0aCBkPSJNMTIwLDcyIEMxNTAsODggMTUwLDEwMCAxNTAsMTE2IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iMyAzIiBtYXJrZXItZW5kPSJ1cmwoI2FtKSIvPgogIDx0ZXh0IHg9IjE3MiIgeT0iMTAwIiBjbGFzcz0ibGJsIj5Db3Jpb2xpczwvdGV4dD4KICA8bGluZSB4MT0iMTE4IiB5MT0iNzAiIHgyPSIxMTgiIHkyPSIxNTYiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FnKSIvPgogIDx0ZXh0IHg9IjExOCIgeT0iMTcyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5uZXQgdHJhbnNwb3J0IChhYm91dCA5MCBkZWcgdG8gd2luZCk8L3RleHQ+Cjwvc3ZnPgo=" alt="Wind stress"><figcaption>Diagram authored for this deck</figcaption></figure>What is Ekman transport and how is it caused?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFiIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTRhN2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFnIiBtYXJrZXJXaWR0aD0iOSIgbWFya2VySGVpZ2h0PSI5IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiMxYTVjM2EiLz48L21hcmtlcj4KICAgIDxtYXJrZXIgaWQ9ImFtIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj4KICA8L2RlZnM+CiAgPHRleHQgeD0iMTYwIiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RWttYW4gdHJhbnNwb3J0IChOLiBIZW1pc3BoZXJlKTwvdGV4dD4KICA8bGluZSB4MT0iNzAiIHkxPSI2MCIgeDI9IjIwMCIgeTI9IjYwIiBzdHJva2U9IiMxYTRhN2EiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhYikiLz4KICA8dGV4dCB4PSIxMjUiIHk9IjUyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE0YTdhIj53aW5kIHN0cmVzczwvdGV4dD4KICA8cGF0aCBkPSJNMTIwLDcyIEMxNTAsODggMTUwLDEwMCAxNTAsMTE2IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iMyAzIiBtYXJrZXItZW5kPSJ1cmwoI2FtKSIvPgogIDx0ZXh0IHg9IjE3MiIgeT0iMTAwIiBjbGFzcz0ibGJsIj5Db3Jpb2xpczwvdGV4dD4KICA8bGluZSB4MT0iMTE4IiB5MT0iNzAiIHgyPSIxMTgiIHkyPSIxNTYiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIyIiBtYXJrZXItZW5kPSJ1cmwoI2FnKSIvPgogIDx0ZXh0IHg9IjExOCIgeT0iMTcyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMWE1YzNhIj5uZXQgdHJhbnNwb3J0IChhYm91dCA5MCBkZWcgdG8gd2luZCk8L3RleHQ+Cjwvc3ZnPgo=" alt="Wind stress"><figcaption>Diagram authored for this deck</figcaption></figure>A Coriolis-deflected net transport of surface water set up by wind stress; it controls coastal upwelling and downwelling.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Convective cooling</span> What kind of mixing does convective cooling generate?</td>
+          <td>Buoyancy-driven vertical mixing as cooled, denser surface water sinks.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Convective cooling</span> What two forces together deepen the mixed layer in autumn and winter?</td>
+          <td>Wind stress and convective cooling.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Mixed layer</span> How does mixed-layer depth control bloom dynamics?</td>
+          <td>A shallow mixed layer (5–15 m) concentrates phytoplankton and nutrients in a thin sunlit zone, favouring rapid bloom growth.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Stratification</span> How does strong stratification affect vertical mixing?</td>
+          <td>It suppresses mixing, trapping surface nutrients and isolating cold, nutrient-rich deep water from sunlit layers.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Upwelling</span> What typically drives upwelling?</td>
+          <td>Wind-induced divergence of surface currents.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Upwelling</span> How does upwelling affect algal blooms?</td>
+          <td>By fertilising surface waters with nutrients from below, it can trigger or intensify blooms away from river inputs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Sea-ice concentration</span> How does sea ice influence the spring phytoplankton bloom?</td>
+          <td>Ice cover limits light penetration and delays bloom onset; ice-melt timing is a strong predictor of bloom date.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Baltic Inflow (Major Baltic Inflow)</span> What effect do Major Baltic Inflows have on deep-basin water?</td>
+          <td>They ventilate anoxic bottom water, replenishing oxygen and temporarily halting sediment phosphorus release.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Baltic Inflow (Major Baltic Inflow)</span> What conditions drive a Major Baltic Inflow?</td>
+          <td>Sustained westerly winds combined with specific sea-level pressure conditions.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrate (NO₃⁻)</span> Why is winter surface nitrate predictive of the spring diatom bloom?</td>
+          <td>The bloom consumes accumulated winter nitrate, so higher winter stocks fuel a larger bloom.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phosphate (PO₄³⁻)</span> Why does phosphate accumulate in Baltic bottom water during winter?</td>
+          <td>Anoxic conditions release iron-bound phosphorus from sediments (internal loading), in addition to river inputs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Silicate (Si(OH)₄)</span> Why does silicate act as a "bloom-type switch" in the Baltic?</td>
+          <td>It has no other major biological sink; once depleted, diatom growth stops and the community shifts to flagellates and cyanobacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Internal loading</span> How does internal loading work chemically?</td>
+          <td>When bottom oxygen drops to zero, iron-phosphorus compounds in the sediment dissolve and phosphate diffuses upward into the water column.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Pigment</span> What accessory pigment distinguishes cyanobacteria from other phytoplankton?</td>
+          <td>Phycocyanin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Pigment</span> What accessory pigment is characteristic of dinoflagellates?</td>
+          <td>Peridinin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Biomass</span> Why is satellite chlorophyll-a used as a biomass proxy?</td>
+          <td>Direct biomass cannot be measured from space, but chlorophyll-a can — and it is present in all phytoplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Taxonomy</span> How is traditional phytoplankton taxonomy carried out?</td>
+          <td>By microscopic identification of cell structure and morphology.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Protists</span> Name some phototrophic protists.</td>
+          <td>Diatoms, dinoflagellates, cryptophytes, and green algae.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Protists</span> Name some heterotrophic protists.</td>
+          <td>Ciliates, heterotrophic flagellates, and foraminifera.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagella (flagellum)</span> How are dinoflagellate flagella arranged?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTgwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxlbGxpcHNlIGN4PSI4NSIgY3k9IjkyIiByeD0iMzQiIHJ5PSI0MCIgZmlsbD0iI2YwZWJmYSIgc3Ryb2tlPSIjNGEyYTdhIi8+CiAgPHBhdGggZD0iTTUxLDkyIEM3MCw4NCAxMDAsMTAwIDExOSw5MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGEyYTdhIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxwYXRoIGQ9Ik04NSwxMzIgQzgyLDE1MCA5MiwxNTggODgsMTcyIiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTJhN2EiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iODUiIHk9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5kaW5vZmxhZ2VsbGF0ZTwvdGV4dD4KICA8dGV4dCB4PSI4NSIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnR3byBwZXJwZW5kaWN1bGFyPC90ZXh0PgogIDxlbGxpcHNlIGN4PSIyMzUiIGN5PSI5MiIgcng9IjMwIiByeT0iMzgiIGZpbGw9IiNlNGY0ZjMiIHN0cm9rZT0iIzBmNWM1OCIvPgogIDxwYXRoIGQ9Ik0yMjgsMTI4IEMyMjQsMTQ2IDIyMiwxNTIgMjE5LDE2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY1YzU4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxwYXRoIGQ9Ik0yNDIsMTI4IEMyNDgsMTQ2IDI1MCwxNTIgMjU2LDE2NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY1YzU4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjIzNSIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNyeXB0b3BoeXRlPC90ZXh0PgogIDx0ZXh0IHg9IjIzNSIgeT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnR3byBmcm9tIGEgZ3Jvb3ZlPC90ZXh0Pgo8L3N2Zz4K" alt="Flagella (flagellum)"><figcaption>Diagram authored for this deck</figcaption></figure>Two flagella oriented perpendicular to each other — one transverse, one trailing.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagella (flagellum)</span> How are cryptophyte flagella arranged?</td>
+          <td>Two flagella of similar length emerging from a gullet-like groove.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Frustule</span> How are the two halves of a frustule arranged?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTY1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE2NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8dGV4dCB4PSIxNjAiIHk9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EaWF0b20gZnJ1c3R1bGUgKHR3byB2YWx2ZXMpPC90ZXh0PgogIDxyZWN0IHg9Ijk1IiB5PSI3OCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSI0MCIgcng9IjYiIGZpbGw9IiNlNGY0ZjMiIHN0cm9rZT0iIzBmNWM1OCIvPgogIDxyZWN0IHg9Ijg4IiB5PSI1OCIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIzNCIgcng9IjYiIGZpbGw9IiNjZmU5ZTciIHN0cm9rZT0iIzBmNWM1OCIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPmVwaXRoZWNhIChsaWQpPC90ZXh0PgogIDxsaW5lIHgxPSIxNjAiIHkxPSI1MCIgeDI9IjE2MCIgeTI9IjU4IiBzdHJva2U9IiM2YjY4NjAiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjEzOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+aHlwb3RoZWNhIChiYXNlKTwvdGV4dD4KICA8bGluZSB4MT0iMTYwIiB5MT0iMTE4IiB4Mj0iMTYwIiB5Mj0iMTMwIiBzdHJva2U9IiM2YjY4NjAiLz4KICA8dGV4dCB4PSIyNTIiIHk9Ijc4IiBjbGFzcz0ibGJsIj5maXQgbGlrZSBhPC90ZXh0PgogIDx0ZXh0IHg9IjI1MiIgeT0iOTEiIGNsYXNzPSJsYmwiPlBldHJpIGRpc2g8L3RleHQ+Cjwvc3ZnPgo=" alt="Frustule"><figcaption>Diagram authored for this deck</figcaption></figure>Like a Petri dish and its lid — an upper and a lower valve that fit together.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phytoplankton</span> What share of global oxygen production do phytoplankton account for?</td>
+          <td>Roughly half.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Chlorophyll-a</span> What wavelengths does chlorophyll-a absorb most strongly?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTcwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2hsb3JvcGh5bGwtYSBhYnNvcnB0aW9uPC90ZXh0PgogIDxyZWN0IHg9IjE1NSIgeT0iMzQiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiMzYWE4M2EiIGZpbGwtb3BhY2l0eT0iMC4xNCIvPgogIDxsaW5lIHgxPSI0NSIgeTE9IjM0IiB4Mj0iNDUiIHkyPSIxNTQiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI0NSIgeTE9IjE1NCIgeDI9IjMwNSIgeTI9IjE1NCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPHRleHQgeD0iNDIiIHk9IjQ0IiBjbGFzcz0ibGJsIiB0ZXh0LWFuY2hvcj0iZW5kIj5hYnNvcnB0aW9uPC90ZXh0PgogIDx0ZXh0IHg9IjMwNSIgeT0iMTY4IiBjbGFzcz0ibGJsIiB0ZXh0LWFuY2hvcj0iZW5kIj53YXZlbGVuZ3RoIChubSk8L3RleHQ+CiAgPHBhdGggZD0iTTU1LDE1MCBDNzAsNjAgODUsNTUgMTAwLDcyIEMxMjAsMTAwIDE0MCwxMzggMTcwLDEzOCBDMjA1LDEzOCAyMjUsNzAgMjQ1LDU4IEMyNjIsNTAgMjgwLDEyMCAyOTUsMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTVjM2EiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ0MzwvdGV4dD4KICA8dGV4dCB4PSIyNDgiIHk9IjQ4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42NjU8L3RleHQ+CiAgPHRleHQgeD0iMTc1IiB5PSIxMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxYTVjM2EiIGZvbnQtc2l6ZT0iOSI+cmVmbGVjdHMgZ3JlZW48L3RleHQ+CiAgPHRleHQgeD0iNjAiIHk9IjE2OCIgY2xhc3M9ImxibCI+NDAwPC90ZXh0PgogIDx0ZXh0IHg9IjI5MCIgeT0iMTY4IiBjbGFzcz0ibGJsIiB0ZXh0LWFuY2hvcj0iZW5kIj43MDA8L3RleHQ+Cjwvc3ZnPgo=" alt="Chlorophyll-a"><figcaption>Diagram authored for this deck</figcaption></figure>Red (~665 nm) and blue (~443 nm), while reflecting green.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phycocyanin</span> At what wavelength does phycocyanin absorb characteristically?</td>
+          <td>Around 620 nm.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phytoplankton functional types (PFTs)</span> What does PFT retrieval enable from satellite data?</td>
+          <td>Bloom-type identification from ocean colour alone — e.g. diatom spring bloom vs. cyanobacteria summer bloom.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Picoplankton</span> Why does picoplankton dominate in oligotrophic waters?</td>
+          <td>Large cells cannot compete effectively in nutrient-poor conditions, so small cells with high surface-area-to-volume ratios win.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Microphytoplankton</span> Why do microphytoplankton increase sediment oxygen demand?</td>
+          <td>They sink quickly when they die, exporting organic carbon to depth and consuming bottom-water oxygen as they decompose.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diatoms</span> What ends a Baltic diatom bloom?</td>
+          <td>Exhaustion of dissolved silicate, after which other phytoplankton groups take over.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Dinoflagellates</span> What is a "red tide"?</td>
+          <td>A dense red or brown surface discoloration of the water caused by dinoflagellate blooms.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cryptophytes</span> How do cryptophytes tolerate Baltic conditions?</td>
+          <td>They handle low salinity and turbid coastal water well, and are identified by their distinctive accessory pigments.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagellates</span> Which phytoplankton groups belong to the flagellates?</td>
+          <td>Dinoflagellates, cryptophytes, and other motile algae.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrogen fixation</span> What enzyme catalyses nitrogen fixation?</td>
+          <td>Nitrogenase, found in certain cyanobacteria and other bacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanotoxins</span> How are cyanotoxins categorised?</td>
+          <td>Into hepatotoxins (e.g. nodularin, microcystin) that attack the liver, and neurotoxins (e.g. anatoxin, saxitoxin) that attack the nervous system.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Zooplankton</span> What two main processes terminate a phytoplankton bloom?</td>
+          <td>Nutrient depletion and grazing by zooplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primary production</span> How is net primary production (NPP) defined?</td>
+          <td>Gross photosynthesis minus phytoplankton respiration.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Trophic state</span> What is the standard trophic-state scale?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTUwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE1MCI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDt9PC9zdHlsZT4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idGciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjZmUyZjIiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxYTVjM2EiLz48L2xpbmVhckdyYWRpZW50PgogICAgPG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPgogIDwvZGVmcz4KICA8dGV4dCB4PSIxNjAiIHk9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIj5Ucm9waGljLXN0YXRlIHNjYWxlPC90ZXh0PgogIDxyZWN0IHg9IjIwIiB5PSIzOCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIzMCIgZmlsbD0idXJsKCN0ZykiIHN0cm9rZT0iI2Q4ZDVjYyIvPgogIDx0ZXh0IHg9IjU1IiB5PSI4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+b2xpZ290cm9waGljPC90ZXh0PgogIDx0ZXh0IHg9IjEyOCIgeT0iODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1lc290cm9waGljPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iODgiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmV1dHJvcGhpYzwvdGV4dD4KICA8dGV4dCB4PSIyNzAiIHk9Ijg4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5oeXBlcnRyb3BoaWM8L3RleHQ+CiAgPGxpbmUgeDE9IjIwIiB5MT0iMTEyIiB4Mj0iMzAwIiB5Mj0iMTEyIiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMSIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+bnV0cmllbnRzIGFuZCBwcm9kdWN0aXZpdHkgaW5jcmVhc2U8L3RleHQ+Cjwvc3ZnPgo=" alt="Trophic state"><figcaption>Diagram authored for this deck</figcaption></figure>Oligotrophic → mesotrophic → eutrophic → hypertrophic.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Oligotrophic</span> Which phytoplankton size class thrives in oligotrophic waters?</td>
+          <td>Picoplankton, which outcompete larger bloom-formers in nutrient-poor conditions.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Algal bloom</span> What three conditions are needed for an algal bloom?</td>
+          <td>Sufficient nutrients, adequate light, and favourable physical conditions such as warm temperature and stratification.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Summer bloom (cyanobacteria bloom)</span> What physical conditions drive the Baltic summer cyanobacteria bloom?</td>
+          <td>Warm temperatures, shallow thermal stratification, and elevated phosphate from internal loading.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Ciliates</span> What do marine ciliates feed on?</td>
+          <td>Nanophytoplankton and bacteria, occupying a trophic level between phytoplankton and crustacean zooplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wavelength (nanometre, nm)</span> Why are CMEMS Rrs bands named by their centre wavelength?</td>
+          <td>Each band targets a specific absorbing or scattering constituent of seawater (e.g. RRS443 = 443 nm).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Radiance & Irradiance</span> Why is remote-sensing reflectance defined as a radiance-to-irradiance ratio?</td>
+          <td>Dividing upwelling radiance by downwelling irradiance normalises out variation in the brightness of the sun.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Remote-sensing reflectance (Rrs)</span> What does Rrs physically represent?</td>
+          <td>The colour of the ocean as seen from space — different water constituents absorb and scatter different wavelengths.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Inherent Optical Properties (IOPs)</span> What are the two fundamental IOPs?</td>
+          <td>The absorption coefficient (a, m⁻¹) and the backscattering coefficient (b_bp, m⁻¹).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Backscattering</span> What makes the particulate backscattering coefficient (BBP) high?</td>
+          <td>Many suspended particles in the water — either living algae or inorganic sediment.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">CDOM (Coloured Dissolved Organic Matter)</span> At what wavelengths does CDOM absorb most strongly?</td>
+          <td>In the blue-violet part of the spectrum.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Secchi depth</span> How does Secchi depth relate to algal biomass?</td>
+          <td>Inversely — high biomass means a shallow Secchi reading.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Band-ratio algorithm</span> How does a band-ratio CHL algorithm work mechanically?</td>
+          <td>The blue/green Rrs ratio shifts as chlorophyll absorbs more strongly in blue; the relationship is calibrated against in-situ measurements.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">QAA (Quasi-Analytical Algorithm)</span> How does QAA differ from band-ratio algorithms?</td>
+          <td>QAA inverts the physics of underwater light propagation rather than fitting empirical band ratios.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">In-situ measurement</span> Give some examples of marine in-situ platforms.</td>
+          <td>Shipboard CTDs, moored buoys, Argo floats, ferry-mounted sensors, and discrete water samples analysed in the lab.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Swath</span> How are daily L3 composites built from satellite swaths?</td>
+          <td>By remapping multiple swaths onto a fixed geographic grid and reducing them to a single per-pixel value (e.g. mean or maximum) per day.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">OLCI</span> Which ocean-colour sensor did OLCI replace?</td>
+          <td>MERIS aboard ESA's Envisat.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">L3 product</span> How do L4 products differ from L3 products?</td>
+          <td>L4 products take L3 further by gap-filling with statistical or model methods.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primitive equations</span> Which equations make up the "primitive equations"?</td>
+          <td>Horizontal momentum (Navier–Stokes with rotation and gravity), mass continuity, thermodynamic energy, salt conservation, and an equation of state.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">NEMO</span> What ocean fields does NEMO simulate?</td>
+          <td>Temperature, salinity, currents, sea-ice, and mixing.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">ERGOM</span> What biogeochemical cycles does ERGOM simulate?</td>
+          <td>Nitrogen, phosphorus, silicate, and carbon cycles plus plankton dynamics in the Baltic Sea.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">HYPE</span> How does HYPE drive ERGOM?</td>
+          <td>It supplies daily discharge and nitrogen/phosphorus/silicate loads as river boundary conditions to ERGOM.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">De Boyer Montégut method</span> How does the De Boyer Montégut method define mixed-layer depth?</td>
+          <td>As the shallowest depth where potential density differs from the surface value by a fixed threshold, typically 0.03 kg m⁻³.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Tier 3 — Baltic-Specific Context</span>
+      <span class="section-count">53 cards</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="col-q">Prompt</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-q"><span class="term">Water column</span> What is the maximum water-column depth in the Baltic Sea?</td>
+          <td>About 459 m, at the Landsort Deep.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Practical Salinity Unit (PSU)</span> What is the salinity range of the Baltic Sea in PSU?</td>
+          <td>Roughly 2 PSU in the northern Bothnian Bay to about 10 PSU in the central basin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Brackish water</span> What is special about the Baltic Sea's brackish status?</td>
+          <td>It is the world's largest brackish-water body.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Brackish water</span> What are typical Baltic brackish salinities?</td>
+          <td>~2 PSU in the northern gulfs to ~10 PSU in the central basin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Adiabatic process</span> How large is the adiabatic correction in the shallow Baltic?</td>
+          <td>Negligible — less than 0.05 °C.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Potential temperature</span> How does Baltic potential temperature differ from in-situ temperature?</td>
+          <td>By less than 0.05 °C, because Baltic depths are too shallow for the pressure correction to matter much.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Wind stress</span> How often is wind stress supplied to NEMO in the Baltic forecast?</td>
+          <td>Every few hours, from an atmospheric forecast.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Stratification</span> What is the key physical trigger for Baltic cyanobacteria blooms?</td>
+          <td>Summer stratification driven by solar heating.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Upwelling</span> Which Baltic coastlines experience episodic upwelling?</td>
+          <td>The Swedish and Estonian coasts, driven by alongshore winds.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Sea-ice concentration</span> Where in the Baltic does significant sea ice form every winter?</td>
+          <td>The northern Baltic — Gulf of Bothnia and Gulf of Finland.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anoxia & Hypoxia</span> Where in the Baltic is chronic anoxia found?</td>
+          <td>In stagnant bottom water of the deep basins, isolated by salinity stratification.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Baltic Inflow (Major Baltic Inflow)</span> How often do Major Baltic Inflows occur?</td>
+          <td>Irregularly — sometimes separated by decades.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anthropogenic</span> By how much have anthropogenic N and P loads raised Baltic nutrient levels?</td>
+          <td>Roughly four- to eight-fold above pre-industrial baselines.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Catchment (drainage basin)</span> How large is the Baltic catchment?</td>
+          <td>About 1.7 million km² across fourteen countries — roughly four times the area of the sea itself.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Catchment (drainage basin)</span> Name some major rivers of the Baltic catchment.</td>
+          <td>The Neva, Vistula, Oder, and Daugava.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrate (NO₃⁻)</span> How does nitrate enter the Baltic?</td>
+          <td>Mainly via rivers draining agricultural catchments.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phosphate (PO₄³⁻)</span> How does summer stratification make Baltic bottom-water phosphate available?</td>
+          <td>The mixed layer shoals, so phosphate-rich deep water becomes accessible to surface phytoplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Hydrogen sulfide (H₂S)</span> What does H₂S in bottom water indicate?</td>
+          <td>Total anoxia — conditions more extreme than simple hypoxia.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Hydrogen sulfide (H₂S)</span> Which Baltic basins accumulate H₂S between ventilation events?</td>
+          <td>Gotland Deep, Landsort Deep, and Bornholm Deep.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Limiting nutrient</span> What limits Baltic spring diatom blooms?</td>
+          <td>Nitrogen (nitrate).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Limiting nutrient</span> What limits Baltic summer cyanobacteria blooms?</td>
+          <td>Phosphorus (phosphate).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Eutrophication</span> How is the Baltic Sea ranked globally for eutrophication?</td>
+          <td>One of the most severely eutrophied seas in the world.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Photosynthesis</span> What share of global photosynthesis is performed by oceanic phytoplankton?</td>
+          <td>Roughly half.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Prokaryote</span> Which prokaryotes dominate Baltic picoplankton?</td>
+          <td>Picocyanobacteria such as Synechococcus.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Frustule</span> Why are diatom frustules valuable for paleoclimatic research?</td>
+          <td>Silica resists decomposition, so frustules accumulate in seafloor sediments and form long-lived paleoclimatic archives.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phytoplankton functional types (PFTs)</span> How many PFT variables does the CMEMS Baltic plankton product provide?</td>
+          <td>Eight: DIATO, DINO, CRYPTO, GREEN, PROKAR, MICRO, NANO, and PICO.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diatoms</span> When do diatoms dominate Baltic blooms?</td>
+          <td>During the spring bloom, while silicate and other nutrients are still abundant.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanobacteria</span> When and where do Baltic cyanobacteria form blooms?</td>
+          <td>In summer, forming large paint-like surface scums across the basin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanobacteria</span> Why are Baltic cyanobacterial blooms a public-health concern?</td>
+          <td>Some species produce toxins harmful to animals and humans, triggering bathing advisories.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Dinoflagellates</span> When do Baltic dinoflagellate blooms occur?</td>
+          <td>During warm-season conditions when phosphorus is abundant.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanotoxins</span> Which toxin does the main Baltic bloom-former Nodularia spumigena produce?</td>
+          <td>Nodularin, a potent liver toxin in mammals and fish.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Crustaceans</span> Which crustaceans dominate the open Baltic?</td>
+          <td>Copepods — by far the most numerous and the principal grazers of phytoplankton.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Zooplankton</span> Which zooplankton group dominates the Baltic?</td>
+          <td>Copepods.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Copepods</span> What role do copepods play in the Baltic spring bloom?</td>
+          <td>They are the primary grazers of phytoplankton, controlling whether the bloom ends by grazing or by nutrient depletion.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Trophic state</span> How is most of the Baltic classified for trophic state?</td>
+          <td>Eutrophic to hypertrophic, the result of decades of anthropogenic nutrient loading.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Oligotrophic</span> Where in the Baltic are conditions closest to oligotrophic?</td>
+          <td>The open northern Bothnian Bay.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Algal bloom</span> What two major algal-bloom types occur annually in the Baltic?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTg1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEwLjVweDtmaWxsOiMxYTE5MTY7fS5sYmx7ZmlsbDojNmI2ODYwO308L3N0eWxlPgogIDxkZWZzPjxtYXJrZXIgaWQ9ImFyIiBtYXJrZXJXaWR0aD0iOCIgbWFya2VySGVpZ2h0PSI4IiByZWZYPSI2IiByZWZZPSIzIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wLDAgTDYsMyBMMCw2IFoiIGZpbGw9IiM2YjY4NjAiLz48L21hcmtlcj48L2RlZnM+CiAgPHRleHQgeD0iMTY1IiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmFsdGljIHNlYXNvbmFsIGJsb29tIGN5Y2xlPC90ZXh0PgogIDxsaW5lIHgxPSI0MCIgeTE9IjQwIiB4Mj0iNDAiIHkyPSIxNTAiIHN0cm9rZT0iIzZiNjg2MCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSI0MCIgeTE9IjE1MCIgeDI9IjMwNSIgeTI9IjE1MCIgc3Ryb2tlPSIjNmI2ODYwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1lbmQ9InVybCgjYXIpIi8+CiAgPHRleHQgeD0iMzYiIHk9IjQ2IiBjbGFzcz0ibGJsIiB0ZXh0LWFuY2hvcj0iZW5kIj5jaGwtYTwvdGV4dD4KICA8cGF0aCBkPSJNNDUsMTQ4IEM3NSwxNDggODgsNTggMTA1LDU4IEMxMjIsNTggMTMyLDE0MCAxNTIsMTQyIEMxNzUsMTQ0IDE5NSw4NiAyMTIsODYgQzIzMiw4NiAyNTUsMTQ4IDMwMCwxNDkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMTA1IiB5PSI1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFhNWMzYSIgZm9udC1zaXplPSI5Ij5zcHJpbmcgKGRpYXRvbXMpPC90ZXh0PgogIDx0ZXh0IHg9IjIxMiIgeT0iNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0YTJhN2EiIGZvbnQtc2l6ZT0iOSI+c3VtbWVyIChjeWFub2JhY3RlcmlhKTwvdGV4dD4KICA8dGV4dCB4PSI1MiIgeT0iMTYzIiBjbGFzcz0ibGJsIj5KYW48L3RleHQ+CiAgPHRleHQgeD0iMTY1IiB5PSIxNjMiIGNsYXNzPSJsYmwiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkp1bjwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjE2MyIgY2xhc3M9ImxibCIgdGV4dC1hbmNob3I9ImVuZCI+RGVjPC90ZXh0Pgo8L3N2Zz4K" alt="Algal bloom"><figcaption>Diagram authored for this deck</figcaption></figure>A diatom-dominated spring bloom and a cyanobacteria-dominated summer bloom.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Spring bloom</span> Which group dominates the Baltic spring bloom and in what months?</td>
+          <td>Diatoms, typically between March and May, beginning first in the southern Baltic.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Ciliates</span> When are ciliates the dominant grazers in the Baltic?</td>
+          <td>During the post-spring transitional period, when copepod populations are still building up.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">CDOM (Coloured Dissolved Organic Matter)</span> Why is CDOM such a problem for Baltic ocean-colour algorithms?</td>
+          <td>It is the dominant optical constituent, causing standard blue/green band-ratio CHL algorithms to systematically fail in the Baltic.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diffuse attenuation coefficient (Kd)</span> What does high KD490 indicate about the water?</td>
+          <td>Turbid, murky water — indicating either high biomass, high CDOM, or high suspended sediment load.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Secchi depth</span> What Secchi depths indicate a dense bloom vs. clear, oligotrophic water?</td>
+          <td>1–2 m indicates a dense bloom; 8–10 m indicates clear, oligotrophic water.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">QAA (Quasi-Analytical Algorithm)</span> Which CMEMS Baltic variables are QAA-derived?</td>
+          <td>ADG443, APH443, and BBP443.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Swath</span> How wide is the OLCI swath?</td>
+          <td>About 1270 km, giving cloud-free coverage every 1–2 days from combined Sentinel-3A and -3B.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">MERIS</span> When did MERIS operate?</td>
+          <td>From 2002 to April 2012, aboard ESA's Envisat satellite.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">MERIS</span> What gap followed MERIS before OLCI began?</td>
+          <td>About four years — Envisat ended unexpectedly in 2012, and OLCI began returning usable data only in April 2016.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">OLCI</span> When did usable ocean-colour OLCI data become available?</td>
+          <td>Approximately April 2016, after Sentinel-3A's February 2016 launch.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">L3 product</span> What resolutions are the CMEMS Baltic L3 ocean-colour composites delivered at?</td>
+          <td>Daily L3 composites at 300 m (OLCI) or 1 km (multi-sensor) resolution.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Neural network (ocean colour)</span> What algorithm does the CMEMS Baltic CHL product use?</td>
+          <td>A region-specific neural network tuned for Baltic optical conditions.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">NEMO</span> <figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTc1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE3NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDtmb250LXNpemU6OS41cHg7fTwvc3R5bGU+CiAgPGRlZnM+PG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPjwvZGVmcz4KICA8cmVjdCB4PSIxNCIgeT0iNTgiIHdpZHRoPSI3OCIgaGVpZ2h0PSI0MiIgcng9IjMiIGZpbGw9IiNlNmYyZWIiIHN0cm9rZT0iIzFhNWMzYSIvPgogIDx0ZXh0IHg9IjUzIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SFlQRTwvdGV4dD4KICA8dGV4dCB4PSI1MyIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnJpdmVyIGxvYWRzPC90ZXh0PgogIDxyZWN0IHg9IjEyMSIgeT0iNTgiIHdpZHRoPSI3OCIgaGVpZ2h0PSI0MiIgcng9IjMiIGZpbGw9IiNlOGYwZjgiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iNzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5FTU88L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+cGh5c2ljczwvdGV4dD4KICA8cmVjdCB4PSIyMjgiIHk9IjU4IiB3aWR0aD0iNzgiIGhlaWdodD0iNDIiIHJ4PSIzIiBmaWxsPSIjZjBlYmZhIiBzdHJva2U9IiM0YTJhN2EiLz4KICA8dGV4dCB4PSIyNjciIHk9Ijc2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FUkdPTTwvdGV4dD4KICA8dGV4dCB4PSIyNjciIHk9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5iaW9nZW9jaGVtLjwvdGV4dD4KICA8bGluZSB4MT0iOTIiIHkxPSI3OSIgeDI9IjExOSIgeTI9Ijc5IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIxOTkiIHkxPSI3OSIgeDI9IjIyNiIgeTI9Ijc5IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjIxMyIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5kcml2ZXMgRVJHT00gKG9uZS13YXkpPC90ZXh0PgogIDxwYXRoIGQ9Ik01MywxMDAgQzUzLDE0NCAyNjcsMTQ0IDI2NywxMDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMyIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjE1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+SFlQRSBzdXBwbGllcyBudXRyaWVudCBsb2FkcyB0byBFUkdPTTwvdGV4dD4KPC9zdmc+Cg==" alt="NEMO"><figcaption>Diagram authored for this deck</figcaption></figure>How does NEMO interact with ERGOM in the CMEMS Baltic forecast?</td>
+          <td><figure class="media"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMTc1IiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE3NSI+CiAgPHN0eWxlPnRleHR7Zm9udC1mYW1pbHk6J0lCTSBQbGV4IFNhbnMnLHNhbnMtc2VyaWY7Zm9udC1zaXplOjExcHg7ZmlsbDojMWExOTE2O30ubGJse2ZpbGw6IzZiNjg2MDtmb250LXNpemU6OS41cHg7fTwvc3R5bGU+CiAgPGRlZnM+PG1hcmtlciBpZD0iYXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjYiIHJlZlk9IjMiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAsMCBMNiwzIEwwLDYgWiIgZmlsbD0iIzZiNjg2MCIvPjwvbWFya2VyPjwvZGVmcz4KICA8cmVjdCB4PSIxNCIgeT0iNTgiIHdpZHRoPSI3OCIgaGVpZ2h0PSI0MiIgcng9IjMiIGZpbGw9IiNlNmYyZWIiIHN0cm9rZT0iIzFhNWMzYSIvPgogIDx0ZXh0IHg9IjUzIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SFlQRTwvdGV4dD4KICA8dGV4dCB4PSI1MyIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGNsYXNzPSJsYmwiPnJpdmVyIGxvYWRzPC90ZXh0PgogIDxyZWN0IHg9IjEyMSIgeT0iNTgiIHdpZHRoPSI3OCIgaGVpZ2h0PSI0MiIgcng9IjMiIGZpbGw9IiNlOGYwZjgiIHN0cm9rZT0iIzFhNGE3YSIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iNzYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5FTU88L3RleHQ+CiAgPHRleHQgeD0iMTYwIiB5PSI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+cGh5c2ljczwvdGV4dD4KICA8cmVjdCB4PSIyMjgiIHk9IjU4IiB3aWR0aD0iNzgiIGhlaWdodD0iNDIiIHJ4PSIzIiBmaWxsPSIjZjBlYmZhIiBzdHJva2U9IiM0YTJhN2EiLz4KICA8dGV4dCB4PSIyNjciIHk9Ijc2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FUkdPTTwvdGV4dD4KICA8dGV4dCB4PSIyNjciIHk9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5iaW9nZW9jaGVtLjwvdGV4dD4KICA8bGluZSB4MT0iOTIiIHkxPSI3OSIgeDI9IjExOSIgeTI9Ijc5IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDxsaW5lIHgxPSIxOTkiIHkxPSI3OSIgeDI9IjIyNiIgeTI9Ijc5IiBzdHJva2U9IiM2YjY4NjAiIHN0cm9rZS13aWR0aD0iMS40IiBtYXJrZXItZW5kPSJ1cmwoI2FyKSIvPgogIDx0ZXh0IHg9IjIxMyIgeT0iMTE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBjbGFzcz0ibGJsIj5kcml2ZXMgRVJHT00gKG9uZS13YXkpPC90ZXh0PgogIDxwYXRoIGQ9Ik01MywxMDAgQzUzLDE0NCAyNjcsMTQ0IDI2NywxMDIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFhNWMzYSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQgMyIgbWFya2VyLWVuZD0idXJsKCNhcikiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjE1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgY2xhc3M9ImxibCI+SFlQRSBzdXBwbGllcyBudXRyaWVudCBsb2FkcyB0byBFUkdPTTwvdGV4dD4KPC9zdmc+Cg==" alt="NEMO"><figcaption>Diagram authored for this deck</figcaption></figure>NEMO provides the physical ocean state that drives the coupled ERGOM biogeochemical model.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">ERGOM</span> How is ERGOM coupled to NEMO?</td>
+          <td>One-way — ERGOM receives NEMO's physical fields to drive biogeochemical processes.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">HYPE</span> How many sub-catchments does E-HYPE cover for the Baltic?</td>
+          <td>About 7 000 sub-catchments draining into the sea.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">De Boyer Montégut method</span> Which NEMO variable is computed via the De Boyer Montégut method?</td>
+          <td>mlotst — the mixed-layer depth.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Tier 4 — Connections & Synthesis</span>
+      <span class="section-count">39 cards</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th class="col-q">Prompt</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-q"><span class="term">Practical Salinity Unit (PSU)</span> Why is the Baltic salinity contrast the "master physical control" on stratification?</td>
+          <td>Strong horizontal and vertical salinity gradients dominate Baltic density structure, more than temperature does.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Brackish water</span> Why does Baltic brackish water force region-specific ocean-colour algorithms?</td>
+          <td>Low salinity, high CDOM, and shallow depths combine to make the Baltic optically complex, breaking standard global algorithms.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Convective cooling</span> How does spring surface heating reverse winter convection?</td>
+          <td>It flips the sign of the surface buoyancy flux, re-establishing the seasonal stratification needed for bloom initiation.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Sea-ice concentration</span> How does Baltic ice melt affect stratification?</td>
+          <td>It delivers a pulse of fresh, low-density meltwater that strengthens stratification and primes the spring bloom.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Anoxia & Hypoxia</span> What two anoxia-driven chemical changes sustain Baltic summer blooms?</td>
+          <td>Sulfate reduction to H₂S, and dissolution of iron-bound phosphorus from sediments (internal loading).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Catchment (drainage basin)</span> Why does the HYPE model bridge terrestrial land management and Baltic biogeochemistry?</td>
+          <td>Because nutrient and CDOM loads reaching the Baltic originate from human land use within the catchment, which HYPE simulates daily.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrate (NO₃⁻)</span> Why does the spring community shift composition once nitrate runs out?</td>
+          <td>Nitrate depletion ends nitrate-limited growth and favours groups that bypass nitrate limitation, like N₂-fixing cyanobacteria.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phosphate (PO₄³⁻)</span> How does phosphate fuel summer cyanobacterial blooms?</td>
+          <td>When stratification brings bottom-water phosphate within reach, N₂-fixing cyanobacteria thrive on it, sustaining blooms for weeks.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Liebig's Law of the Minimum</span> Why doesn't reducing only nitrogen inputs reduce Baltic summer blooms?</td>
+          <td>Summer blooms are phosphorus-limited per Liebig's Law — N₂-fixing cyanobacteria bypass nitrogen limitation entirely.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Limiting nutrient</span> Why is phosphorus the ultimate Baltic bloom control even though nitrogen is sometimes scarce?</td>
+          <td>Cyanobacteria can fix dissolved N₂ gas, so phosphorus — not nitrogen — sets the ceiling on summer bloom intensity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Internal loading</span> Why does internal loading make Baltic restoration so difficult?</td>
+          <td>Summer blooms can intensify even when river nutrient loading is reduced, because phosphorus is released from sediments within the basin.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Eutrophication</span> What is the root cause of intensifying Baltic summer cyanobacteria blooms?</td>
+          <td>Decades of eutrophication driven by agricultural and wastewater nutrient loading from nine surrounding countries.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Pigment</span> Why do accessory pigments matter for satellite ocean-colour retrieval?</td>
+          <td>Their distinct absorption spectra let satellite sensors discriminate phytoplankton groups (e.g. phycocyanin → cyanobacteria).</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Taxonomy</span> Why do phytoplankton functional types depart from strict taxonomy?</td>
+          <td>Because two taxonomically distinct organisms can play the same biogeochemical role, so grouping by ecological/optical role is more useful.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Protists</span> Why is the autotrophic/heterotrophic protist split useful?</td>
+          <td>It captures the basic producer–consumer division of microbial plankton — a key axis of the food web.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Phycocyanin</span> Why is phycocyanin essential for satellite cyanobacteria detection?</td>
+          <td>It lets satellite algorithms identify cyanobacterial blooms even when total chlorophyll is not unusually elevated.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Diatoms</span> Why do diatoms efficiently export carbon to depth?</td>
+          <td>They sink quickly when they die, carrying carbon and nutrients downward to the seafloor.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanobacteria</span> Why does cyanobacterial N₂ fixation make phosphorus the controlling nutrient?</td>
+          <td>N₂-fixers bypass nitrogen limitation, so phosphorus availability becomes the ultimate ceiling on bloom intensity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Flagellates</span> Why is flagellate motility ecologically advantageous?</td>
+          <td>They can adjust their vertical position in the water column to access the best mix of surface light and deeper nutrients.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Nitrogen fixation</span> Why does N₂ fixation give Baltic cyanobacteria a summer advantage?</td>
+          <td>Nitrate is depleted by mid-summer, but N₂-fixers can still source nitrogen from dissolved N₂ gas, decisively outcompeting non-fixers.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Cyanotoxins</span> Why do Baltic summer blooms regularly trigger dog and livestock warnings?</td>
+          <td>Cyanotoxin exposure can be hazardous to swimmers, dogs, and livestock, and is the reason beaches close.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Crustaceans</span> How do mysid shrimp fit into the Baltic food web?</td>
+          <td>They link zooplankton and fish, transferring energy from the plankton food web up to higher trophic levels.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Copepods</span> Why do copepod population dynamics matter for bloom termination?</td>
+          <td>They determine whether a Baltic bloom ends by grazing pressure or by nutrient depletion — a top-down vs. bottom-up control.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primary production</span> Why does primary production matter for the global carbon cycle?</td>
+          <td>It is the main biological pathway by which atmospheric CO₂ enters the ocean carbon cycle.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Algal bloom</span> How can algal blooms cause fish kills?</td>
+          <td>By depleting dissolved oxygen during the bacterial decomposition that follows the bloom collapse.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Spring bloom</span> Why does the Baltic spring bloom export so much carbon to the seafloor?</td>
+          <td>It is the most productive event of the year, and the diatoms that dominate it sink quickly, exporting organic carbon and silica.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Summer bloom (cyanobacteria bloom)</span> Why can summer-bloom cyanobacteria thrive when nitrate is depleted?</td>
+          <td>They fix dissolved N₂ gas via nitrogenase, bypassing nitrogen limitation entirely.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Grazing</span> How does grazing impose a top-down control on bloom magnitude?</td>
+          <td>When zooplankton populations build, grazing pressure can suppress phytoplankton biomass even when nutrients remain plentiful.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Inherent Optical Properties (IOPs)</span> Why decompose total IOPs into APH, ADG, and BBP?</td>
+          <td>It allows discrimination of phytoplankton, dissolved+detrital matter, and particulate scatterers from a single satellite spectrum.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Backscattering</span> How does combining BBP with APH separate algae from sediment?</td>
+          <td>APH isolates phytoplankton absorption while BBP captures total particle scattering — together they distinguish biological from physical turbidity.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">CDOM (Coloured Dissolved Organic Matter)</span> Why does high CDOM near river mouths trace terrestrial runoff?</td>
+          <td>CDOM originates from soils and vegetation in the catchment, so its concentration directly indicates river-borne organic matter reaching the sea.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Remote-sensing reflectance (Rrs)</span> Why is Rrs the fundamental satellite ocean-colour observable?</td>
+          <td>All ocean-colour products — CHL, KD490, IOPs — are ultimately derived from Rrs.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Band-ratio algorithm</span> Why do band-ratio CHL algorithms fail in the Baltic?</td>
+          <td>CDOM also absorbs strongly in the blue, mimicking the spectral signature of chlorophyll and confusing the band ratio.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Fluorescence line height</span> Why can fluorescence be more accurate than band ratios in high-CDOM waters?</td>
+          <td>Fluorescence is emitted directly by chlorophyll near 683 nm and does not rely on blue absorption, which CDOM confuses.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">In-situ measurement</span> Why are in-situ data the "ground truth" for satellite algorithms?</td>
+          <td>They calibrate retrieval algorithms (like the Baltic CHL neural network) and validate physical and biogeochemical models.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">MERIS</span> Why can CMEMS Baltic historical records reach back to 2002?</td>
+          <td>MERIS shared resolution and bands with its successor OLCI, allowing reprocessed historical records to extend back to 2002.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Neural network (ocean colour)</span> Why use a Baltic-specific neural network for chlorophyll retrieval?</td>
+          <td>High Baltic CDOM biases standard band-ratio algorithms; a regional NN can account for multiple absorbing components simultaneously.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">Primitive equations</span> Why is the set called "primitive" equations?</td>
+          <td>They use the hydrostatic and Boussinesq approximations, simplifying full Navier–Stokes while retaining large-scale ocean physics.</td>
+        </tr>
+        <tr>
+          <td class="col-q"><span class="term">HYPE</span> Why is HYPE suitable as an operational forecast driver?</td>
+          <td>Its discharge and nutrient-load outputs are available in near-real-time, matching the cadence required for operational forecasting.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>Generated by anki-gen — author once, build Anki deck + this page from one source.</footer>
+</div>
+</body>
+</html>

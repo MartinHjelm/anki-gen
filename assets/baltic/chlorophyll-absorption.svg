@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 185" width="320" height="185">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/></marker></defs>
+  <text x="170" y="18" text-anchor="middle">Chlorophyll-a absorption</text>
+  <rect x="155" y="34" width="40" height="120" fill="#3aa83a" fill-opacity="0.14"/>
+  <line x1="45" y1="34" x2="45" y2="154" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <line x1="45" y1="154" x2="305" y2="154" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <text x="42" y="44" class="lbl" text-anchor="end">absorption</text>
+  <text x="305" y="168" class="lbl" text-anchor="end">wavelength (nm)</text>
+  <path d="M55,150 C70,60 85,55 100,72 C120,100 140,138 170,138 C205,138 225,70 245,58 C262,50 280,120 295,150" fill="none" stroke="#1a5c3a" stroke-width="2"/>
+  <text x="100" y="48" text-anchor="middle">443</text>
+  <text x="248" y="48" text-anchor="middle">665</text>
+  <text x="175" y="116" text-anchor="middle" fill="#1a5c3a" font-size="9">reflects green</text>
+  <text x="60" y="168" class="lbl">400</text>
+  <text x="290" y="168" class="lbl" text-anchor="end">700</text>
+</svg>

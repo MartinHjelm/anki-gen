@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <ellipse cx="85" cy="92" rx="34" ry="40" fill="#f0ebfa" stroke="#4a2a7a"/>
+  <path d="M51,92 C70,84 100,100 119,92" fill="none" stroke="#4a2a7a" stroke-width="1.5"/>
+  <path d="M85,132 C82,150 92,158 88,172" fill="none" stroke="#4a2a7a" stroke-width="1.5"/>
+  <text x="85" y="26" text-anchor="middle">dinoflagellate</text>
+  <text x="85" y="44" text-anchor="middle" class="lbl">two perpendicular</text>
+  <ellipse cx="235" cy="92" rx="30" ry="38" fill="#e4f4f3" stroke="#0f5c58"/>
+  <path d="M228,128 C224,146 222,152 219,166" fill="none" stroke="#0f5c58" stroke-width="1.5"/>
+  <path d="M242,128 C248,146 250,152 256,166" fill="none" stroke="#0f5c58" stroke-width="1.5"/>
+  <text x="235" y="26" text-anchor="middle">cryptophyte</text>
+  <text x="235" y="44" text-anchor="middle" class="lbl">two from a groove</text>
+</svg>

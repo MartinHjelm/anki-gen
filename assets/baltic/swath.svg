@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190" width="320" height="190">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <rect x="40" y="26" width="30" height="16" fill="#d8d5cc" stroke="#6b6860"/>
+  <text x="55" y="20" text-anchor="middle" class="lbl">satellite</text>
+  <polygon points="55,42 95,150 195,150" fill="#e8f0f8" stroke="#1a4a7a" stroke-opacity="0.5"/>
+  <rect x="20" y="150" width="280" height="24" fill="#cfe2f2"/>
+  <rect x="95" y="150" width="100" height="24" fill="#1a4a7a" fill-opacity="0.35"/>
+  <text x="145" y="166" text-anchor="middle">swath</text>
+  <text x="250" y="145" text-anchor="middle" class="lbl">one satellite pass</text>
+</svg>

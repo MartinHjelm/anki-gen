@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 170" width="320" height="170">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs>
+    <marker id="am" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a4a7a"/></marker>
+  </defs>
+  <text x="160" y="22" text-anchor="middle">Flagella — whip-like appendages for locomotion</text>
+  <ellipse cx="120" cy="92" rx="34" ry="26" fill="#e4f4f3" stroke="#0f5c58"/>
+  <text x="120" y="96" text-anchor="middle" class="lbl">cell</text>
+  <path d="M154,92 C175,70 190,114 210,92 C230,70 245,114 265,92 C278,80 286,88 294,92" fill="none" stroke="#0f5c58" stroke-width="2"/>
+  <text x="232" y="126" text-anchor="middle">flagellum</text>
+  <text x="232" y="139" text-anchor="middle" class="lbl">beats to propel the cell</text>
+  <line x1="84" y1="92" x2="44" y2="92" stroke="#1a4a7a" stroke-width="1.8" marker-end="url(#am)"/>
+  <text x="64" y="80" text-anchor="middle" fill="#1a4a7a">swims</text>
+</svg>

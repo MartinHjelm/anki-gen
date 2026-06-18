@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 185" width="320" height="185">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/></marker></defs>
+  <text x="172" y="18" text-anchor="middle">Band-ratio chlorophyll algorithm</text>
+  <line x1="52" y1="34" x2="52" y2="150" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <line x1="52" y1="150" x2="300" y2="150" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <text x="48" y="44" text-anchor="end" class="lbl">blue/green</text>
+  <text x="48" y="56" text-anchor="end" class="lbl">Rrs ratio</text>
+  <text x="298" y="166" text-anchor="end" class="lbl">chlorophyll-a</text>
+  <path d="M58,46 C112,52 152,120 296,144" fill="none" stroke="#1a5c3a" stroke-width="2"/>
+  <text x="185" y="82" fill="#1a5c3a" font-size="9">more chl -&gt; lower ratio</text>
+</svg>

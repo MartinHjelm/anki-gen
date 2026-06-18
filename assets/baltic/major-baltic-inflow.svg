@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190" width="320" height="190">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs><marker id="ad" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4a2a7a"/></marker></defs>
+  <rect x="10" y="36" width="300" height="130" fill="#dcebf6"/>
+  <line x1="10" y1="36" x2="310" y2="36" stroke="#1a4a7a" stroke-width="1.2"/>
+  <path d="M10,120 L110,120 L150,96 L200,168 L310,168 L310,182 L10,182 Z" fill="#e6dcc8" stroke="#7a4a10" stroke-opacity="0.4"/>
+  <path d="M14,116 L110,116 L150,92 L200,162 L300,162" fill="none" stroke="#4a2a7a" stroke-width="3" stroke-opacity="0.55" marker-end="url(#ad)"/>
+  <text x="60" y="60" text-anchor="middle">North Sea water</text>
+  <text x="60" y="73" text-anchor="middle" class="lbl">dense, saline</text>
+  <text x="150" y="86" text-anchor="middle" class="lbl">Danish Straits sill</text>
+  <text x="256" y="120" text-anchor="middle">deep Baltic basin</text>
+  <text x="172" y="150" text-anchor="middle" fill="#4a2a7a">flows along seafloor</text>
+</svg>

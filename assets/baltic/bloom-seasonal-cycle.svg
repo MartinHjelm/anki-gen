@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 185" width="320" height="185">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/></marker></defs>
+  <text x="165" y="18" text-anchor="middle">Baltic seasonal bloom cycle</text>
+  <line x1="40" y1="40" x2="40" y2="150" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <line x1="40" y1="150" x2="305" y2="150" stroke="#6b6860" stroke-width="1" marker-end="url(#ar)"/>
+  <text x="36" y="46" class="lbl" text-anchor="end">chl-a</text>
+  <path d="M45,148 C75,148 88,58 105,58 C122,58 132,140 152,142 C175,144 195,86 212,86 C232,86 255,148 300,149" fill="none" stroke="#1a5c3a" stroke-width="2"/>
+  <text x="105" y="50" text-anchor="middle" fill="#1a5c3a" font-size="9">spring (diatoms)</text>
+  <text x="212" y="78" text-anchor="middle" fill="#4a2a7a" font-size="9">summer (cyanobacteria)</text>
+  <text x="52" y="163" class="lbl">Jan</text>
+  <text x="165" y="163" class="lbl" text-anchor="middle">Jun</text>
+  <text x="300" y="163" class="lbl" text-anchor="end">Dec</text>
+</svg>

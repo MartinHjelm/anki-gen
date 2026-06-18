@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs>
+    <linearGradient id="si" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9db8d0"/><stop offset="1" stop-color="#1a4a7a"/></linearGradient>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b6860"/></marker>
+  </defs>
+  <line x1="60" y1="30" x2="150" y2="30" stroke="#6b6860" stroke-width="1.2" marker-end="url(#ar)"/>
+  <text x="158" y="33" class="lbl">wind</text>
+  <rect x="60" y="46" width="180" height="46" fill="#cfe2f2" stroke="#1a4a7a"/>
+  <text x="150" y="73" text-anchor="middle">mixed layer (uniform T, density)</text>
+  <line x1="60" y1="92" x2="240" y2="92" stroke="#7a4a10" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="150" y="105" text-anchor="middle" class="lbl">mixed-layer depth (mlotst)</text>
+  <rect x="60" y="110" width="180" height="60" fill="url(#si)" stroke="#1a4a7a"/>
+  <text x="150" y="145" text-anchor="middle" fill="#ffffff">stratified interior</text>
+</svg>

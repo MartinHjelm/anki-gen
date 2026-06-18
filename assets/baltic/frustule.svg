@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 165" width="320" height="165">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <text x="160" y="20" text-anchor="middle">Diatom frustule (two valves)</text>
+  <rect x="95" y="78" width="130" height="40" rx="6" fill="#e4f4f3" stroke="#0f5c58"/>
+  <rect x="88" y="58" width="144" height="34" rx="6" fill="#cfe9e7" stroke="#0f5c58"/>
+  <text x="160" y="46" text-anchor="middle" class="lbl">epitheca (lid)</text>
+  <line x1="160" y1="50" x2="160" y2="58" stroke="#6b6860"/>
+  <text x="160" y="138" text-anchor="middle" class="lbl">hypotheca (base)</text>
+  <line x1="160" y1="118" x2="160" y2="130" stroke="#6b6860"/>
+  <text x="252" y="78" class="lbl">fit like a</text>
+  <text x="252" y="91" class="lbl">Petri dish</text>
+</svg>

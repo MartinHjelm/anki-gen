@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 185" width="320" height="185">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs>
+    <marker id="ai" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7a4a10"/></marker>
+    <marker id="ak" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a4a7a"/></marker>
+    <marker id="af" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9c9a94"/></marker>
+  </defs>
+  <circle cx="170" cy="95" r="12" fill="#9db8d0" stroke="#1a4a7a"/>
+  <text x="170" y="128" text-anchor="middle" class="lbl">particle</text>
+  <line x1="40" y1="40" x2="160" y2="88" stroke="#7a4a10" stroke-width="1.8" marker-end="url(#ai)"/>
+  <text x="72" y="48" fill="#7a4a10">incident light</text>
+  <line x1="180" y1="102" x2="290" y2="140" stroke="#9c9a94" stroke-width="1.4" marker-end="url(#af)"/>
+  <text x="252" y="134" class="lbl">forward</text>
+  <line x1="160" y1="90" x2="60" y2="60" stroke="#1a4a7a" stroke-width="1.8" marker-end="url(#ak)"/>
+  <text x="96" y="80" fill="#1a4a7a">backscattered</text>
+</svg>

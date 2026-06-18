@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <style>text{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:#1a1916;}.lbl{fill:#6b6860;}</style>
+  <defs>
+    <marker id="ab" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a4a7a"/></marker>
+    <marker id="ag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a5c3a"/></marker>
+  </defs>
+  <rect x="20" y="50" width="230" height="120" fill="#dcebf6"/>
+  <polygon points="250,50 300,50 300,170 250,170" fill="#e6dcc8" stroke="#7a4a10" stroke-opacity="0.4"/>
+  <text x="275" y="115" text-anchor="middle" class="lbl">coast</text>
+  <line x1="20" y1="50" x2="250" y2="50" stroke="#1a4a7a" stroke-width="1.2"/>
+  <text x="215" y="44" text-anchor="end" class="lbl">wind (alongshore)</text>
+  <line x1="210" y1="64" x2="60" y2="64" stroke="#1a4a7a" stroke-width="1.6" marker-end="url(#ab)"/>
+  <text x="130" y="80" text-anchor="middle" fill="#1a4a7a">surface water pushed offshore</text>
+  <path d="M234,162 C234,120 234,92 234,72" fill="none" stroke="#1a5c3a" stroke-width="1.8" marker-end="url(#ag)"/>
+  <text x="170" y="150" text-anchor="middle" fill="#1a5c3a">cool, nutrient-rich</text>
+  <text x="170" y="163" text-anchor="middle" fill="#1a5c3a">deep water rises</text>
+</svg>

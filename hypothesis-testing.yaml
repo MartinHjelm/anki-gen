@@ -89,6 +89,12 @@ sections:
         a: 'Take the difference in sample proportions and divide it by the pooled standard error of that difference: \[ z = \frac{\hat{p}_1 - \hat{p}_2}{\operatorname{SE}_{\text{pool}}(\hat{p}_1 - \hat{p}_2)}. \]'
       - q: "How is a comparison-of-means test statistic constructed (e.g. battery lifespans)?"
         a: 'Take the difference in sample means and divide it by the combined standard error of the difference: \[ t = \frac{\bar{x}_1 - \bar{x}_2}{\operatorname{SE}(\bar{x}_1 - \bar{x}_2)}. \]'
+      - q: "How do you build the test statistic and p-value for testing whether a single variable's mean equals a hypothesized value μ₀ (e.g. is mean body temperature 37 °C)?"
+        a: 'Standardize the sample mean against μ₀ using the standard error of the mean, s/√n: \[ t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}. \] Under H₀: μ = μ₀ this follows a t-distribution with n − 1 degrees of freedom (≈ standard normal for large n). Convert the statistic to a p-value by reading off the tail area of that null distribution beyond the observed value — for a two-sided test, both tails: \[ p = 2\,P\!\left(T_{n-1} \ge |t|\right). \] This is the one-sample analogue of the two-sample comparison of means, and the same Wald pattern: estimate minus null value, over its standard error.'
+      - q: "Once you have the p-value for a one-sample test of a mean, how do you decide whether to reject μ = μ₀?"
+        a: "First choose a significance level α (e.g. 0.05) *before* looking at the result. Then reject H₀ — concluding the mean differs from μ₀ — if p ≤ α; otherwise fail to reject. Failing to reject means the data are consistent with μ = μ₀, which is not the same as proving the mean equals μ₀."
+      - note_type: cloze
+        text: "For a one-sample test of a mean, divide (x̄ − μ₀) by the [[standard error of the mean]], s/√n, compare to a t-distribution with [[n − 1]] degrees of freedom, and reject H₀ when the p-value is [[≤ α]] for a pre-chosen significance level α."
       - q: "How is a test statistic for a correlation constructed (e.g. between two biomarkers)?"
         a: 'Take the sample correlation coefficient and divide it by its standard error \(\approx 1/\sqrt{n}\): \[ z = \frac{r}{1/\sqrt{n}} = r\sqrt{n}. \]'
       - q: "What pattern do all these Wald-style examples share?"
